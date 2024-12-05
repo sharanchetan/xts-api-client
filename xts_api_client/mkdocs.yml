@@ -1,0 +1,17 @@
+site_name: XTS Client API Documentation
+
+theme:
+  name: material
+  features:
+    - content.code.copy
+
+plugins:
+  - mkdocstrings
+
+nav:
+  - index.md
+  - explanation.md
+  - how-to-guides.md
+  - tutorials.md
+  - reference.md
+  

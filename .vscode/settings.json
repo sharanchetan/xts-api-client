@@ -1,0 +1,15 @@
+{
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./xts_api_client",
+        "-p",
+        "test_*.py"
+    ],
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.autoTestDiscoverOnSaveEnabled": true,
+    "python.testing.pytestArgs": [
+        "."
+    ]
+}
