@@ -833,6 +833,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#xts_api_client.interactive_socket.OrderSocket_io.connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      connect
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#xts_api_client.interactive_socket.OrderSocket_io.get_emitter" class="md-nav__link">
     <span class="md-ellipsis">
       get_emitter
@@ -1689,6 +1698,15 @@
   
     <nav class="md-nav" aria-label="OrderSocket_io">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xts_api_client.interactive_socket.OrderSocket_io.connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      connect
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#xts_api_client.interactive_socket.OrderSocket_io.get_emitter" class="md-nav__link">
@@ -6228,10 +6246,7 @@ to use this request with caution if one has short term holdings.</p>
 <span class="normal">59</span>
 <span class="normal">60</span>
 <span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OrderSocket_io</span><span class="p">(</span><span class="n">socketio</span><span class="o">.</span><span class="n">AsyncClient</span><span class="p">):</span>
+<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">OrderSocket_io</span><span class="p">(</span><span class="n">socketio</span><span class="o">.</span><span class="n">AsyncClient</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">token</span><span class="p">,</span>
                  <span class="n">userID</span><span class="p">,</span>
@@ -6283,12 +6298,9 @@ to use this request with caution if one has short term holdings.</p>
 
     <span class="k">async</span> <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{},</span> <span class="n">transports</span><span class="o">=</span><span class="s1">&#39;websocket&#39;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">socketio_path</span><span class="o">=</span><span class="s1">&#39;/interactive/socket.io&#39;</span><span class="p">,</span>
                 <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection_url</span>
-
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Connected to the socket.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">transports</span><span class="p">,</span> <span class="n">namespaces</span><span class="p">,</span> <span class="n">socketio_path</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Disconnect from the socket.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection_url</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">transports</span><span class="p">,</span> <span class="n">namespaces</span><span class="p">,</span> <span class="n">socketio_path</span><span class="p">)</span>
+
 
     <span class="k">async</span> <span class="k">def</span> <span class="nf">get_emitter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;For getting event listener&quot;&quot;&quot;</span>
@@ -6311,6 +6323,38 @@ to use this request with caution if one has short term holdings.</p>
 <div class="doc doc-object doc-function">
 
 
+<h3 id="xts_api_client.interactive_socket.OrderSocket_io.connect" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">connect</span><span class="p">(</span><span class="n">headers</span><span class="o">=</span><span class="p">{},</span> <span class="n">transports</span><span class="o">=</span><span class="s1">&#39;websocket&#39;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">socketio_path</span><span class="o">=</span><span class="s1">&#39;/interactive/socket.io&#39;</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-async"><code>async</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Connected to the socket.</p>
+
+            <details class="quote">
+              <summary>Source code in <code>src\xts_api_client\interactive_socket.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{},</span> <span class="n">transports</span><span class="o">=</span><span class="s1">&#39;websocket&#39;</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">socketio_path</span><span class="o">=</span><span class="s1">&#39;/interactive/socket.io&#39;</span><span class="p">,</span>
+            <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Connected to the socket.&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection_url</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">transports</span><span class="p">,</span> <span class="n">namespaces</span><span class="p">,</span> <span class="n">socketio_path</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
 <h3 id="xts_api_client.interactive_socket.OrderSocket_io.get_emitter" class="doc doc-heading">
             <code class="highlight language-python"><span class="n">get_emitter</span><span class="p">()</span></code>
 
@@ -6327,9 +6371,9 @@ to use this request with caution if one has short term holdings.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\interactive_socket.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">get_emitter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">get_emitter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;For getting event listener&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">eventlistener</span>
 </code></pre></div></td></tr></table></div>
