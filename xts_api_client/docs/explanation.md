@@ -85,7 +85,7 @@ market_data_get_master = xt_market_data.get_master(exchangeSegmentList=['NSECM']
 col_header = "ExchangeSegment|ExchangeInstrumentID|InstrumentType|Name|Description|Series| NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low| FreezeQty|TickSize|LotSize|Multiplier|displayName|ISIN|PriceNumerator|PriceDenominator".split("|")
 cm_master_df = pd.read_csv(StringIO(market_data_get_master['result']), sep = "|", usecols=range(18), low_memory =False,header=None)
 cm_master_df.columns = col_header
-print(CM_MASTER_df)
+print(cm_master_df)
 ```
 
 ## ___Step 5. Getting the OHLC Data.___
