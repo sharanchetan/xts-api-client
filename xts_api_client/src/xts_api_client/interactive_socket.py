@@ -53,12 +53,9 @@ class OrderSocket_io(socketio.AsyncClient):
 
     async def connect(self, headers={}, transports='websocket', namespaces=None, socketio_path='/interactive/socket.io',
                 verify=False):
-        url = self.connection_url
-
         """Connected to the socket."""
-        self.connect(url, headers, transports, namespaces, socketio_path)
-        self.wait()
-        """Disconnect from the socket."""
+        self.connect(self.connection_url, headers, transports, namespaces, socketio_path)
+        
 
     async def get_emitter(self):
         """For getting event listener"""
