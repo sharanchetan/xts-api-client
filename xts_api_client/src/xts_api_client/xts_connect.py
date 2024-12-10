@@ -53,6 +53,7 @@ class XTSConnect(XTSCommon):
     EXCHANGE_NSECD = "NSECD"
     EXCHANGE_MCXFO = "MCXFO"
     EXCHANGE_BSECM = "BSECM"
+    EXCHANGE_BSEFO = "BSEFO"
 
     # URIs to various calls
     _routes = {
