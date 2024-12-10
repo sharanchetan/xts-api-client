@@ -508,7 +508,7 @@ xt_market_data = XTSConnect(
 <li>As mentioned earlier, there are two types of API in XTS. The below example is for market data API.</li>
 <li>After instantiating XTSConnect. Use the method marketdata login to log in &amp; access data.</li>
 </ul>
-<pre><code>response_marketdata_login = xt_market_data_marketdata_login()
+<pre><code>response_marketdata_login = xt_market_data.marketdata_login()
 </code></pre>
 <p>If the credentials are correct, printing 'response_marketdata_login' will five a JSON like following.</p>
 <pre><code>{'type': 'success', 'code': 'e-response-0010', 'description': 'Provided Valid Credentials', 'result': {'token': data removed, 'userID': data removed, 'appVersion': data removed, 'application_expiry_date': data removed}}
@@ -548,6 +548,7 @@ xt_market_data = XTSConnect(
 <li><strong>We can make a DataFrame of master data, using the following code snippet.</strong></li>
 </ul>
 <pre><code>import pandas as pd
+from io import StringIO 
 
 market_data_get_master = xt_market_data.get_master(exchangeSegmentList=['NSECM'])
 col_header = &quot;ExchangeSegment|ExchangeInstrumentID|InstrumentType|Name|Description|Series| NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low| FreezeQty|TickSize|LotSize|Multiplier|displayName|ISIN|PriceNumerator|PriceDenominator&quot;.split(&quot;|&quot;)

@@ -875,15 +875,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#xts_api_client.market_data_socket_client.MarketDataSocketClient.get_emitter" class="md-nav__link">
-    <span class="md-ellipsis">
-      get_emitter
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#xts_api_client.market_data_socket_client.MarketDataSocketClient.on_connect" class="md-nav__link">
     <span class="md-ellipsis">
       on_connect
@@ -1740,15 +1731,6 @@
   
     <nav class="md-nav" aria-label="MarketDataSocketClient">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#xts_api_client.market_data_socket_client.MarketDataSocketClient.get_emitter" class="md-nav__link">
-    <span class="md-ellipsis">
-      get_emitter
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#xts_api_client.market_data_socket_client.MarketDataSocketClient.on_connect" class="md-nav__link">
@@ -2853,7 +2835,8 @@
 <span class="normal">804</span>
 <span class="normal">805</span>
 <span class="normal">806</span>
-<span class="normal">807</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">XTSConnect</span><span class="p">(</span><span class="n">XTSCommon</span><span class="p">):</span>
+<span class="normal">807</span>
+<span class="normal">808</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">XTSConnect</span><span class="p">(</span><span class="n">XTSCommon</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The XTS Connect API wrapper class.&quot;&quot;&quot;</span>
     <span class="c1"># Constants</span>
     <span class="c1"># Products</span>
@@ -2887,6 +2870,7 @@
     <span class="n">EXCHANGE_NSECD</span> <span class="o">=</span> <span class="s2">&quot;NSECD&quot;</span>
     <span class="n">EXCHANGE_MCXFO</span> <span class="o">=</span> <span class="s2">&quot;MCXFO&quot;</span>
     <span class="n">EXCHANGE_BSECM</span> <span class="o">=</span> <span class="s2">&quot;BSECM&quot;</span>
+    <span class="n">EXCHANGE_BSEFO</span> <span class="o">=</span> <span class="s2">&quot;BSEFO&quot;</span>
 
     <span class="c1"># URIs to various calls</span>
     <span class="n">_routes</span> <span class="o">=</span> <span class="p">{</span>
@@ -3682,8 +3666,7 @@ If set requests won't throw SSLError if its set to custom <code>root</code> url 
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">113</span>
-<span class="normal">114</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">114</span>
 <span class="normal">115</span>
 <span class="normal">116</span>
 <span class="normal">117</span>
@@ -3726,7 +3709,8 @@ If set requests won't throw SSLError if its set to custom <code>root</code> url 
 <span class="normal">154</span>
 <span class="normal">155</span>
 <span class="normal">156</span>
-<span class="normal">157</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<span class="normal">157</span>
+<span class="normal">158</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
              <span class="n">apiKey</span><span class="p">,</span>
              <span class="n">secretKey</span><span class="p">,</span>
              <span class="n">source</span><span class="p">,</span>
@@ -3793,8 +3777,7 @@ the chosen open order to cancel.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">384</span>
-<span class="normal">385</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">385</span>
 <span class="normal">386</span>
 <span class="normal">387</span>
 <span class="normal">388</span>
@@ -3803,7 +3786,8 @@ the chosen open order to cancel.</p>
 <span class="normal">391</span>
 <span class="normal">392</span>
 <span class="normal">393</span>
-<span class="normal">394</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">bracketorder_cancel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appOrderID</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">394</span>
+<span class="normal">395</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">bracketorder_cancel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appOrderID</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This API can be called to cancel any open order of the user by providing correct appOrderID matching with</span>
 <span class="sd">    the chosen open order to cancel. &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
@@ -3836,8 +3820,7 @@ the chosen open order to cancel.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">467</span>
-<span class="normal">468</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">468</span>
 <span class="normal">469</span>
 <span class="normal">470</span>
 <span class="normal">471</span>
@@ -3846,7 +3829,8 @@ the chosen open order to cancel.</p>
 <span class="normal">474</span>
 <span class="normal">475</span>
 <span class="normal">476</span>
-<span class="normal">477</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">cancel_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appOrderID</span><span class="p">,</span> <span class="n">orderUniqueIdentifier</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">477</span>
+<span class="normal">478</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">cancel_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appOrderID</span><span class="p">,</span> <span class="n">orderUniqueIdentifier</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This API can be called to cancel any open order of the user by providing correct appOrderID matching with</span>
 <span class="sd">    the chosen open order to cancel. &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
@@ -3878,8 +3862,7 @@ the chosen open order to cancel.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">479</span>
-<span class="normal">480</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">480</span>
 <span class="normal">481</span>
 <span class="normal">482</span>
 <span class="normal">483</span>
@@ -3887,7 +3870,8 @@ the chosen open order to cancel.</p>
 <span class="normal">485</span>
 <span class="normal">486</span>
 <span class="normal">487</span>
-<span class="normal">488</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">cancelall_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="n">exchangeInstrumentID</span><span class="p">):</span>
+<span class="normal">488</span>
+<span class="normal">489</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">cancelall_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="n">exchangeInstrumentID</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This API can be called to cancel all open order of the user by providing exchange segment and exchange instrument ID &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;exchangeSegment&quot;</span><span class="p">:</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="s2">&quot;exchangeInstrumentID&quot;</span><span class="p">:</span> <span class="n">exchangeInstrumentID</span><span class="p">}</span>
@@ -3919,8 +3903,7 @@ vice versa, provided that there is sufficient margin or funds in the account to 
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">447</span>
-<span class="normal">448</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">448</span>
 <span class="normal">449</span>
 <span class="normal">450</span>
 <span class="normal">451</span>
@@ -3937,7 +3920,8 @@ vice versa, provided that there is sufficient margin or funds in the account to 
 <span class="normal">462</span>
 <span class="normal">463</span>
 <span class="normal">464</span>
-<span class="normal">465</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">convert_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="n">exchangeInstrumentID</span><span class="p">,</span> <span class="n">targetQty</span><span class="p">,</span> <span class="n">isDayWise</span><span class="p">,</span> <span class="n">oldProductType</span><span class="p">,</span>
+<span class="normal">465</span>
+<span class="normal">466</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">convert_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="n">exchangeInstrumentID</span><span class="p">,</span> <span class="n">targetQty</span><span class="p">,</span> <span class="n">isDayWise</span><span class="p">,</span> <span class="n">oldProductType</span><span class="p">,</span>
                      <span class="n">newProductType</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert position API, enable users to convert their open positions from NRML intra-day to Short term MIS or</span>
 <span class="sd">    vice versa, provided that there is sufficient margin or funds in the account to effect such conversion &quot;&quot;&quot;</span>
@@ -3978,8 +3962,7 @@ into Exit order.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">508</span>
-<span class="normal">509</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">509</span>
 <span class="normal">510</span>
 <span class="normal">511</span>
 <span class="normal">512</span>
@@ -3989,7 +3972,8 @@ into Exit order.</p>
 <span class="normal">516</span>
 <span class="normal">517</span>
 <span class="normal">518</span>
-<span class="normal">519</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">exit_cover_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appOrderID</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">519</span>
+<span class="normal">520</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">exit_cover_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appOrderID</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Exit Cover API is a functionality to enable user to easily exit an open stoploss order by converting it</span>
 <span class="sd">    into Exit order. &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
@@ -4023,8 +4007,7 @@ upfront margin, available exposure and other RMS related balances available to t
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">295</span>
-<span class="normal">296</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">296</span>
 <span class="normal">297</span>
 <span class="normal">298</span>
 <span class="normal">299</span>
@@ -4037,7 +4020,8 @@ upfront margin, available exposure and other RMS related balances available to t
 <span class="normal">306</span>
 <span class="normal">307</span>
 <span class="normal">308</span>
-<span class="normal">309</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_balance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">309</span>
+<span class="normal">310</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_balance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get Balance API call grouped under this category information related to limits on equities, derivative,</span>
 <span class="sd">    upfront margin, available exposure and other RMS related balances available to the user.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isInvestorClient</span><span class="p">:</span>
@@ -4073,14 +4057,14 @@ upfront margin, available exposure and other RMS related balances available to t
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">586</span>
-<span class="normal">587</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">587</span>
 <span class="normal">588</span>
 <span class="normal">589</span>
 <span class="normal">590</span>
 <span class="normal">591</span>
 <span class="normal">592</span>
-<span class="normal">593</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">593</span>
+<span class="normal">594</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the configuration of the client.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
@@ -4109,8 +4093,7 @@ upfront margin, available exposure and other RMS related balances available to t
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">195</span>
-<span class="normal">196</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">196</span>
 <span class="normal">197</span>
 <span class="normal">198</span>
 <span class="normal">199</span>
@@ -4118,7 +4101,8 @@ upfront margin, available exposure and other RMS related balances available to t
 <span class="normal">201</span>
 <span class="normal">202</span>
 <span class="normal">203</span>
-<span class="normal">204</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_dealer_orderbook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">204</span>
+<span class="normal">205</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_dealer_orderbook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Request Order book gives states of all the orders placed by an user&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
@@ -4150,8 +4134,7 @@ trade book will display all filled and partially filled orders.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">360</span>
-<span class="normal">361</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">361</span>
 <span class="normal">362</span>
 <span class="normal">363</span>
 <span class="normal">364</span>
@@ -4160,7 +4143,8 @@ trade book will display all filled and partially filled orders.</p>
 <span class="normal">367</span>
 <span class="normal">368</span>
 <span class="normal">369</span>
-<span class="normal">370</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_dealer_tradebook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">370</span>
+<span class="normal">371</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_dealer_tradebook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Trade book returns a list of all trades executed on a particular day , that were placed by the user . The</span>
 <span class="sd">    trade book will display all filled and partially filled orders. &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
@@ -4193,8 +4177,7 @@ that particular day.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">409</span>
-<span class="normal">410</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">410</span>
 <span class="normal">411</span>
 <span class="normal">412</span>
 <span class="normal">413</span>
@@ -4204,7 +4187,8 @@ that particular day.</p>
 <span class="normal">417</span>
 <span class="normal">418</span>
 <span class="normal">419</span>
-<span class="normal">420</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_dealerposition_daywise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">420</span>
+<span class="normal">421</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_dealerposition_daywise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The positions API returns positions by day, which is a snapshot of the buying and selling activity for</span>
 <span class="sd">    that particular day.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
@@ -4237,8 +4221,7 @@ that particular day.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">396</span>
-<span class="normal">397</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">397</span>
 <span class="normal">398</span>
 <span class="normal">399</span>
 <span class="normal">400</span>
@@ -4246,7 +4229,8 @@ that particular day.</p>
 <span class="normal">402</span>
 <span class="normal">403</span>
 <span class="normal">404</span>
-<span class="normal">405</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_dealerposition_netwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">405</span>
+<span class="normal">406</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_dealerposition_netwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The positions API positions by net. Net is the actual, current net position portfolio.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;dayOrNet&#39;</span><span class="p">:</span> <span class="s1">&#39;NetWise&#39;</span><span class="p">}</span>
@@ -4277,15 +4261,15 @@ that particular day.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">655</span>
-<span class="normal">656</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">656</span>
 <span class="normal">657</span>
 <span class="normal">658</span>
 <span class="normal">659</span>
 <span class="normal">660</span>
 <span class="normal">661</span>
 <span class="normal">662</span>
-<span class="normal">663</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_equity_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">symbol</span><span class="p">):</span>
+<span class="normal">663</span>
+<span class="normal">664</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_equity_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">symbol</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Get the equity symbol of the exchange segment.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
 
@@ -4315,14 +4299,14 @@ that particular day.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">665</span>
-<span class="normal">666</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">666</span>
 <span class="normal">667</span>
 <span class="normal">668</span>
 <span class="normal">669</span>
 <span class="normal">670</span>
 <span class="normal">671</span>
-<span class="normal">672</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_expiry_date</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">symbol</span><span class="p">):</span>
+<span class="normal">672</span>
+<span class="normal">673</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_expiry_date</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">symbol</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Get the expiry date of the exchange segment.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;exchangeSegment&#39;</span><span class="p">:</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="s1">&#39;series&#39;</span><span class="p">:</span> <span class="n">series</span><span class="p">,</span> <span class="s1">&#39;symbol&#39;</span><span class="p">:</span> <span class="n">symbol</span><span class="p">}</span>
@@ -4351,14 +4335,14 @@ that particular day.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">674</span>
-<span class="normal">675</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">675</span>
 <span class="normal">676</span>
 <span class="normal">677</span>
 <span class="normal">678</span>
 <span class="normal">679</span>
 <span class="normal">680</span>
-<span class="normal">681</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_future_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">expiryDate</span><span class="p">):</span>
+<span class="normal">681</span>
+<span class="normal">682</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_future_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">expiryDate</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Get the future symbol of the exchange segment.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;exchangeSegment&#39;</span><span class="p">:</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="s1">&#39;series&#39;</span><span class="p">:</span> <span class="n">series</span><span class="p">,</span> <span class="s1">&#39;symbol&#39;</span><span class="p">:</span> <span class="n">symbol</span><span class="p">,</span> <span class="s1">&#39;expiryDate&#39;</span><span class="p">:</span> <span class="n">expiryDate</span><span class="p">}</span>
@@ -4387,8 +4371,7 @@ that particular day.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">372</span>
-<span class="normal">373</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">373</span>
 <span class="normal">374</span>
 <span class="normal">375</span>
 <span class="normal">376</span>
@@ -4397,7 +4380,8 @@ that particular day.</p>
 <span class="normal">379</span>
 <span class="normal">380</span>
 <span class="normal">381</span>
-<span class="normal">382</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_holding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">382</span>
+<span class="normal">383</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_holding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Holdings API call enable users to check their long term holdings with the broker.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
@@ -4429,14 +4413,14 @@ that particular day.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">702</span>
-<span class="normal">703</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">703</span>
 <span class="normal">704</span>
 <span class="normal">705</span>
 <span class="normal">706</span>
 <span class="normal">707</span>
 <span class="normal">708</span>
-<span class="normal">709</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_index_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">):</span>
+<span class="normal">709</span>
+<span class="normal">710</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_index_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Get the index list of the exchange segment.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;exchangeSegment&#39;</span><span class="p">:</span> <span class="n">exchangeSegment</span><span class="p">}</span>
@@ -4465,14 +4449,14 @@ that particular day.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">623</span>
-<span class="normal">624</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">624</span>
 <span class="normal">625</span>
 <span class="normal">626</span>
 <span class="normal">627</span>
 <span class="normal">628</span>
 <span class="normal">629</span>
-<span class="normal">630</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_master</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegmentList</span><span class="p">):</span>
+<span class="normal">630</span>
+<span class="normal">631</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_master</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegmentList</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the master string.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;exchangeSegmentList&quot;</span><span class="p">:</span> <span class="n">exchangeSegmentList</span><span class="p">}</span>
@@ -4501,8 +4485,7 @@ that particular day.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">632</span>
-<span class="normal">633</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">633</span>
 <span class="normal">634</span>
 <span class="normal">635</span>
 <span class="normal">636</span>
@@ -4513,7 +4496,8 @@ that particular day.</p>
 <span class="normal">641</span>
 <span class="normal">642</span>
 <span class="normal">643</span>
-<span class="normal">644</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_ohlc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="n">exchangeInstrumentID</span><span class="p">,</span> <span class="n">startTime</span><span class="p">,</span> <span class="n">endTime</span><span class="p">,</span> <span class="n">compressionValue</span><span class="p">):</span>
+<span class="normal">644</span>
+<span class="normal">645</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_ohlc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="n">exchangeInstrumentID</span><span class="p">,</span> <span class="n">startTime</span><span class="p">,</span> <span class="n">endTime</span><span class="p">,</span> <span class="n">compressionValue</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the OHLC of the instrument.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
@@ -4547,15 +4531,15 @@ that particular day.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">683</span>
-<span class="normal">684</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">684</span>
 <span class="normal">685</span>
 <span class="normal">686</span>
 <span class="normal">687</span>
 <span class="normal">688</span>
 <span class="normal">689</span>
 <span class="normal">690</span>
-<span class="normal">691</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_option_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">expiryDate</span><span class="p">,</span> <span class="n">optionType</span><span class="p">,</span> <span class="n">strikePrice</span><span class="p">):</span>
+<span class="normal">691</span>
+<span class="normal">692</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_option_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">expiryDate</span><span class="p">,</span> <span class="n">optionType</span><span class="p">,</span> <span class="n">strikePrice</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Get the option symbol of the exchange segment.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;exchangeSegment&#39;</span><span class="p">:</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="s1">&#39;series&#39;</span><span class="p">:</span> <span class="n">series</span><span class="p">,</span> <span class="s1">&#39;symbol&#39;</span><span class="p">:</span> <span class="n">symbol</span><span class="p">,</span> <span class="s1">&#39;expiryDate&#39;</span><span class="p">:</span> <span class="n">expiryDate</span><span class="p">,</span>
@@ -4585,14 +4569,14 @@ that particular day.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">693</span>
-<span class="normal">694</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">694</span>
 <span class="normal">695</span>
 <span class="normal">696</span>
 <span class="normal">697</span>
 <span class="normal">698</span>
 <span class="normal">699</span>
-<span class="normal">700</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_option_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">expiryDate</span><span class="p">):</span>
+<span class="normal">700</span>
+<span class="normal">701</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_option_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">expiryDate</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Get the option type of the exchange segment.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;exchangeSegment&#39;</span><span class="p">:</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="s1">&#39;series&#39;</span><span class="p">:</span> <span class="n">series</span><span class="p">,</span> <span class="s1">&#39;symbol&#39;</span><span class="p">:</span> <span class="n">symbol</span><span class="p">,</span> <span class="s1">&#39;expiryDate&#39;</span><span class="p">:</span> <span class="n">expiryDate</span><span class="p">}</span>
@@ -4621,8 +4605,7 @@ that particular day.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">184</span>
-<span class="normal">185</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">185</span>
 <span class="normal">186</span>
 <span class="normal">187</span>
 <span class="normal">188</span>
@@ -4630,7 +4613,8 @@ that particular day.</p>
 <span class="normal">190</span>
 <span class="normal">191</span>
 <span class="normal">192</span>
-<span class="normal">193</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_order_book</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">193</span>
+<span class="normal">194</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_order_book</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Request Order book gives states of all the orders placed by an user&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
@@ -4663,8 +4647,7 @@ to Filled etc</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">541</span>
-<span class="normal">542</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">542</span>
 <span class="normal">543</span>
 <span class="normal">544</span>
 <span class="normal">545</span>
@@ -4674,7 +4657,8 @@ to Filled etc</p>
 <span class="normal">549</span>
 <span class="normal">550</span>
 <span class="normal">551</span>
-<span class="normal">552</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_order_history</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appOrderID</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">552</span>
+<span class="normal">553</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_order_history</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appOrderID</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Order history will provide particular order trail chain. This indicate the particular order &amp; its state</span>
 <span class="sd">    changes. i.e.Pending New to New, New to PartiallyFilled, PartiallyFilled, PartiallyFilled &amp; PartiallyFilled</span>
 <span class="sd">    to Filled etc &quot;&quot;&quot;</span>
@@ -4708,8 +4692,7 @@ that particular day.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">422</span>
-<span class="normal">423</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">423</span>
 <span class="normal">424</span>
 <span class="normal">425</span>
 <span class="normal">426</span>
@@ -4720,7 +4703,8 @@ that particular day.</p>
 <span class="normal">431</span>
 <span class="normal">432</span>
 <span class="normal">433</span>
-<span class="normal">434</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_position_daywise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">434</span>
+<span class="normal">435</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_position_daywise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The positions API returns positions by day, which is a snapshot of the buying and selling activity for</span>
 <span class="sd">    that particular day.&quot;&quot;&quot;</span>
@@ -4754,8 +4738,7 @@ that particular day.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">436</span>
-<span class="normal">437</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">437</span>
 <span class="normal">438</span>
 <span class="normal">439</span>
 <span class="normal">440</span>
@@ -4763,7 +4746,8 @@ that particular day.</p>
 <span class="normal">442</span>
 <span class="normal">443</span>
 <span class="normal">444</span>
-<span class="normal">445</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_position_netwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">445</span>
+<span class="normal">446</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_position_netwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The positions API positions by net. Net is the actual, current net position portfolio.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;dayOrNet&#39;</span><span class="p">:</span> <span class="s1">&#39;NetWise&#39;</span><span class="p">}</span>
@@ -4795,8 +4779,7 @@ point of time with the http: //ip:port/interactive/user/profile API.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">282</span>
-<span class="normal">283</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">283</span>
 <span class="normal">284</span>
 <span class="normal">285</span>
 <span class="normal">286</span>
@@ -4806,7 +4789,8 @@ point of time with the http: //ip:port/interactive/user/profile API.</p>
 <span class="normal">290</span>
 <span class="normal">291</span>
 <span class="normal">292</span>
-<span class="normal">293</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">293</span>
+<span class="normal">294</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_profile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Using session token user can access his profile stored with the broker, it&#39;s possible to retrieve it any</span>
 <span class="sd">    point of time with the http: //ip:port/interactive/user/profile API. &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
@@ -4839,15 +4823,15 @@ point of time with the http: //ip:port/interactive/user/profile API.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">595</span>
-<span class="normal">596</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">596</span>
 <span class="normal">597</span>
 <span class="normal">598</span>
 <span class="normal">599</span>
 <span class="normal">600</span>
 <span class="normal">601</span>
 <span class="normal">602</span>
-<span class="normal">603</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_quote</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Instruments</span><span class="p">,</span> <span class="n">xtsMessageCode</span><span class="p">,</span> <span class="n">publishFormat</span><span class="p">):</span>
+<span class="normal">603</span>
+<span class="normal">604</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_quote</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Instruments</span><span class="p">,</span> <span class="n">xtsMessageCode</span><span class="p">,</span> <span class="n">publishFormat</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the quote of the instrument.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
 
@@ -4877,14 +4861,14 @@ point of time with the http: //ip:port/interactive/user/profile API.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">646</span>
-<span class="normal">647</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">647</span>
 <span class="normal">648</span>
 <span class="normal">649</span>
 <span class="normal">650</span>
 <span class="normal">651</span>
 <span class="normal">652</span>
-<span class="normal">653</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_series</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">):</span>
+<span class="normal">653</span>
+<span class="normal">654</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_series</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Get the series of the exchange segment.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;exchangeSegment&#39;</span><span class="p">:</span> <span class="n">exchangeSegment</span><span class="p">}</span>
@@ -4914,8 +4898,7 @@ trade book will display all filled and partially filled orders.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">348</span>
-<span class="normal">349</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">349</span>
 <span class="normal">350</span>
 <span class="normal">351</span>
 <span class="normal">352</span>
@@ -4924,7 +4907,8 @@ trade book will display all filled and partially filled orders.</p>
 <span class="normal">355</span>
 <span class="normal">356</span>
 <span class="normal">357</span>
-<span class="normal">358</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_trade</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">358</span>
+<span class="normal">359</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_trade</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Trade book returns a list of all trades executed on a particular day , that were placed by the user . The</span>
 <span class="sd">    trade book will display all filled and partially filled orders. &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
@@ -4956,8 +4940,7 @@ trade book will display all filled and partially filled orders.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">167</span>
-<span class="normal">168</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">168</span>
 <span class="normal">169</span>
 <span class="normal">170</span>
 <span class="normal">171</span>
@@ -4971,7 +4954,8 @@ trade book will display all filled and partially filled orders.</p>
 <span class="normal">179</span>
 <span class="normal">180</span>
 <span class="normal">181</span>
-<span class="normal">182</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">interactive_login</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">182</span>
+<span class="normal">183</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">interactive_login</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Send the login url to which a user should receive the token.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
@@ -5009,8 +4993,7 @@ through login flow again and extract session token from login response before fu
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">554</span>
-<span class="normal">555</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">555</span>
 <span class="normal">556</span>
 <span class="normal">557</span>
 <span class="normal">558</span>
@@ -5019,7 +5002,8 @@ through login flow again and extract session token from login response before fu
 <span class="normal">561</span>
 <span class="normal">562</span>
 <span class="normal">563</span>
-<span class="normal">564</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">interactive_logout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">564</span>
+<span class="normal">565</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">interactive_logout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This call invalidates the session token and destroys the API session. After this, the user should go</span>
 <span class="sd">    through login flow again and extract session token from login response before further activities. &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
@@ -5051,8 +5035,7 @@ through login flow again and extract session token from login response before fu
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">570</span>
-<span class="normal">571</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">571</span>
 <span class="normal">572</span>
 <span class="normal">573</span>
 <span class="normal">574</span>
@@ -5065,7 +5048,8 @@ through login flow again and extract session token from login response before fu
 <span class="normal">581</span>
 <span class="normal">582</span>
 <span class="normal">583</span>
-<span class="normal">584</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">marketdata_login</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">584</span>
+<span class="normal">585</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">marketdata_login</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Send the login url to which a user should receive the token.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
@@ -5101,14 +5085,14 @@ through login flow again and extract session token from login response before fu
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">729</span>
-<span class="normal">730</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">730</span>
 <span class="normal">731</span>
 <span class="normal">732</span>
 <span class="normal">733</span>
 <span class="normal">734</span>
 <span class="normal">735</span>
-<span class="normal">736</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">marketdata_logout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">736</span>
+<span class="normal">737</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">marketdata_logout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This call invalidates the session token and destroys the API session. After this, the user should go&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
@@ -5139,8 +5123,7 @@ open stop loss order.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">311</span>
-<span class="normal">312</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">312</span>
 <span class="normal">313</span>
 <span class="normal">314</span>
 <span class="normal">315</span>
@@ -5174,7 +5157,8 @@ open stop loss order.</p>
 <span class="normal">343</span>
 <span class="normal">344</span>
 <span class="normal">345</span>
-<span class="normal">346</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">modify_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<span class="normal">346</span>
+<span class="normal">347</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">modify_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">appOrderID</span><span class="p">,</span>
                  <span class="n">modifiedProductType</span><span class="p">,</span>
                  <span class="n">modifiedOrderType</span><span class="p">,</span>
@@ -5231,8 +5215,7 @@ open stop loss order.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">245</span>
-<span class="normal">246</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">246</span>
 <span class="normal">247</span>
 <span class="normal">248</span>
 <span class="normal">249</span>
@@ -5266,7 +5249,8 @@ open stop loss order.</p>
 <span class="normal">277</span>
 <span class="normal">278</span>
 <span class="normal">279</span>
-<span class="normal">280</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">place_bracketorder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<span class="normal">280</span>
+<span class="normal">281</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">place_bracketorder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                     <span class="n">exchangeSegment</span><span class="p">,</span>
                     <span class="n">exchangeInstrumentID</span><span class="p">,</span>
                     <span class="n">orderType</span><span class="p">,</span>
@@ -5326,8 +5310,7 @@ has 2 orders embedded in itself, they are Limit/Market Order Stop Loss Order</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">490</span>
-<span class="normal">491</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">491</span>
 <span class="normal">492</span>
 <span class="normal">493</span>
 <span class="normal">494</span>
@@ -5342,7 +5325,8 @@ has 2 orders embedded in itself, they are Limit/Market Order Stop Loss Order</p>
 <span class="normal">503</span>
 <span class="normal">504</span>
 <span class="normal">505</span>
-<span class="normal">506</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">place_cover_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="n">exchangeInstrumentID</span><span class="p">,</span> <span class="n">orderSide</span><span class="p">,</span><span class="n">orderType</span><span class="p">,</span> <span class="n">orderQuantity</span><span class="p">,</span> <span class="n">disclosedQuantity</span><span class="p">,</span>
+<span class="normal">506</span>
+<span class="normal">507</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">place_cover_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="n">exchangeInstrumentID</span><span class="p">,</span> <span class="n">orderSide</span><span class="p">,</span><span class="n">orderType</span><span class="p">,</span> <span class="n">orderQuantity</span><span class="p">,</span> <span class="n">disclosedQuantity</span><span class="p">,</span>
                       <span class="n">limitPrice</span><span class="p">,</span> <span class="n">stopPrice</span><span class="p">,</span> <span class="n">orderUniqueIdentifier</span><span class="p">,</span> <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A Cover Order is an advance intraday order that is accompanied by a compulsory Stop Loss Order. This helps</span>
 <span class="sd">    users to minimize their losses by safeguarding themselves from unexpected market movements. A Cover Order</span>
@@ -5380,8 +5364,7 @@ has 2 orders embedded in itself, they are Limit/Market Order Stop Loss Order</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">206</span>
-<span class="normal">207</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">207</span>
 <span class="normal">208</span>
 <span class="normal">209</span>
 <span class="normal">210</span>
@@ -5417,7 +5400,8 @@ has 2 orders embedded in itself, they are Limit/Market Order Stop Loss Order</p>
 <span class="normal">240</span>
 <span class="normal">241</span>
 <span class="normal">242</span>
-<span class="normal">243</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">place_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<span class="normal">243</span>
+<span class="normal">244</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">place_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                 <span class="n">exchangeSegment</span><span class="p">,</span>
                 <span class="n">exchangeInstrumentID</span><span class="p">,</span>
                 <span class="n">productType</span><span class="p">,</span>
@@ -5476,14 +5460,14 @@ has 2 orders embedded in itself, they are Limit/Market Order Stop Loss Order</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">711</span>
-<span class="normal">712</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">712</span>
 <span class="normal">713</span>
 <span class="normal">714</span>
 <span class="normal">715</span>
 <span class="normal">716</span>
 <span class="normal">717</span>
-<span class="normal">718</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">search_by_instrumentid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Instruments</span><span class="p">):</span>
+<span class="normal">718</span>
+<span class="normal">719</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">search_by_instrumentid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Instruments</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Search by instrument id.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;source&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;instruments&#39;</span><span class="p">:</span> <span class="n">Instruments</span><span class="p">}</span>
@@ -5512,14 +5496,14 @@ has 2 orders embedded in itself, they are Limit/Market Order Stop Loss Order</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">720</span>
-<span class="normal">721</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">721</span>
 <span class="normal">722</span>
 <span class="normal">723</span>
 <span class="normal">724</span>
 <span class="normal">725</span>
 <span class="normal">726</span>
-<span class="normal">727</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">search_by_scriptname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">searchString</span><span class="p">):</span>
+<span class="normal">727</span>
+<span class="normal">728</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">search_by_scriptname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">searchString</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Search by script name.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;searchString&#39;</span><span class="p">:</span> <span class="n">searchString</span><span class="p">}</span>
@@ -5548,14 +5532,14 @@ has 2 orders embedded in itself, they are Limit/Market Order Stop Loss Order</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">605</span>
-<span class="normal">606</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">606</span>
 <span class="normal">607</span>
 <span class="normal">608</span>
 <span class="normal">609</span>
 <span class="normal">610</span>
 <span class="normal">611</span>
-<span class="normal">612</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">send_subscription</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Instruments</span><span class="p">,</span> <span class="n">xtsMessageCode</span><span class="p">):</span>
+<span class="normal">612</span>
+<span class="normal">613</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">send_subscription</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Instruments</span><span class="p">,</span> <span class="n">xtsMessageCode</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Send subscription for the instrument.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;instruments&#39;</span><span class="p">:</span> <span class="n">Instruments</span><span class="p">,</span> <span class="s1">&#39;xtsMessageCode&#39;</span><span class="p">:</span> <span class="n">xtsMessageCode</span><span class="p">}</span>
@@ -5584,14 +5568,14 @@ has 2 orders embedded in itself, they are Limit/Market Order Stop Loss Order</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">614</span>
-<span class="normal">615</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">615</span>
 <span class="normal">616</span>
 <span class="normal">617</span>
 <span class="normal">618</span>
 <span class="normal">619</span>
 <span class="normal">620</span>
-<span class="normal">621</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">send_unsubscription</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Instruments</span><span class="p">,</span> <span class="n">xtsMessageCode</span><span class="p">):</span>
+<span class="normal">621</span>
+<span class="normal">622</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">send_unsubscription</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Instruments</span><span class="p">,</span> <span class="n">xtsMessageCode</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Send unsubscription for the instrument.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;instruments&#39;</span><span class="p">:</span> <span class="n">Instruments</span><span class="p">,</span> <span class="s1">&#39;xtsMessageCode&#39;</span><span class="p">:</span> <span class="n">xtsMessageCode</span><span class="p">}</span>
@@ -5621,8 +5605,7 @@ to use this request with caution if one has short term holdings.</p>
 
             <details class="quote">
               <summary>Source code in <code>src\xts_api_client\xts_connect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">521</span>
-<span class="normal">522</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">522</span>
 <span class="normal">523</span>
 <span class="normal">524</span>
 <span class="normal">525</span>
@@ -5639,7 +5622,8 @@ to use this request with caution if one has short term holdings.</p>
 <span class="normal">536</span>
 <span class="normal">537</span>
 <span class="normal">538</span>
-<span class="normal">539</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">squareoff_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="n">exchangeInstrumentID</span><span class="p">,</span> <span class="n">productType</span><span class="p">,</span> <span class="n">squareoffMode</span><span class="p">,</span>
+<span class="normal">539</span>
+<span class="normal">540</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">squareoff_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exchangeSegment</span><span class="p">,</span> <span class="n">exchangeInstrumentID</span><span class="p">,</span> <span class="n">productType</span><span class="p">,</span> <span class="n">squareoffMode</span><span class="p">,</span>
                        <span class="n">positionSquareOffQuantityType</span><span class="p">,</span> <span class="n">squareOffQtyValue</span><span class="p">,</span> <span class="n">blockOrderSending</span><span class="p">,</span> <span class="n">cancelOrders</span><span class="p">,</span>
                        <span class="n">clientID</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;User can request square off to close all his positions in Equities, Futures and Option. Users are advised</span>
@@ -6484,11 +6468,7 @@ to use this request with caution if one has short term holdings.</p>
 <span class="normal">66</span>
 <span class="normal">67</span>
 <span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">MarketDataSocketClient</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+<span class="normal">69</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">MarketDataSocketClient</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">on_connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Connect from the socket.&quot;&quot;&quot;</span>
         <span class="o">...</span>
@@ -6555,10 +6535,6 @@ to use this request with caution if one has short term holdings.</p>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">on_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Error from the socket&quot;&quot;&quot;</span>
         <span class="o">...</span>
-
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_emitter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;For getting the event listener&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">eventlistener</span>
 </code></pre></div></td></tr></table></div>
               </details>
 
@@ -6573,36 +6549,6 @@ to use this request with caution if one has short term holdings.</p>
 
 
 
-
-<div class="doc doc-object doc-function">
-
-
-<h3 id="xts_api_client.market_data_socket_client.MarketDataSocketClient.get_emitter" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">get_emitter</span><span class="p">()</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-async"><code>async</code></small>
-  </span>
-
-</h3>
-
-
-    <div class="doc doc-contents ">
-
-        <p>For getting the event listener</p>
-
-            <details class="quote">
-              <summary>Source code in <code>src\xts_api_client\market_data_socket_client.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">get_emitter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;For getting the event listener&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">eventlistener</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
 
 <div class="doc doc-object doc-function">
 
@@ -7219,7 +7165,7 @@ to use this request with caution if one has short term holdings.</p>
                  <span class="n">userID</span><span class="p">,</span>
                  <span class="n">port</span><span class="p">,</span>
                  <span class="n">root_url</span><span class="p">,</span>
-                 <span class="n">marketdatasocketclient</span> <span class="o">=</span> <span class="n">MarketDataSocketClient</span><span class="p">,</span>
+                 <span class="n">marketdatasocketclient</span> <span class="p">:</span> <span class="n">MarketDataSocketClient</span><span class="p">,</span>
                  <span class="n">reconnection</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">reconnection_attempts</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                  <span class="n">reconnection_delay</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
