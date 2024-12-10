@@ -6,7 +6,7 @@ class MDSocket_io(socketio.AsyncClient):
                  userID,
                  port,
                  root_url,
-                 marketdatasocketclient = MarketDataSocketClient,
+                 marketdatasocketclient : MarketDataSocketClient,
                  reconnection=True,
                  reconnection_attempts=0,
                  reconnection_delay=1,
