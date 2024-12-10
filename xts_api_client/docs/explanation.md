@@ -29,7 +29,7 @@ xt_market_data = XTSConnect(
 * After instantiating XTSConnect. Use the method marketdata login to log in & access data.
 
 ```
-response_marketdata_login = xt_market_data_marketdata_login()
+response_marketdata_login = xt_market_data.marketdata_login()
 ```
 
 If the credentials are correct, printing 'response_marketdata_login' will five a JSON like following.
@@ -79,6 +79,7 @@ A snippet of print of market_data_get_master.
 
 ```
 import pandas as pd
+from io import StringIO 
 
 market_data_get_master = xt_market_data.get_master(exchangeSegmentList=['NSECM'])
 col_header = "ExchangeSegment|ExchangeInstrumentID|InstrumentType|Name|Description|Series| NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low| FreezeQty|TickSize|LotSize|Multiplier|displayName|ISIN|PriceNumerator|PriceDenominator".split("|")
