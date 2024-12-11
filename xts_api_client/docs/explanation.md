@@ -95,7 +95,7 @@ from io import StringIO
 
 master_data_nsefo = xt_market_data.get_master(exchangeSegmentList=['NSEFO'])
 col_header = "ExchangeSegment|ExchangelnstrumentlD|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplierl|Underlyinglnstrumentld|UnderlyinglndexName|ContractExpiration|StrikePrice|OptionType|DisplayNamel|PriceNumerator|PriceDenominator|DetailedDescription".split("|")
-nsefo_master_df = pd.read_csv(StringIO(master_data_nsefo['result']), sep = "|", usecols=range(22), low_memory =False,header=None)
+nsefo_master_df = pd.read_csv(StringIO(master_data_nsefo['result']), sep = "|", usecols=range(23), low_memory =False,header=None)
 nsefo_master_df.columns = col_header
 ```
 
