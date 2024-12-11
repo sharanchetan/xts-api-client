@@ -82,8 +82,8 @@ import pandas as pd
 from io import StringIO 
 
 market_data_get_master = xt_market_data.get_master(exchangeSegmentList=['NSECM'])
-col_header = "ExchangeSegment|ExchangeInstrumentID|InstrumentType|Name|Description|Series| NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low| FreezeQty|TickSize|LotSize|Multiplier|displayName|ISIN|PriceNumerator|PriceDenominator".split("|")
-cm_master_df = pd.read_csv(StringIO(market_data_get_master['result']), sep = "|", usecols=range(18), low_memory =False,header=None)
+col_header = "ExchangeSegment|ExchangelnstrumentlD|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentlD|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplier|DisplayName|ISIN|PriceNumerator|PriceDenominator|DetailedDescription|ExtendedSurvlndicator|Cautionlndicator|GSMIndicator".split("|")
+cm_master_df = pd.read_csv(StringIO(market_data_get_master['result']), sep = "|", usecols=range(22), low_memory =False,header=None)
 cm_master_df.columns = col_header
 print(cm_master_df)
 ```
