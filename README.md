@@ -1,93 +1,146 @@
-# xts_api_client
+# Introduction
 
+* This package is written to be used as a XTS API Client in Python.
+* With the correct API credentials, User can access XTS interactive & market data.
 
+## Local Server Installation (_recommended_)
 
-## Getting started
+* Use __uv packages manager__ to install the package. Example of the command is shown below. (_recommended_)
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Step 1. 
+```
+uv add --frozen http://pypi.rmoneyindia.in:8080/xts_api_client-1.0.1-py3-none-any.whl
+```
+Step 2.
+```
+uv sync
+```
+* Use _PIP_ to install the package. 
+```
+pip install http://pypi.rmoneyindia.in:8080/xts_api_client-1.0.1-py3-none-any.whl
+```
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## Local Installation
 
-## Add your files
+* To install the package locally, download the complete zip of the package.
+* As per user discretion, use [virtual envirnment](https://docs.python.org/3/library/venv.html) or [uv package manager](https://docs.astral.sh/uv/). Activate the envirnment. ___This is an optional step___ .
+* Navigate the __PowerShell/Command prompt__ to the directory (xts_api_client\dist) where __xts_api_client-0.1.0-py3-none-any.whl__ file exists.
+* Use "pip install xts_api_client-0.1.0-py3-none-any.whl"
+* Use "pip list" or "uv pip list" to verify the installation.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+## Pip install/uv add
+Currently, the package is not been hosted on the [Python Package Index](https://pypi.org/). So other workarounds are mentioned here to make use of the package.
+
+# Explanation
+* The user should have ___API Key___, ___API Secret Key___ & the ___URL___ with ___Port___ details for using this package.
+* XTS API is a REST based Trading API with ___Socket IO___ streaming component. This client makes it easier to consume the data from API into Python.
+* In XTS, there are two types of API, one for __trading (interactive sessions)__ & one for __market data__.
+
+## [Trading API](https://symphonyfintech.com/xts-trading-front-end-api-v2/)
+* Trading APIs allows to integrate trading system with XTS Platform for placing orders, monitor your positions, manage your portfolio and much more.
+## [Market Data API](https://symphonyfintech.com/xts-market-data-front-end-api-v2/#section/Authentication)
+* Market Data API is a mixed HTTP REST and HTTP streaming API. It provides access to live quotes data on a wide range of symbols.
+
+## __Steps to use the Package__
+## ___Step 1. Instantiate XTS class into object before login.___
+* Import _class_ 'XTSConnect' & then instantiate it as shown.
+* Write your apikey, secretkey, source & root. Root is the URL with port included.
 
 ```
-cd existing_repo
-git remote add origin http://192.168.100.117/quant/xts_api_client.git
-git branch -M main
-git push -uf origin main
+from xts_api_client.xts_connect import XTSConnect
+
+xt_market_data = XTSConnect(
+    apiKey = market_data_API_key,
+    secretKey = market_data_API_secret,
+    source = API_source,
+    root = API_root
+)
+```
+## ___Step 2. Logging in.___
+
+* As mentioned earlier, there are two types of API in XTS. The below example is for market data API.
+* After instantiating XTSConnect. Use the method marketdata login to log in & access data.
+
+```
+response_marketdata_login = xt_market_data.marketdata_login()
 ```
 
-## Integrate with your tools
+If the credentials are correct, printing 'response_marketdata_login' will five a JSON like following.
+```
+{'type': 'success', 'code': 'e-response-0010', 'description': 'Provided Valid Credentials', 'result': {'token': data removed, 'userID': data removed, 'appVersion': data removed, 'application_expiry_date': data removed}}
+```
+## ___Step 3. Getting Configuration.___
 
-- [ ] [Set up project integrations](http://192.168.100.117/quant/xts_api_client/-/settings/integrations)
+* Once you have logged in through market_data_API, you can get the configuration for the market data.
+```
+market_data_get_config = xt_market_data.get_config()
+```
 
-## Collaborate with your team
+Printing the 'market_data_get_config' will give JSON like following.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+```
+{'type': 'success', 'code': 's-response-0001', 'description': 'Fetched configurations successfully', 'result': __{'exchangeSegments': {'NSECM': 1, 'NSEFO': 2, 'NSECD': 3, 'NSECO': 4, 'SLBM': 5, 'NIFSC': 7, 'BSECM': 11, 'BSEFO': 12, 'BSECD': 13, 'BSECO': 14, 'NCDEX': 21, 'MSECM': 41, 'MSEFO': 42, 'MSECD': 43, 'MCXFO': 51}__, 'xtsMessageCode': {'touchlineEvent': 1501, 'marketDepthEvent': 1502, 'indexDataEvent': 1504, 'candleDataEvent': 1505, 'openInterestEvent': 1510, 'instrumentPropertyChangeEvent': 1105, 'ltpEvent': 1512}, 'publishFormat': ['Binary', 'JSON'], 'broadCastMode': ['Full', 'Partial'], 'instrumentType': {'1': 'Futures', '2': 'Options', '4': 'Spread', '8': 'Equity', '16': 'Spot', '32': 'PreferenceShares', '64': 'Debentures', '128': 'Warrants', 
+'256': 'Miscellaneous', '512': 'MutualFund', 'Futures': 1, 'Options': 2, 'Spread': 4, 'Equity': 8, 'Spot': 16, 'PreferenceShares': 32, 'Debentures': 64, 'Warrants': 128, 'Miscellaneous': 256, 'MutualFund': 512}}}
+```
 
-## Test and Deploy
 
-Use the built-in continuous integration in GitLab.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+## ___Step 4. Getting the Master Data.___
 
-***
+* XTS provides API Call to fetch all tradable as well as some additional Instrument/contract masters in a single structure. 
+* This call can be made once in a day and the response can be persisted in local storage or file as per you application design and you can fetch instrumented or Symbols from this dataset throughout the day.
+* The type of _master_ is a dictionary, that contains all the data sepearted by "|".
+* The parameter 'exchangeSegmentList' takes a list of exchange segments. In XTS, NSE has few segments as shown in the cofig output above.
 
-# Editing this README
+```
+market_data_get_master = xt_market_data.get_master(
+    exchangeSegmentList = [xt_market_data.EXCHANGE_NSECM]
+    )
+```
+* Both above & below code will give same result. 
+```
+market_data_get_master = xt_market_data.get_master(
+      exchangeSegmentList = ['NSECM']
+      )
+```
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+A snippet of print of market_data_get_master.
+```
+...nNSECM|11369|8|TTKHLTCARE|TTKHLTCARE-EQ|EQ|TTKHLTCARE-EQ|1100100011369|1798.7|1199.2|66709|0.05|1|1|TTKHLTCARE|INE910C01018|1|1|TTK HEALTHCARE LIMITED-EQ|0|-1|-1\nNSECM|20364|8|771KL43|771KL43-SG|SG|771KL43-SG|1100100020364|102.37|92.62|1025599|0.01|100|1|771KL43|IN2020230172|1|1|SDL KL 7.71% 2043-SG|0|-1|-1\nNSECM|21711|8|68PN26|68PN26-SG|SG|68PN26-SG|1100100021711|108.7|98.35|965899|0.01|100|1|68PN26|IN2820200052|1|1|SDL PN 6.8% 2026-SG|0|-1|-1'}
+```
+* __We can make a DataFrame of master data, using the following code snippet.__
 
-## Suggestions for a good README
+```
+import pandas as pd
+from io import StringIO 
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+market_data_get_master = xt_market_data.get_master(exchangeSegmentList=['NSECM'])
+col_header = "ExchangeSegment|ExchangeInstrumentID|InstrumentType|Name|Description|Series| NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low| FreezeQty|TickSize|LotSize|Multiplier|displayName|ISIN|PriceNumerator|PriceDenominator".split("|")
+cm_master_df = pd.read_csv(StringIO(market_data_get_master['result']), sep = "|", usecols=range(18), low_memory =False,header=None)
+cm_master_df.columns = col_header
+print(cm_master_df)
+```
 
-## Name
-Choose a self-explaining name for your project.
+## ___Step 5. Getting the OHLC Data.___
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+* The data is available in the form of a candle timestamp with epoch from 1970, Open, High, Low, Close, Volume, OI.
+* The least compression available is 60(1 minute) for both event stream and long polling (GET at 1 Request Per Second).
+* Other supported intervals for GET (long polling ) Request are 2 minute, 3 minutes, 5 minutes, 15 minutes, 30 minutes , hourly and daily.
+* Format of startTime & endTime is "MMM DD YYYY HHMMSS". In the example given below 091500 means morning nine fifteen in IST. Market open  time :-) .
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+```
+marget_data_get_ohlc = xt_market_data.get_ohlc(
+    exchangeSegment = xt_market_data.EXCHANGE_NSECM,
+    exchangeInstrumentID = 22,
+    startTime = "Dec 02 2024 091500",
+    endTime = "Dec 02 2024 093000",
+    compressionValue = 60)
+```
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+Printing market_data_get_ohlc will give a dictionary, as shown below.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+```
+{'type': 'success', 'code': 's-instrument-0002', 'description': 'Data found', 'result': {'exchangeSegment': 'NSECM', 'exchangeInstrumentID': '22', 'dataReponse': 'data removed'}}
+```
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+* From the DataFrame made above (in master data section), user can select different instruments & can gain further insight.
