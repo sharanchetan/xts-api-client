@@ -5,23 +5,19 @@
 
 ## Local Server Installation (_recommended_)
 
-* Use __uv packages manager__ or __pip__ to install the package. Example of the command is shown below.
+* Use __uv packages manager__ to install the package. Example of the command is shown below. (_recommended_)
 
+Step 1. 
 ```
-uv add --extra-index-url http://192.168.50.40:8080 xts_api_client
+uv add --frozen http://pypi.rmoneyindia.in:8080/xts_api_client-1.0.1-py3-none-any.whl
 ```
-to avoid "warning: Indexes specified via `--extra-index-url` will not be persisted to the `pyproject.toml` file; use `--index` instead.", try the ___below command___.
+Step 2.
 ```
-uv add --default-index http://192.168.50.40:8080 xts_api_client 
+uv sync
 ```
-
-or
+* Use _PIP_ to install the package. 
 ```
-pip install --extra-index-url http://192.168.50.40:8080 xts_api_client
-```
-if the issue comes with trusted host, try the below command.
-```
-pip install --trusted-host 192.168.50.40 --extra-index-url http://192.168.50.40:8080 xts_api_client
+pip install http://pypi.rmoneyindia.in:8080/xts_api_client-1.0.1-py3-none-any.whl
 ```
 
 ## Local Installation
