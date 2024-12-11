@@ -75,17 +75,28 @@ A snippet of print of market_data_get_master.
 ```
 ...nNSECM|11369|8|TTKHLTCARE|TTKHLTCARE-EQ|EQ|TTKHLTCARE-EQ|1100100011369|1798.7|1199.2|66709|0.05|1|1|TTKHLTCARE|INE910C01018|1|1|TTK HEALTHCARE LIMITED-EQ|0|-1|-1\nNSECM|20364|8|771KL43|771KL43-SG|SG|771KL43-SG|1100100020364|102.37|92.62|1025599|0.01|100|1|771KL43|IN2020230172|1|1|SDL KL 7.71% 2043-SG|0|-1|-1\nNSECM|21711|8|68PN26|68PN26-SG|SG|68PN26-SG|1100100021711|108.7|98.35|965899|0.01|100|1|68PN26|IN2820200052|1|1|SDL PN 6.8% 2026-SG|0|-1|-1'}
 ```
-* __We can make a DataFrame of master data, using the following code snippet.__
+* __We can make a DataFrame of NSE cash market master data, using the following code snippet.__
 
 ```
 import pandas as pd
 from io import StringIO 
 
-market_data_get_master = xt_market_data.get_master(exchangeSegmentList=['NSECM'])
+master_data_nsecm = xt_market_data.get_master(exchangeSegmentList=['NSECM'])
 col_header = "ExchangeSegment|ExchangelnstrumentlD|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentlD|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplier|DisplayName|ISIN|PriceNumerator|PriceDenominator|DetailedDescription|ExtendedSurvlndicator|Cautionlndicator|GSMIndicator".split("|")
-cm_master_df = pd.read_csv(StringIO(market_data_get_master['result']), sep = "|", usecols=range(22), low_memory =False,header=None)
-cm_master_df.columns = col_header
-print(cm_master_df)
+nsecm_master_df = pd.read_csv(StringIO(master_data_nsecm['result']), sep = "|", usecols=range(22), low_memory =False,header=None)
+nsecm_master_df.columns = col_header
+```
+
+* __We can make a DataFrame of NSE future & options master data, using the following code snippet.__
+
+```
+import pandas as pd
+from io import StringIO 
+
+master_data_nsefo = xt_market_data.get_master(exchangeSegmentList=['NSEFO'])
+col_header = "ExchangeSegment|ExchangelnstrumentlD|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplierl|Underlyinglnstrumentld|UnderlyinglndexName|ContractExpiration|StrikePrice|OptionType|DisplayNamel|PriceNumerator|PriceDenominator|DetailedDescription".split("|")
+nsefo_master_df = pd.read_csv(StringIO(master_data_nsefo['result']), sep = "|", usecols=range(22), low_memory =False,header=None)
+nsefo_master_df.columns = col_header
 ```
 
 ## ___Step 5. Getting the OHLC Data.___
