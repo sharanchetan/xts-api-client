@@ -6,7 +6,6 @@ class OrderSocket_io(socketio.AsyncClient):
                  token,
                  userID,
                  root_url,
-                 port,
                  interativeSocketClient : InteractiveSocketClient,
                  reconnection=True,
                  reconnection_attempts=0,
@@ -46,9 +45,8 @@ class OrderSocket_io(socketio.AsyncClient):
         self.root_url = root_url
         self.publishFormat = 'JSON'
         self.broadcastMode = "Full"
-        self.port = port
 
-        self.connection_url = f"{self.root_url}:{self.port}?token={self.token}&userID={self.userID}&apiType=INTERACTIVE"
+        self.connection_url = f"{self.root_url}/?token={self.token}&userID={self.userID}&apiType=INTERACTIVE"
         #self.connection_url = port + self.token + '&userID=' + self.userID + "&apiType=INTERACTIVE"
 
     async def connect(self, headers={}, transports='websocket', namespaces=None, socketio_path='/interactive/socket.io',
