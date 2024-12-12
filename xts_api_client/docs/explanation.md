@@ -1,6 +1,6 @@
 # Explanation
 * The user should have ___API Key___, ___API Secret Key___ & the ___URL___ with ___Port___ details for using this package.
-* XTS API is a REST based Trading API with ___Socket IO___ streaming component. This client makes it easier to consume the data from API into Python.
+* XTS API is a [REST](https://en.wikipedia.org/wiki/REST) based Trading API with [___Socket IO___](https://en.wikipedia.org/wiki/Socket.IO) streaming component. This client makes it easier to consume the data from API into Python.
 * In XTS, there are two types of API, one for __trading (interactive sessions)__ & one for __market data__.
 
 ## [Trading API](https://symphonyfintech.com/xts-trading-front-end-api-v2/)
