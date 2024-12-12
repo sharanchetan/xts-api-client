@@ -4,7 +4,6 @@ class MDSocket_io(socketio.AsyncClient):
     def __init__(self,
                  token,
                  userID,
-                 port,
                  root_url,
                  marketdatasocketclient : MarketDataSocketClient,
                  reconnection=True,
@@ -51,9 +50,8 @@ class MDSocket_io(socketio.AsyncClient):
         self.publishFormat = 'JSON'
         self.broadcastMode = "Full"
         self.token = token
-        self.port = port
         
-        self.connection_url = f"{self.root_url}:{self.port}/?token={self.token}&userID={self.userID}&publishFormat={self.publishFormat}&broadcastMode={self.broadcastMode}"
+        self.connection_url = f"{self.root_url}/?token={self.token}&userID={self.userID}&publishFormat={self.publishFormat}&broadcastMode={self.broadcastMode}"
 
     async def connect(self, headers={}, transports='websocket', namespaces=None, socketio_path='/apimarketdata/socket.io',
                 verify=False):
