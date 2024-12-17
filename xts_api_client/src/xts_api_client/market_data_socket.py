@@ -1,4 +1,5 @@
 import socketio
+import json
 from xts_api_client.market_data_socket_client import MarketDataSocketClient
 class MDSocket_io(socketio.AsyncClient):
     def __init__(self,
@@ -64,3 +65,31 @@ class MDSocket_io(socketio.AsyncClient):
     async def get_emitter(self):
         """For getting the event listener"""
         return self.eventlistener
+       
+    async def on_event_touchline_full(self,xts_message):
+        touchline_full = json.loads(xts_message)
+        return touchline_full
+
+    async def on_event_market_data_full(self,xts_message):
+        market_data_full = json.loads(xts_message)
+        return market_data_full
+    
+    async def on_event_candle_data_full(self,xts_message):
+        candle_data_full = json.loads(xts_message)
+        return candle_data_full
+        
+    async def on_event_market_status_full(self,xts_message):
+        market_status_full = json.loads(xts_message)
+        return market_status_full
+    
+    async def on_event_openinterest_full(self,xts_message):
+        openinterest_full = json.loads(xts_message)
+        return openinterest_full
+    
+    async def on_event_last_traded_price_full(self,xts_message):
+        last_traded_price_full = json.loads(xts_message)
+        return last_traded_price_full
+    
+    async def on_event_instrument_change_full(self,xts_message):
+        instrument_change_full = json.loads(xts_message)
+        return instrument_change_full
