@@ -8,7 +8,14 @@ from io import StringIO
 
 def cm_master_string_to_df(cm_master_result :str)->pd.DataFrame:
     """
-    Convert the response of cm_master API to pandas DataFrame
+        Convert the response of cm_master API to a pandas DataFrame.
+        This function takes a string response from the cm_master API, which contains
+        data separated by the '|' character, and converts it into a pandas DataFrame.
+        The DataFrame will have predefined column headers.
+        Parameters:
+        cm_master_result (str): The string response from the cm_master API.
+        Returns:
+        pd.DataFrame: A pandas DataFrame containing the parsed data from the cm_master_result string.
     """
     col_header = "ExchangeSegment|ExchangelnstrumentlD|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentlD|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplier|DisplayName|ISIN|PriceNumerator|PriceDenominator|DetailedDescription|ExtendedSurvlndicator|Cautionlndicator|GSMIndicator".split("|")   
     cm_master_df = pd.read_csv(StringIO(cm_master_result), sep = "|", usecols=range(22), low_memory =False)
@@ -17,7 +24,16 @@ def cm_master_string_to_df(cm_master_result :str)->pd.DataFrame:
 
 def fo_master_string_to_df(fo_master_result :str)->pd.DataFrame:
     """
-    Convert the response of fo_master API to pandas DataFrame
+        Convert the response of master API to pandas DataFrame for fo segment.
+        This function takes a string response from the fo_master API, splits it into lines,
+        and then categorizes each line into futures or options based on the number of columns.
+        It then converts these categorized lines into pandas DataFrames with appropriate column headers.
+        Parameters:
+        fo_master_result (str): The string response from the fo_master API.
+        Returns:
+        tuple: A tuple containing two pandas DataFrames:
+            - fut_master_df: DataFrame containing futures data.
+            - opt_master_df: DataFrame containing options data.
     """
     opt_col_header = "ExchangeSegment|ExchangelnstrumentlD|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplier|UnderlyinglnstrumentId|UnderlyinglndexName|ContractExpiration|StrikePrice|OptionType|DisplayName|PriceNumerator|PriceDenominator|DetailedDescription".split("|")
     fut_col_header = "ExchangeSegment|ExchangelnstrumentlD|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplier|UnderlyinglnstrumentId|UnderlyinglndexName|ContractExpiration|DisplayName|PriceNumerator|PriceDenominator|DetailedDescription".split("|")
@@ -76,7 +92,7 @@ def cm_master_df_to_xts_cm_instrument_list(cm_master_df : pd.DataFrame, series_l
             ))
     return xts_cm_Instrument_list
 
-def fo_master_df_to_xts_future_instrument_list(fo_master_df : pd.DataFrame, series_list_to_include: List[str]= ["FUTIDX","FUTSTK"])->List[xts_future_Instrument]:
+def fo_master_df_to_xts_future_instrument_list(fo_master_df : pd.DataFrame, series_list_to_include: List[str]= ["FUTIDX","FUTSTK","IF"])->List[xts_future_Instrument]:
     """
     Convert the pandas DataFrame of fo_master API to list of xts_future_Instrument objects
     """
