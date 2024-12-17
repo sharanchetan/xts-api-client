@@ -1,4 +1,5 @@
 import socketio
+import json
 from xts_api_client.interactive_socket_client import InteractiveSocketClient
 
 class OrderSocket_io(socketio.AsyncClient):
@@ -58,3 +59,48 @@ class OrderSocket_io(socketio.AsyncClient):
     async def get_emitter(self):
         """For getting event listener"""
         return self.eventlistener
+
+    async def on_message(self,xts_message):
+        """On message from socket"""
+        on_message = json.loads(xts_message)
+        return on_message
+
+    async def on_joined(self,xts_message):
+        """On socket joined"""
+        on_joined = json.loads(xts_message)
+        return on_joined
+
+    async def on_error(self,xts_message):
+        """On receiving error from socket"""
+        on_error = json.loads(xts_message)
+        return on_error
+
+    async def on_order(self,xts_message):
+        """On receiving order placed data from socket"""
+        on_order = json.loads(xts_message)
+        return on_order
+
+    async def on_trade(self,xts_message):
+        """On receiving trade data from socket"""
+        on_trade = json.loads(xts_message)
+        return on_trade
+
+    async def on_position(self,xts_message):
+        """On receiving position data from socket"""
+        on_position = json.loads(xts_message)
+        return on_position
+
+    async def on_tradeconversion(self,xts_message):
+        """On receiving trade conversion data from socket"""
+        on_tradeconversion = json.loads(xts_message)
+        return on_tradeconversion
+
+    async def on_messagelogout(self,xts_message):
+        """On receiving user logout message"""
+        on_messagelogout = json.loads(xts_message)
+        return on_messagelogout
+
+    async def on_disconnect(xts_message):
+        """On receiving disconnection from socket"""
+        on_disconnect = json.loads(xts_message)
+        return on_disconnect
