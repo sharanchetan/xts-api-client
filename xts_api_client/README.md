@@ -17,7 +17,7 @@
 
 Step 1. 
 ```
-uv add --frozen http://pypi.rmoneyindia.in:8080/xts_api_client-1.0.1-py3-none-any.whl
+uv add --frozen http://pypi.rmoneyindia.in:8080/xts_api_client-1.0.2-py3-none-any.whl
 ```
 Step 2.
 ```
