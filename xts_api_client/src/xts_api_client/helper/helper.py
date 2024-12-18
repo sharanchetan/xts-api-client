@@ -8,14 +8,9 @@ from io import StringIO
 
 def cm_master_string_to_df(cm_master_result :str)->pd.DataFrame:
     """
-        Convert the response of cm_master API to a pandas DataFrame.
-        This function takes a string response from the cm_master API, which contains
-        data separated by the '|' character, and converts it into a pandas DataFrame.
-        The DataFrame will have predefined column headers.
-        Parameters:
-        cm_master_result (str): The string response from the cm_master API.
-        Returns:
-        pd.DataFrame: A pandas DataFrame containing the parsed data from the cm_master_result string.
+    Converts the response of cm_master API to a pandas DataFrame. This function takes a string response from the cm_master API, which contains data separated by the '|' character, and converts it into a pandas DataFrame. The DataFrame will have predefined column headers.
+    Parameters: __cm_master_result__ of string type : The string response from the cm_master API.
+    Returns: __pd.DataFrame__: A pandas DataFrame containing the parsed data from the cm_master_result string.`
     """
     col_header = "ExchangeSegment|ExchangeInstrumentID|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand_High|PriceBand_Low|FreezeQty|TickSize|LotSize|Multiplier|DisplayName|ISIN|PriceNumerator|PriceDenominator|DetailedDescription|ExtendedSurvlndicator|Cautionlndicator|GSMIndicator".split("|")   
     cm_master_df = pd.read_csv(StringIO(cm_master_result), sep = "|", usecols=range(22), low_memory =False)
@@ -24,16 +19,11 @@ def cm_master_string_to_df(cm_master_result :str)->pd.DataFrame:
 
 def fo_master_string_to_df(fo_master_result :str)->pd.DataFrame:
     """
-        Convert the response of master API to pandas DataFrame for fo segment.
-        This function takes a string response from the fo_master API, splits it into lines,
-        and then categorizes each line into futures or options based on the number of columns.
-        It then converts these categorized lines into pandas DataFrames with appropriate column headers.
-        Parameters:
-        fo_master_result (str): The string response from the fo_master API.
-        Returns:
-        tuple: A tuple containing two pandas DataFrames:
-            - fut_master_df: DataFrame containing futures data.
-            - opt_master_df: DataFrame containing options data.
+    Converts the response of master API to pandas DataFrame for fo segment. This function takes a string response from the fo_master API, splits it into lines, and then categorizes each line into futures or options based on the number of columns. It then converts these categorized lines into pandas DataFrames with appropriate column headers.
+    Parameters: fo_master_result of string type : The string response from the fo_master API.
+    Returns: tuple: A tuple containing two pandas DataFrames:
+    fut_master_df: DataFrame containing futures data.
+    opt_master_df: DataFrame containing options data.
     """
     opt_col_header = "ExchangeSegment|ExchangeInstrumentID|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand_High|PriceBand_Low|FreezeQty|TickSize|LotSize|Multiplier|UnderlyingInstrumentId|UnderlyingIndexName|ContractExpiration|StrikePrice|OptionType|DisplayName|PriceNumerator|PriceDenominator|DetailedDescription".split("|")
     fut_col_header = "ExchangeSegment|ExchangeInstrumentID|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand_High|PriceBand_Low|FreezeQty|TickSize|LotSize|Multiplier|UnderlyingInstrumentId|UnderlyingIndexName|ContractExpiration|DisplayName|PriceNumerator|PriceDenominator|DetailedDescription".split("|")
@@ -61,10 +51,9 @@ def fo_master_string_to_df(fo_master_result :str)->pd.DataFrame:
 
 def cm_master_df_to_xts_cm_instrument_list(cm_master_df : pd.DataFrame, series_list_to_include: List[str]= ["EQ","BE","BZ","SM","A","B"])->List[xts_cm_Instrument]:
     """
-    Convert the pandas DataFrame of cm_master API to list of xts_cm_Instrument objects.
-    Parameters:
-    cm_master_df with pd.DataFrame type.
-    series_list_to_include with type List ["EQ","BE","BZ","SM","A","B"]
+    Converts the pandas DataFrame of cm_master API to list of xts_cm_Instrument objects.
+    Parameters: cm_master_df with pd.DataFrame type & series_list_to_include with list type. Example of List ["EQ","BE","BZ","SM","A","B"].
+    Returns: list of XTS Cash Market Instruments.
     """
     xts_cm_Instrument_list = []
     for index, row in cm_master_df.iterrows():
@@ -97,11 +86,9 @@ def cm_master_df_to_xts_cm_instrument_list(cm_master_df : pd.DataFrame, series_l
 
 def fo_master_df_to_xts_future_instrument_list(fo_master_df : pd.DataFrame, series_list_to_include: List[str]= ["FUTIDX","FUTSTK","IF"])->List[xts_future_Instrument]:
     """
-    Convert the pandas DataFrame of fo_master API to list of xts_future_Instrument objects.
-    
-    Parameters:
-    fo_master_df with pd.DataFrame type.
-    series_list_to_include with type List ["FUTIDX","FUTSTK","IF"].
+    Converts the pandas DataFrame of fo_master API to list of xts_future_Instrument objects.
+    Parameters: fo_master_df with pd.DataFrame type & series_list_to_include with list type. Example of List ["FUTIDX","FUTSTK","IF"].
+    Returns: list of XTS Futures Instruments.
     """
     xts_future_Instrument_list = []
     for index, row in fo_master_df.iterrows():
@@ -131,11 +118,9 @@ def fo_master_df_to_xts_future_instrument_list(fo_master_df : pd.DataFrame, seri
 
 def fo_master_df_to_xts_options_instrument_list(fo_master_df : pd.DataFrame, series_list_to_include: List[str]= ["OPTIDX","OPTSTK","IF"])->List[xts_options_Instrument]:
     """
-    Convert the pandas DataFrame of fo_master API to list of xts_optoins_Instrument objects
-    
-    Parameters:
-    fo_master_df with pd.DataFrame type.
-    series_list_to_include with type List ["OPTIDX","OPTSTK","IO"].
+    Converts the pandas DataFrame of fo_master API to list of xts_optoins_Instrument objects
+    Parameters: fo_master_df with pd.DataFrame type & series_list_to_include with list type. Example of List : ["OPTIDX","OPTSTK","IO"].
+    Returns: list of XTS Options Instruments.
     """
     xts_options_Instrument_list = []
     for index, row in fo_master_df.iterrows():
@@ -166,3 +151,7 @@ def fo_master_df_to_xts_options_instrument_list(fo_master_df : pd.DataFrame, ser
             DetailedDescription = row['DetailedDescription']
             ))
     return xts_options_Instrument_list
+
+def chandling():
+    """_summary_
+    """
