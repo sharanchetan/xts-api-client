@@ -24,7 +24,7 @@ class MDSocket_io(socketio.AsyncClient):
             reconnection_delay_max = reconnection_delay_max,
             randomization_factor = randomization_factor,
             logger = logger,
-            binary = binary,
+            #binary = binary, removed because jatin Asked: TODO Investigate
             json = json,
             **kwargs)
 
