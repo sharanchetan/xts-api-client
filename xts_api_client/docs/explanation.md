@@ -87,17 +87,28 @@ nsecm_master_df = pd.read_csv(StringIO(master_data_nsecm['result']), sep = "|", 
 nsecm_master_df.columns = col_header
 ```
 
-* __We can make a DataFrame of NSE future & options master data, using the following code snippet.__
+* __We can make a DataFrame of NSE and BSE; future & options master data, using the following code snippet.__
 
 ```
 import pandas as pd
 from io import StringIO 
 
 master_data_nsefo = xt_market_data.get_master(exchangeSegmentList=['NSEFO'])
-col_header = "ExchangeSegment|ExchangelnstrumentlD|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplierl|Underlyinglnstrumentld|UnderlyinglndexName|ContractExpiration|StrikePrice|OptionType|DisplayNamel|PriceNumerator|PriceDenominator|DetailedDescription".split("|")
+col_header = "ExchangeSegment|ExchangeInstrumentlD|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplierl|Underlyinglnstrumentld|UnderlyinglndexName|ContractExpiration|StrikePrice|OptionType|DisplayNamel|PriceNumerator|PriceDenominator|DetailedDescription".split("|")
 nsefo_master_df = pd.read_csv(StringIO(master_data_nsefo['result']), sep = "|", usecols=range(23), low_memory =False,header=None)
 nsefo_master_df.columns = col_header
 ```
+
+```
+import pandas as pd
+from io import StringIO 
+
+master_data_bsefo = xt_market_data.get_master(exchangeSegmentList=['BSEFO'])
+col_header = "ExchangeSegment|ExchangeInstrumentlD|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplierl|Underlyinglnstrumentld|UnderlyinglndexName|ContractExpiration|StrikePrice|OptionType|DisplayNamel|PriceNumerator|PriceDenominator|DetailedDescription".split("|")
+bsefo_master_df = pd.read_csv(StringIO(market_data_BSEFO['result']), sep = "|", usecols=range(23), low_memory =False,header=None)
+bsefo_master_df.columns = col_header
+```
+
 
 ## ___Step 5. Getting the OHLC Data.___
 
