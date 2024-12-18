@@ -7,11 +7,12 @@ theme:
 
 plugins:
   - mkdocstrings
+  - search
 
 nav:
   - index.md
   - explanation.md
+  - Helper Functions: helper-function.md
   - how-to-guides.md
-  - tutorials.md
+  - class-reference.md
   - reference.md
-  
