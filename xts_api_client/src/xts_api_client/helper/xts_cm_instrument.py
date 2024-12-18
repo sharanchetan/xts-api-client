@@ -25,25 +25,28 @@ class xts_cm_Instrument():
                 Cautionlndicator: int,
                 GSMIndicator: int
                 ):
-        self.ExchangeSegment = ExchangeSegment,
-        self.ExchangeInstrumentID = ExchangeInstrumentID,
-        self.InstrumentType = InstrumentType,
-        self.Name = Name,   
-        self.Description = Description,
-        self.Series = Series,
-        self.NameWithSeries = NameWithSeries,
-        self.InstrumentID = InstrumentID,
-        self.PriceBand_High = PriceBand_High,
-        self.PriceBand_Low = PriceBand_Low,
-        self.FreezeQty = FreezeQty,
-        self.TickSize = TickSize,
-        self.LotSize = LotSize,
-        self.Multiplier = Multiplier,
-        self.DisplayName = DisplayName,
-        self.ISIN = ISIN,
-        self.PriceNumerator = PriceNumerator,
+        self.ExchangeSegment = ExchangeSegment
+        self.ExchangeInstrumentID = ExchangeInstrumentID
+        self.InstrumentType = InstrumentType
+        self.Name = Name   
+        self.Description = Description
+        self.Series = Series
+        self.NameWithSeries = NameWithSeries
+        self.InstrumentID = InstrumentID
+        self.PriceBand_High = PriceBand_High
+        self.PriceBand_Low = PriceBand_Low
+        self.FreezeQty = FreezeQty
+        self.TickSize = TickSize
+        self.LotSize = LotSize
+        self.Multiplier = Multiplier
+        self.DisplayName = DisplayName
+        self.ISIN = ISIN
+        self.PriceNumerator = PriceNumerator
         self.PriceDenominator = PriceDenominator
-        self.DetailedDescription = DetailedDescription,
-        self.ExtendedSurvlndicator = ExtendedSurvlndicator,
-        self.Cautionlndicator = Cautionlndicator,
+        self.DetailedDescription = DetailedDescription
+        self.ExtendedSurvlndicator = ExtendedSurvlndicator
+        self.Cautionlndicator = Cautionlndicator
         self.GSMIndicator = GSMIndicator
+        
+    def __repr__(self):
+        return (f"xts_cm_Instrument_Name={self.Name}, Series={self.Series}, ExchangeSegment={self.ExchangeSegment}, InstrumentID={self.InstrumentID}")
