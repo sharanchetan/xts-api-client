@@ -11,7 +11,7 @@ plugins:
 
 nav:
   - index.md
-  - explanation.md
+  - Getting Started: getting-started.md
   - Helper Functions: helper-function.md
   - how-to-guides.md
   - class-reference.md
