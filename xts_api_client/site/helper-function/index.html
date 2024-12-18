@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../explanation/">
       
       
-        <link rel="next" href="../helper-function/">
+        <link rel="next" href="../how-to-guides/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Explanation - XTS Client API Documentation</title>
+        <title>Helper Functions - XTS Client API Documentation</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#explanation" class="md-skip">
+        <a href="#helper-functionsmethods-available-in-package" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Explanation
+              Helper Functions
             
           </span>
         </div>
@@ -210,6 +210,26 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../explanation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Explanation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -226,7 +246,7 @@
           
   
   <span class="md-ellipsis">
-    Explanation
+    Helper Functions
   </span>
   
 
@@ -237,7 +257,7 @@
         
   
   <span class="md-ellipsis">
-    Explanation
+    Helper Functions
   </span>
   
 
@@ -259,74 +279,62 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#trading-api" class="md-nav__link">
+  <a href="#xts_helper" class="md-nav__link">
     <span class="md-ellipsis">
-      Trading API
+      XTS_Helper
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="XTS_Helper">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cm_master_string_to_df" class="md-nav__link">
+    <span class="md-ellipsis">
+      cm_master_string_to_df:
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#market-data-api" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#fo_master_string_to_df" class="md-nav__link">
     <span class="md-ellipsis">
-      Market Data API
+      fo_master_string_to_df:
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#steps-to-use-the-package" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#cm_master_df_to_xts_cm_instrument_list" class="md-nav__link">
     <span class="md-ellipsis">
-      Steps to use the Package
+      cm_master_df_to_xts_cm_instrument_list:
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#step-1-instantiate-xts-class-into-object-before-login" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#fo_master_df_to_xts_future_instrument_list" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1. Instantiate XTS class into object before login.
+      fo_master_df_to_xts_future_instrument_list:
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#step-2-logging-in" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#fo_master_df_to_xts_options_instrument_list" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 2. Logging in.
+      fo_master_df_to_xts_options_instrument_list:
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-getting-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3. Getting Configuration.
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-4-getting-the-master-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 4. Getting the Master Data.
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-5-getting-the-ohlc-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 5. Getting the OHLC Data.
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -334,26 +342,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../helper-function/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Helper Functions
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -445,74 +433,62 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#trading-api" class="md-nav__link">
+  <a href="#xts_helper" class="md-nav__link">
     <span class="md-ellipsis">
-      Trading API
+      XTS_Helper
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="XTS_Helper">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cm_master_string_to_df" class="md-nav__link">
+    <span class="md-ellipsis">
+      cm_master_string_to_df:
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#market-data-api" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#fo_master_string_to_df" class="md-nav__link">
     <span class="md-ellipsis">
-      Market Data API
+      fo_master_string_to_df:
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#steps-to-use-the-package" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#cm_master_df_to_xts_cm_instrument_list" class="md-nav__link">
     <span class="md-ellipsis">
-      Steps to use the Package
+      cm_master_df_to_xts_cm_instrument_list:
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#step-1-instantiate-xts-class-into-object-before-login" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#fo_master_df_to_xts_future_instrument_list" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1. Instantiate XTS class into object before login.
+      fo_master_df_to_xts_future_instrument_list:
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#step-2-logging-in" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#fo_master_df_to_xts_options_instrument_list" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 2. Logging in.
+      fo_master_df_to_xts_options_instrument_list:
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-getting-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3. Getting Configuration.
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-4-getting-the-master-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 4. Getting the Master Data.
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-5-getting-the-ohlc-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 5. Getting the OHLC Data.
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -531,126 +507,149 @@
                   
 
 
-<h1 id="explanation">Explanation</h1>
+<h1 id="helper-functionsmethods-available-in-package">Helper Functions/Methods available in package.</h1>
 <ul>
-<li>The user should have <strong><em>API Key</em></strong>, <strong><em>API Secret Key</em></strong> &amp; the <strong><em>URL</em></strong> with <strong><em>Port</em></strong> details for using this package.</li>
-<li>XTS API is a <a href="https://en.wikipedia.org/wiki/REST">REST</a> based Trading API with <a href="https://en.wikipedia.org/wiki/Socket.IO"><strong><em>Socket IO</em></strong></a> streaming component. This client makes it easier to consume the data from API into Python.</li>
-<li>In XTS, there are two types of API, one for <strong>trading (interactive sessions)</strong> &amp; one for <strong>market data</strong>.</li>
+<li>Helper function are written inside the package to serve as an example to end user on how to use the package.</li>
 </ul>
-<h2 id="trading-api"><a href="https://symphonyfintech.com/xts-trading-front-end-api-v2/">Trading API</a></h2>
-<ul>
-<li>Trading APIs allows to integrate trading system with XTS Platform for placing orders, monitor your positions, manage your portfolio and much more.</li>
-</ul>
-<h2 id="market-data-api"><a href="https://symphonyfintech.com/xts-market-data-front-end-api-v2/#section/Authentication">Market Data API</a></h2>
-<ul>
-<li>Market Data API is a mixed HTTP REST and HTTP streaming API. It provides access to live quotes data on a wide range of symbols.</li>
-</ul>
-<h2 id="steps-to-use-the-package"><strong>Steps to use the Package</strong></h2>
-<h2 id="step-1-instantiate-xts-class-into-object-before-login"><strong><em>Step 1. Instantiate XTS class into object before login.</em></strong></h2>
-<ul>
-<li>Import <em>class</em> 'XTSConnect' &amp; then instantiate it as shown.</li>
-<li>Write your apikey, secretkey, source &amp; root. Root is the URL with port included.</li>
-</ul>
+<h2 id="xts_helper"><strong>XTS_Helper</strong></h2>
+<h3 id="cm_master_string_to_df"><strong>cm_master_string_to_df</strong>:</h3>
+<p>Converts the response of cm_master API to a pandas DataFrame. This function takes a string response from the cm_master API, which contains data separated by the '|' character, and converts it into a pandas DataFrame.  The DataFrame will have predefined column headers.</p>
+<hr />
+<p>Parameters: <strong>cm_master_result</strong> of string type : The string response from the cm_master API.</p>
+<p>Returns: <strong>pd.DataFrame</strong>: A pandas DataFrame containing the parsed data from the cm_master_result string.</p>
+<hr />
 <pre><code>from xts_api_client.xts_connect import XTSConnect
+from xts_api_client.helper.helper import cm_master_string_to_df
 
 xt_market_data = XTSConnect(
-    apiKey = market_data_API_key,
-    secretKey = market_data_API_secret,
-    source = API_source,
-    root = API_root
+apiKey = &quot;apiKey&quot;,
+secretKey = &quot;secretKey&quot;,
+source = &quot;source&quot;,
+root = &quot;root&quot;
 )
+response_marketdata_login = xt_market_data.marketdata_login()
+
+market_data_get_master = xt_market_data.get_master(
+exchangeSegmentList = [xt_market_data.EXCHANGE_NSECM]
+)
+
+print(cm_master_string_to_df(market_data_get_master['result']))
 </code></pre>
-<h2 id="step-2-logging-in"><strong><em>Step 2. Logging in.</em></strong></h2>
-<ul>
-<li>As mentioned earlier, there are two types of API in XTS. The below example is for market data API.</li>
-<li>After instantiating XTSConnect. Use the method marketdata login to log in &amp; access data.</li>
-</ul>
-<pre><code>response_marketdata_login = xt_market_data.marketdata_login()
-</code></pre>
-<p>If the credentials are correct, printing 'response_marketdata_login' will five a JSON like following.</p>
-<pre><code>{'type': 'success', 'code': 'e-response-0010', 'description': 'Provided Valid Credentials', 'result': {'token': data removed, 'userID': data removed, 'appVersion': data removed, 'application_expiry_date': data removed}}
-</code></pre>
-<h2 id="step-3-getting-configuration"><strong><em>Step 3. Getting Configuration.</em></strong></h2>
-<ul>
-<li>Once you have logged in through market_data_API, you can get the configuration for the market data.</li>
-</ul>
-<pre><code>market_data_get_config = xt_market_data.get_config()
-</code></pre>
-<p>Printing the 'market_data_get_config' will give JSON like following.</p>
-<pre><code>{'type': 'success', 'code': 's-response-0001', 'description': 'Fetched configurations successfully', 'result': __{'exchangeSegments': {'NSECM': 1, 'NSEFO': 2, 'NSECD': 3, 'NSECO': 4, 'SLBM': 5, 'NIFSC': 7, 'BSECM': 11, 'BSEFO': 12, 'BSECD': 13, 'BSECO': 14, 'NCDEX': 21, 'MSECM': 41, 'MSEFO': 42, 'MSECD': 43, 'MCXFO': 51}__, 'xtsMessageCode': {'touchlineEvent': 1501, 'marketDepthEvent': 1502, 'indexDataEvent': 1504, 'candleDataEvent': 1505, 'openInterestEvent': 1510, 'instrumentPropertyChangeEvent': 1105, 'ltpEvent': 1512}, 'publishFormat': ['Binary', 'JSON'], 'broadCastMode': ['Full', 'Partial'], 'instrumentType': {'1': 'Futures', '2': 'Options', '4': 'Spread', '8': 'Equity', '16': 'Spot', '32': 'PreferenceShares', '64': 'Debentures', '128': 'Warrants', 
-'256': 'Miscellaneous', '512': 'MutualFund', 'Futures': 1, 'Options': 2, 'Spread': 4, 'Equity': 8, 'Spot': 16, 'PreferenceShares': 32, 'Debentures': 64, 'Warrants': 128, 'Miscellaneous': 256, 'MutualFund': 512}}}
-</code></pre>
-<h2 id="step-4-getting-the-master-data"><strong><em>Step 4. Getting the Master Data.</em></strong></h2>
-<ul>
-<li>XTS provides API Call to fetch all tradable as well as some additional Instrument/contract masters in a single structure. </li>
-<li>This call can be made once in a day and the response can be persisted in local storage or file as per you application design and you can fetch instrumented or Symbols from this dataset throughout the day.</li>
-<li>The type of <em>master</em> is a dictionary, that contains all the data sepearted by "|".</li>
-<li>The parameter 'exchangeSegmentList' takes a list of exchange segments. In XTS, NSE has few segments as shown in the cofig output above.</li>
-</ul>
-<pre><code>market_data_get_master = xt_market_data.get_master(
-    exchangeSegmentList = [xt_market_data.EXCHANGE_NSECM]
+<h3 id="fo_master_string_to_df"><strong>fo_master_string_to_df</strong>:</h3>
+<p>Converts the response of master API to pandas DataFrame for fo segment. This function takes a string response from the fo_master API, splits it into lines, and then categorizes each line into futures or options based on the number of columns. It then converts these categorized lines into pandas DataFrames with appropriate column headers.</p>
+<hr />
+<p>Parameters: <strong>fo_master_result</strong> of string type : The string response from the fo_master API.</p>
+<p>Returns: <strong>tuple</strong>: A tuple containing two pandas DataFrames:</p>
+<p><strong>fut_master_df</strong>: DataFrame containing futures data.</p>
+<p><strong>opt_master_df</strong>: DataFrame containing options data.</p>
+<hr />
+<pre><code>from xts_api_client.xts_connect import XTSConnect
+from xts_api_client.helper.helper import fo_master_string_to_df
+
+xt_market_data = XTSConnect(
+apiKey = &quot;apiKey&quot;,
+secretKey = &quot;secretKey&quot;,
+source = &quot;source&quot;,
+root = &quot;root&quot;
+)
+response_marketdata_login = xt_market_data.marketdata_login()
+
+market_data_get_master = xt_market_data.get_master(
+    exchangeSegmentList = [xt_market_data.EXCHANGE_NSEFO]
     )
-</code></pre>
-<ul>
-<li>Both above &amp; below code will give same result. </li>
-</ul>
-<pre><code>market_data_get_master = xt_market_data.get_master(
-      exchangeSegmentList = ['NSECM']
-      )
-</code></pre>
-<p>A snippet of print of market_data_get_master.</p>
-<pre><code>...nNSECM|11369|8|TTKHLTCARE|TTKHLTCARE-EQ|EQ|TTKHLTCARE-EQ|1100100011369|1798.7|1199.2|66709|0.05|1|1|TTKHLTCARE|INE910C01018|1|1|TTK HEALTHCARE LIMITED-EQ|0|-1|-1\nNSECM|20364|8|771KL43|771KL43-SG|SG|771KL43-SG|1100100020364|102.37|92.62|1025599|0.01|100|1|771KL43|IN2020230172|1|1|SDL KL 7.71% 2043-SG|0|-1|-1\nNSECM|21711|8|68PN26|68PN26-SG|SG|68PN26-SG|1100100021711|108.7|98.35|965899|0.01|100|1|68PN26|IN2820200052|1|1|SDL PN 6.8% 2026-SG|0|-1|-1'}
-</code></pre>
-<ul>
-<li><strong>We can make a DataFrame of NSE cash market master data, using the following code snippet.</strong></li>
-</ul>
-<pre><code>import pandas as pd
-from io import StringIO 
+#User can swap NSEFO with BSEFO if needed.
 
-master_data_nsecm = xt_market_data.get_master(exchangeSegmentList=['NSECM'])
-col_header = &quot;ExchangeSegment|ExchangelnstrumentlD|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentlD|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplier|DisplayName|ISIN|PriceNumerator|PriceDenominator|DetailedDescription|ExtendedSurvlndicator|Cautionlndicator|GSMIndicator&quot;.split(&quot;|&quot;)
-nsecm_master_df = pd.read_csv(StringIO(master_data_nsecm['result']), sep = &quot;|&quot;, usecols=range(22), low_memory =False,header=None)
-nsecm_master_df.columns = col_header
+print(fo_master_string_to_df(market_data_get_master['result']))
 </code></pre>
-<ul>
-<li><strong>We can make a DataFrame of NSE and BSE; future &amp; options master data, using the following code snippet.</strong></li>
-</ul>
-<pre><code>import pandas as pd
-from io import StringIO 
+<h3 id="cm_master_df_to_xts_cm_instrument_list"><strong>cm_master_df_to_xts_cm_instrument_list</strong>:</h3>
+<p>Converts the pandas DataFrame of cm_master API to list of xts_cm_Instrument objects.</p>
+<hr />
+<p>Parameters: <strong>cm_master_df</strong> with pd.DataFrame type &amp; <strong>series_list_to_include</strong> with list type. Example of List ["EQ","BE","BZ","SM","A","B"].</p>
+<p>Returns: <strong>list</strong> of XTS Cash Market Instruments.</p>
+<hr />
+<pre><code>from xts_api_client.xts_connect import XTSConnect
+from xts_api_client.helper.helper import cm_master_string_to_df, cm_master_df_to_xts_cm_instrument_list
 
-master_data_nsefo = xt_market_data.get_master(exchangeSegmentList=['NSEFO'])
-col_header = &quot;ExchangeSegment|ExchangeInstrumentlD|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplierl|Underlyinglnstrumentld|UnderlyinglndexName|ContractExpiration|StrikePrice|OptionType|DisplayNamel|PriceNumerator|PriceDenominator|DetailedDescription&quot;.split(&quot;|&quot;)
-nsefo_master_df = pd.read_csv(StringIO(master_data_nsefo['result']), sep = &quot;|&quot;, usecols=range(23), low_memory =False,header=None)
-nsefo_master_df.columns = col_header
-</code></pre>
-<pre><code>import pandas as pd
-from io import StringIO 
+xt_market_data = XTSConnect(
+apiKey = &quot;apiKey&quot;,
+secretKey = &quot;secretKey&quot;,
+source = &quot;source&quot;,
+root = &quot;root&quot;
+)
+response_marketdata_login = xt_market_data.marketdata_login()
 
-master_data_bsefo = xt_market_data.get_master(exchangeSegmentList=['BSEFO'])
-col_header = &quot;ExchangeSegment|ExchangeInstrumentlD|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplierl|Underlyinglnstrumentld|UnderlyinglndexName|ContractExpiration|StrikePrice|OptionType|DisplayNamel|PriceNumerator|PriceDenominator|DetailedDescription&quot;.split(&quot;|&quot;)
-bsefo_master_df = pd.read_csv(StringIO(market_data_BSEFO['result']), sep = &quot;|&quot;, usecols=range(23), low_memory =False,header=None)
-bsefo_master_df.columns = col_header
+market_data_get_master = xt_market_data.get_master(
+exchangeSegmentList = [xt_market_data.EXCHANGE_NSECM]
+)
+#User can swap NSEFO with BSEFO if needed.
+cm_master_df  = cm_master_string_to_df(market_data_get_master['result'])
+
+cm_instrument_list=cm_master_df_to_xts_cm_instrument_list(
+    cm_master_df = cm_master_df,
+    series_list_to_include = [&quot;EQ&quot;,&quot;BE&quot;,&quot;BZ&quot;,&quot;SM&quot;,&quot;A&quot;,&quot;B&quot;]
+    )
+print(cm_instrument_list)
 </code></pre>
-<h2 id="step-5-getting-the-ohlc-data"><strong><em>Step 5. Getting the OHLC Data.</em></strong></h2>
-<ul>
-<li>The data is available in the form of a candle timestamp with epoch from 1970, Open, High, Low, Close, Volume, OI.</li>
-<li>The least compression available is 60(1 minute) for both event stream and long polling (GET at 1 Request Per Second).</li>
-<li>Other supported intervals for GET (long polling ) Request are 2 minute, 3 minutes, 5 minutes, 15 minutes, 30 minutes , hourly and daily.</li>
-<li>Format of startTime &amp; endTime is "MMM DD YYYY HHMMSS". In the example given below 091500 means morning nine fifteen in IST. Market open  time :-) .</li>
-</ul>
-<pre><code>marget_data_get_ohlc = xt_market_data.get_ohlc(
-    exchangeSegment = xt_market_data.EXCHANGE_NSECM,
-    exchangeInstrumentID = 22,
-    startTime = &quot;Dec 02 2024 091500&quot;,
-    endTime = &quot;Dec 02 2024 093000&quot;,
-    compressionValue = 60)
+<h3 id="fo_master_df_to_xts_future_instrument_list"><strong>fo_master_df_to_xts_future_instrument_list</strong>:</h3>
+<p>Converts the pandas DataFrame of fo_master API to list of xts_future_Instrument objects.</p>
+<hr />
+<p>Parameters: <strong>fo_master_df</strong> with pd.DataFrame type &amp; <strong>series_list_to_include</strong> with list type. Example of List ["FUTIDX","FUTSTK","IF"].</p>
+<p>Returns: <strong>list</strong> of XTS Futures Instruments.</p>
+<hr />
+<pre><code>from xts_api_client.xts_connect import XTSConnect
+from xts_api_client.helper.helper import fo_master_string_to_df, fo_master_df_to_xts_future_instrument_list
+
+xt_market_data = XTSConnect(
+apiKey = &quot;apiKey&quot;,
+secretKey = &quot;secretKey&quot;,
+source = &quot;source&quot;,
+root = &quot;root&quot;
+)
+response_marketdata_login = xt_market_data.marketdata_login()
+
+market_data_get_master = xt_market_data.get_master(
+    exchangeSegmentList = [xt_market_data.EXCHANGE_NSEFO]
+    )
+#User can swap NSEFO with BSEFO if needed.
+
+fo_master_df = fo_master_string_to_df(market_data_get_master['result'])
+
+future_instrument_list = fo_master_df_to_xts_future_instrument_list(fo_master_df[0],
+    series_list_to_include = [&quot;FUTIDX&quot;,&quot;FUTSTK&quot;,&quot;IF&quot;]
+    )
+
+print(future_instrument_list)
 </code></pre>
-<p>Printing market_data_get_ohlc will give a dictionary, as shown below.</p>
-<pre><code>{'type': 'success', 'code': 's-instrument-0002', 'description': 'Data found', 'result': {'exchangeSegment': 'NSECM', 'exchangeInstrumentID': '22', 'dataReponse': 'data removed'}}
+<h3 id="fo_master_df_to_xts_options_instrument_list"><strong>fo_master_df_to_xts_options_instrument_list</strong>:</h3>
+<p>Converts the pandas DataFrame of fo_master API to list of xts_optoins_Instrument objects</p>
+<hr />
+<p>Parameters: <strong>fo_master_df</strong> with pd.DataFrame type &amp; <strong>series_list_to_include</strong> with list type. Example of List : ["OPTIDX","OPTSTK","IO"].</p>
+<p>Returns: <strong>list</strong> of XTS Options Instruments.</p>
+<hr />
+<pre><code>from xts_api_client.xts_connect import XTSConnect
+from xts_api_client.helper.helper import fo_master_string_to_df, fo_master_df_to_xts_options_instrument_list
+
+xt_market_data = XTSConnect(
+apiKey = &quot;apiKey&quot;,
+secretKey = &quot;secretKey&quot;,
+source = &quot;source&quot;,
+root = &quot;root&quot;
+)
+response_marketdata_login = xt_market_data.marketdata_login()
+
+market_data_get_master = xt_market_data.get_master(
+    exchangeSegmentList = [xt_market_data.EXCHANGE_NSEFO]
+    )
+#User can swap NSEFO with BSEFO if needed.
+
+fo_master_df = fo_master_string_to_df(market_data_get_master['result'])
+
+options_instrument_list = fo_master_df_to_xts_options_instrument_list(fo_master_df[1],
+    series_list_to_include = [&quot;OPTIDX&quot;,&quot;OPTSTK&quot;,&quot;IF&quot;]
+    )
+
+print(options_instrument_list)
 </code></pre>
-<ul>
-<li>From the DataFrame made above (in master data section), user can select different instruments &amp; can gain further insight.</li>
-</ul>
 
 
 
