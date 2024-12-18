@@ -1,6 +1,6 @@
 # How To Guide for Package
 
-## Functions/Methods available in package.
+## Native Functions/Methods available in package.
 * Most of these functions are self explanatory in nature. However, a simple explanations is mentioned for them.
 *  The __Trading API__ gives the user access to 
       *  __interactive_login__: Send the login url to which a user should receive the token.
