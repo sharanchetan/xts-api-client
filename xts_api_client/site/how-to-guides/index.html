@@ -299,24 +299,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#helper-functionsmethods-available-in-package" class="md-nav__link">
-    <span class="md-ellipsis">
-      Helper Functions/Methods available in package.
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#xts_helper" class="md-nav__link">
-    <span class="md-ellipsis">
-      XTS_Helper
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#native-functionsmethods-available-in-package" class="md-nav__link">
     <span class="md-ellipsis">
       Native Functions/Methods available in package.
@@ -400,24 +382,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#helper-functionsmethods-available-in-package" class="md-nav__link">
-    <span class="md-ellipsis">
-      Helper Functions/Methods available in package.
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#xts_helper" class="md-nav__link">
-    <span class="md-ellipsis">
-      XTS_Helper
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#native-functionsmethods-available-in-package" class="md-nav__link">
     <span class="md-ellipsis">
       Native Functions/Methods available in package.
@@ -442,154 +406,6 @@
 
 
 <h1 id="how-to-guide-for-package">How To Guide for Package</h1>
-<h2 id="helper-functionsmethods-available-in-package">Helper Functions/Methods available in package.</h2>
-<ul>
-<li>Helper function are written inside the package to serve as an example to end user on how to use the package.</li>
-</ul>
-<h2 id="xts_helper"><strong>XTS_Helper</strong></h2>
-<ul>
-<li><strong>cm_master_string_to_df</strong>:  Convert the response of cm_master API to a pandas DataFrame. This function takes a string response from the cm_master API, which contains data separated by the '|' character, and converts it into a pandas DataFrame.  The DataFrame will have predefined column headers.</li>
-</ul>
-<hr />
-<p>Parameters: <strong>cm_master_result</strong> of string type : The string response from the cm_master API.</p>
-<p>Returns: <strong>pd.DataFrame</strong>: A pandas DataFrame containing the parsed data from the cm_master_result string.</p>
-<hr />
-<pre><code>from xts_api_client.xts_connect import XTSConnect
-from xts_api_client.helper.helper import cm_master_string_to_df
-
-xt_market_data = XTSConnect(
-apiKey = &quot;apiKey&quot;,
-secretKey = &quot;secretKey&quot;,
-source = &quot;source&quot;,
-root = &quot;root&quot;
-)
-response_marketdata_login = xt_market_data.marketdata_login()
-
-market_data_get_master = xt_market_data.get_master(
-exchangeSegmentList = [xt_market_data.EXCHANGE_NSECM]
-)
-
-print(cm_master_string_to_df(market_data_get_master['result']))
-</code></pre>
-<ul>
-<li><strong>fo_master_string_to_df</strong>:  Convert the response of master API to pandas DataFrame for fo segment. This function takes a string response from the fo_master API, splits it into lines, and then categorizes each line into futures or options based on the number of columns. It then converts these categorized lines into pandas DataFrames with appropriate column headers.</li>
-</ul>
-<hr />
-<p>Parameters: <strong>fo_master_result</strong> of string type : The string response from the fo_master API.</p>
-<p>Returns: <strong>tuple</strong>: A tuple containing two pandas DataFrames:
-- fut_master_df: DataFrame containing futures data.
-- opt_master_df: DataFrame containing options data.</p>
-<hr />
-<pre><code>from xts_api_client.xts_connect import XTSConnect
-from xts_api_client.helper.helper import fo_master_string_to_df
-
-xt_market_data = XTSConnect(
-apiKey = &quot;apiKey&quot;,
-secretKey = &quot;secretKey&quot;,
-source = &quot;source&quot;,
-root = &quot;root&quot;
-)
-response_marketdata_login = xt_market_data.marketdata_login()
-
-market_data_get_master = xt_market_data.get_master(
-    exchangeSegmentList = [xt_market_data.EXCHANGE_NSEFO]
-    )
-#User can swap NSEFO with BSEFO if needed.
-
-print(fo_master_string_to_df(market_data_get_master['result']))
-</code></pre>
-<ul>
-<li><strong>cm_master_df_to_xts_cm_instrument_list</strong>: Convert the pandas DataFrame of cm_master API to list of xts_cm_Instrument objects.</li>
-</ul>
-<hr />
-<p>Parameters: <strong>cm_master_df</strong> with pd.DataFrame type &amp; <strong>series_list_to_include</strong> with list type. Example of List ["EQ","BE","BZ","SM","A","B"].</p>
-<p>Returns: <strong>list</strong> of XTS Cash Market Instruments.</p>
-<hr />
-<pre><code>from xts_api_client.xts_connect import XTSConnect
-from xts_api_client.helper.helper import cm_master_string_to_df, cm_master_df_to_xts_cm_instrument_list
-
-xt_market_data = XTSConnect(
-apiKey = &quot;apiKey&quot;,
-secretKey = &quot;secretKey&quot;,
-source = &quot;source&quot;,
-root = &quot;root&quot;
-)
-response_marketdata_login = xt_market_data.marketdata_login()
-
-market_data_get_master = xt_market_data.get_master(
-exchangeSegmentList = [xt_market_data.EXCHANGE_NSECM]
-)
-#User can swap NSEFO with BSEFO if needed.
-cm_master_df  = cm_master_string_to_df(market_data_get_master['result'])
-
-cm_instrument_list=cm_master_df_to_xts_cm_instrument_list(
-    cm_master_df = cm_master_df,
-    series_list_to_include = [&quot;EQ&quot;,&quot;BE&quot;,&quot;BZ&quot;,&quot;SM&quot;,&quot;A&quot;,&quot;B&quot;]
-    )
-print(cm_instrument_list)
-</code></pre>
-<ul>
-<li><strong>fo_master_df_to_xts_future_instrument_list</strong>: Convert the pandas DataFrame of fo_master API to list of xts_future_Instrument objects.</li>
-</ul>
-<hr />
-<p>Parameters: <strong>fo_master_df</strong> with pd.DataFrame type &amp; <strong>series_list_to_include</strong> with list type. Example of List ["FUTIDX","FUTSTK","IF"].</p>
-<p>Returns: <strong>list</strong> of XTS Futures Instruments.</p>
-<hr />
-<pre><code>from xts_api_client.xts_connect import XTSConnect
-from xts_api_client.helper.helper import fo_master_string_to_df, fo_master_df_to_xts_future_instrument_list
-
-xt_market_data = XTSConnect(
-apiKey = &quot;apiKey&quot;,
-secretKey = &quot;secretKey&quot;,
-source = &quot;source&quot;,
-root = &quot;root&quot;
-)
-response_marketdata_login = xt_market_data.marketdata_login()
-
-market_data_get_master = xt_market_data.get_master(
-    exchangeSegmentList = [xt_market_data.EXCHANGE_NSEFO]
-    )
-#User can swap NSEFO with BSEFO if needed.
-
-fo_master_df = fo_master_string_to_df(market_data_get_master['result'])
-
-future_instrument_list = fo_master_df_to_xts_future_instrument_list(fo_master_df[0],
-    series_list_to_include = [&quot;FUTIDX&quot;,&quot;FUTSTK&quot;,&quot;IF&quot;]
-    )
-
-print(future_instrument_list)
-</code></pre>
-<ul>
-<li><strong>fo_master_df_to_xts_options_instrument_list</strong>: Converts the pandas DataFrame of fo_master API to list of xts_optoins_Instrument objects</li>
-</ul>
-<hr />
-<p>Parameters: <strong>fo_master_df</strong> with pd.DataFrame type &amp; <strong>series_list_to_include</strong> with list type. Example of List : ["OPTIDX","OPTSTK","IO"].</p>
-<p>Returns: <strong>list</strong> of XTS Options Instruments.</p>
-<hr />
-<pre><code>from xts_api_client.xts_connect import XTSConnect
-from xts_api_client.helper.helper import fo_master_string_to_df, fo_master_df_to_xts_options_instrument_list
-
-xt_market_data = XTSConnect(
-apiKey = &quot;apiKey&quot;,
-secretKey = &quot;secretKey&quot;,
-source = &quot;source&quot;,
-root = &quot;root&quot;
-)
-response_marketdata_login = xt_market_data.marketdata_login()
-
-market_data_get_master = xt_market_data.get_master(
-    exchangeSegmentList = [xt_market_data.EXCHANGE_NSEFO]
-    )
-#User can swap NSEFO with BSEFO if needed.
-
-fo_master_df = fo_master_string_to_df(market_data_get_master['result'])
-
-options_instrument_list = fo_master_df_to_xts_options_instrument_list(fo_master_df[1],
-    series_list_to_include = [&quot;OPTIDX&quot;,&quot;OPTSTK&quot;,&quot;IF&quot;]
-    )
-
-print(options_instrument_list)
-</code></pre>
 <h2 id="native-functionsmethods-available-in-package">Native Functions/Methods available in package.</h2>
 <ul>
 <li>Most of these functions are self explanatory in nature. However, a simple explanations is mentioned for them.</li>
