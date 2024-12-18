@@ -22,22 +22,26 @@ class xts_future_Instrument():
                 PriceDenominator: int,
                 DetailedDescription: str
                 ):
-        self.ExchangeSegment = ExchangeSegment,
-        self.ExchangeInstrumentID = ExchangeInstrumentID,
-        self.InstrumentType = InstrumentType,
-        self.Name = Name,   
-        self.Description = Description,
-        self.Series = Series,
-        self.NameWithSeries = NameWithSeries,
-        self.InstrumentID = InstrumentID,
-        self.PriceBand_High = PriceBand_High,
-        self.PriceBand_Low = PriceBand_Low,
-        self.FreezeQty = FreezeQty,
-        self.TickSize = TickSize,
-        self.LotSize = LotSize,
-        self.Multiplier = Multiplier,
-        self.ContractExpiration = ContractExpiration,
-        self.DisplayName = DisplayName,
-        self.PriceNumerator = PriceNumerator,
+        self.ExchangeSegment = ExchangeSegment
+        self.ExchangeInstrumentID = ExchangeInstrumentID
+        self.InstrumentType = InstrumentType
+        self.Name = Name
+        self.Description = Description
+        self.Series = Series
+        self.NameWithSeries = NameWithSeries
+        self.InstrumentID = InstrumentID
+        self.PriceBand_High = PriceBand_High
+        self.PriceBand_Low = PriceBand_Low
+        self.FreezeQty = FreezeQty
+        self.TickSize = TickSize
+        self.LotSize = LotSize
+        self.Multiplier = Multiplier
+        self.ContractExpiration = ContractExpiration
+        self.DisplayName = DisplayName
+        self.PriceNumerator = PriceNumerator
         self.PriceDenominator = PriceDenominator
         self.DetailedDescription = DetailedDescription
+    
+    def __repr__(self):
+        return(f"xts_future_instrument_Name={self.Name}, InstrumentID={self.InstrumentID}, ExchangeSegment={self.ExchangeSegment}, LotSize={self.LotSize}")
+        
