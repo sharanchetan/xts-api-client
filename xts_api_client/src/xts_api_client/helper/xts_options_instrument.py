@@ -26,26 +26,29 @@ class xts_options_Instrument():
                 PriceDenominator: int,
                 DetailedDescription: str
                 ):
-        self.ExchangeSegment = ExchangeSegment,
-        self.ExchangeInstrumentID = ExchangeInstrumentID,
-        self.InstrumentType = InstrumentType,
-        self.Name = Name,   
-        self.Description = Description,
-        self.Series = Series,
-        self.NameWithSeries = NameWithSeries,
-        self.InstrumentID = InstrumentID,
-        self.PriceBand_High = PriceBand_High,
-        self.PriceBand_Low = PriceBand_Low,
-        self.FreezeQty = FreezeQty,
-        self.TickSize = TickSize,
-        self.LotSize = LotSize,
-        self.Multiplier = Multiplier,
-        self.UnderlyingInstrumentId = UnderlyingInstrumentId,
-        self.UnderlyingIndexName = UnderlyingIndexName,
-        self.ContractExpiration = ContractExpiration,
-        self.StrikePrice = StrikePrice,
-        self.OptionType = OptionType,
-        self.DisplayName = DisplayName,
-        self.PriceNumerator = PriceNumerator,
+        self.ExchangeSegment = ExchangeSegment
+        self.ExchangeInstrumentID = ExchangeInstrumentID
+        self.InstrumentType = InstrumentType
+        self.Name = Name
+        self.Description = Description
+        self.Series = Series
+        self.NameWithSeries = NameWithSeries
+        self.InstrumentID = InstrumentID
+        self.PriceBand_High = PriceBand_High
+        self.PriceBand_Low = PriceBand_Low
+        self.FreezeQty = FreezeQty
+        self.TickSize = TickSize
+        self.LotSize = LotSize
+        self.Multiplier = Multiplier
+        self.UnderlyingInstrumentId = UnderlyingInstrumentId
+        self.UnderlyingIndexName = UnderlyingIndexName
+        self.ContractExpiration = ContractExpiration
+        self.StrikePrice = StrikePrice
+        self.OptionType = OptionType
+        self.DisplayName = DisplayName
+        self.PriceNumerator = PriceNumerator
         self.PriceDenominator = PriceDenominator
         self.DetailedDescription = DetailedDescription
+    
+    def __repr__(self):
+        return(f"xts_options_instrument_Name={self.Name}, InstrumentID={self.InstrumentID}, ExchangeSegment={self.ExchangeSegment}, LotSize={self.LotSize}")
