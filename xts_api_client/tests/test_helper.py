@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from xts_api_client.xts_connect import XTSConnect
 import xts_api_client.helper.helper as helper
 from io import StringIO
+import pandas as pd
 load_dotenv()
 
 API_key = os.getenv("API_KEY")
@@ -17,7 +18,6 @@ xt = XTSConnect(
     source = API_source,
     root = API_root
 )
-
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -65,6 +65,13 @@ def test_fo_master_df_to_xts_options_instrument_list():
     xts_options_instrument_list = helper.fo_master_df_to_xts_options_instrument_list(fo_master_df[1],series_list_to_include = ["OPTIDX","OPTSTK","IF"])
     assert len(xts_options_instrument_list)>100
     assert type(xts_options_instrument_list) == list
+    
+
+def test_ohlc_to_df():
+    marget_data_get_ohlc = xt.get_ohlc(exchangeSegment = xt.EXCHANGE_NSECM,exchangeInstrumentID = 22,startTime = "Dec 02 2024 091500",endTime = "Dec 02 2024 093000",compressionValue = 60)
+    ohlc_df = helper.ohlc_to_df(marget_data_get_ohlc)
+    assert type(ohlc_df) == pd.core.frame.DataFrame
+    assert len(ohlc_df) > 0
     
     
     
