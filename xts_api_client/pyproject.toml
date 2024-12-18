@@ -8,19 +8,18 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
-    "bidict>=0.23.1",
-    "certifi>=2024.8.30",
-    "chardet>=5.2.0",
+    "bidict==0.21.2",
+    "certifi==2020.12.5",
+    "chardet==4.0.0",
     "charset-normalizer>=3.4.0",
-    "idna>=3.10",
-    "python-dotenv>=1.0.1",
-    "python-engineio>=4.10.1",
+    "idna==2.10",
+    "python-engineio==3.13.0",
     "pandas>=2.2.3",
-    "python-socketio>=5.11.4",
-    "requests>=2.32.3",
-    "six>=1.16.0",
-    "urllib3>=2.2.3",
-    "websocket-client>=1.8.0",
+    "python-socketio==4.6.0",
+    "requests==2.25.1",
+    "six==1.15.0",
+    "urllib3==1.26.4",
+    "websocket-client==0.57.0",
 ]
 
 [build-system]
@@ -29,9 +28,10 @@ build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [
-    "mkdocs-material>=9.5.47",
+    "mkdocs-material==9.5.49",
     "mkdocs>=1.6.1",
     "mkdocstrings[python]>=0.27.0",
     "pytest>=8.3.3",
     "pypiserver>=2.3.2",
+    "python-dotenv>=1.0.1",
 ]
