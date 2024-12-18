@@ -152,6 +152,15 @@ def fo_master_df_to_xts_options_instrument_list(fo_master_df : pd.DataFrame, ser
             ))
     return xts_options_Instrument_list
 
-def chandling():
-    """_summary_
+def ohlc_to_df(market_data_get_ohlc_dict: dict):
     """
+    Converts XTS-API(from XTS.Connect.get_ohlc()) generated OHLC data to pandas DataFrame.    
+    Parameters: The return of XTS.Connect.get_ohlc() method with a type dictionary. Example of dict : {'type': 'success', 'code': 's-instrument-0002', 'description': 'Data found', 'result': {'exchangeSegment': 'NSECM', 'exchangeInstrumentID': '22', 'dataReponse': 'data removed'}}
+    Returns: A DataFrame from the OHLC values.
+    """
+    data_string = market_data_get_ohlc_dict['result']['dataReponse'].replace(',','\n')
+    col_headers = ["TimeStamp", "Open", "High", "Low", "Close", "Volume", "OpenInterest"]
+    ohlc_df = pd.read_csv(StringIO(data_string), sep = "|",usecols=range(7), low_memory =False)
+    ohlc_df.columns = col_headers
+    ohlc_df["TimeStamp"] = pd.to_datetime(ohlc_df.TimeStamp, unit="s")
+    return ohlc_df
