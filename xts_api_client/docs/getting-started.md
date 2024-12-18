@@ -129,7 +129,7 @@ marget_data_get_ohlc = xt_market_data.get_ohlc(
 Printing market_data_get_ohlc will give a dictionary, as shown below.
 
 ```
-{'type': 'success', 'code': 's-instrument-0002', 'description': 'Data found', 'result': {'exchangeSegment': 'NSECM', 'exchangeInstrumentID': '22', 'dataReponse': 'data removed'}}
+{'type': 'success', 'code': 's-instrument-0002', 'description': 'Data found', 'result': {'exchangeSegment': 'NSECM', 'exchangeInstrumentID': '22', 'dataReponse': DELETED FOR DATA PRIVACY}}
 ```
 
 * From the DataFrame made above (in master data section), user can select different instruments & can gain further insight.
