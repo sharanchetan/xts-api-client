@@ -3,7 +3,6 @@ import pytest
 from dotenv import load_dotenv
 from xts_api_client.xts_connect import XTSConnect
 import xts_api_client.helper.helper as helper
-from io import StringIO
 import pandas as pd
 load_dotenv()
 
