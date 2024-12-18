@@ -7,17 +7,17 @@
 
 * Use __uv packages manager__ to install the package. Example of the command is shown below. (_recommended_)
 
-Step 1. 
+_Step 1._ 
 ```
-uv add --frozen http://pypi.rmoneyindia.in:8080/xts_api_client-1.0.1-py3-none-any.whl
+uv add --frozen http://pypi.rmoneyindia.in:8080/xts_api_client-1.0.2-py3-none-any.whl
 ```
-Step 2.
+_Step 2._
 ```
 uv sync
 ```
-* Use _PIP_ to install the package. 
+### Use _PIP_ to install the package. (_not recommended_)
 ```
-pip install http://pypi.rmoneyindia.in:8080/xts_api_client-1.0.1-py3-none-any.whl
+pip install http://pypi.rmoneyindia.in:8080/xts_api_client-1.0.2-py3-none-any.whl
 ```
 
 ## Local Installation
