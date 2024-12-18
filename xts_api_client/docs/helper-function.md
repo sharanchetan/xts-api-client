@@ -158,3 +158,34 @@ options_instrument_list = fo_master_df_to_xts_options_instrument_list(fo_master_
 
 print(options_instrument_list)
 ```
+### __ohlc_to_df__:
+Converts XTS-API(from XTS.Connect.get_ohlc()) generated OHLC data to pandas DataFrame.
+___
+Parameters: The return of XTS.Connect.get_ohlc() method with a type dictionary. Example of dict : {'type': 'success', 'code': 's-instrument-0002', 'description': 'Data found', 'result': {'exchangeSegment': 'NSECM', 'exchangeInstrumentID': '22', 'dataReponse': 'data removed'}}
+Returns: A DataFrame from the OHLC values.
+___
+
+```
+from xts_api_client.xts_connect import XTSConnect
+from xts_api_client.helper.helper import ohlc_to_df
+
+xt_market_data = XTSConnect(
+apiKey = "apiKey",
+secretKey = "secretKey",
+source = "source",
+root = "root"
+)
+response_marketdata_login = xt_market_data.marketdata_login()
+
+marget_data_get_ohlc = xt_market_data.get_ohlc(
+    exchangeSegment = xt_market_data.EXCHANGE_NSECM,
+    exchangeInstrumentID = 22,
+    startTime = "Dec 02 2024 091500",
+    endTime = "Dec 02 2024 093000",
+    compressionValue = 60)
+
+# Change the values oh OHLC parameters as required.
+
+ohlc_df = ohlc_to_df(marget_data_get_ohlc)
+print(ohlc_df)
+```
