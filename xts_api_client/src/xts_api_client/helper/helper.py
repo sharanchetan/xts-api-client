@@ -116,7 +116,7 @@ def fo_master_df_to_xts_future_instrument_list(fo_master_df : pd.DataFrame, seri
             ))
     return xts_future_Instrument_list
 
-def fo_master_df_to_xts_options_instrument_list(fo_master_df : pd.DataFrame, series_list_to_include: List[str]= ["OPTIDX","OPTSTK","IF"])->List[xts_options_Instrument]:
+def fo_master_df_to_xts_options_instrument_list(fo_master_df : pd.DataFrame, series_list_to_include: List[str]= ["OPTIDX","OPTSTK","IO"])->List[xts_options_Instrument]:
     """
     Converts the pandas DataFrame of fo_master API to list of xts_optoins_Instrument objects
     Parameters: fo_master_df with pd.DataFrame type & series_list_to_include with list type. Example of List : ["OPTIDX","OPTSTK","IO"].
@@ -164,3 +164,13 @@ def ohlc_to_df(market_data_get_ohlc_dict: dict):
     ohlc_df.columns = col_headers
     ohlc_df["TimeStamp"] = pd.to_datetime(ohlc_df.TimeStamp, unit="s")
     return ohlc_df
+
+def ticker_exchangeInstrumentId_dict(dataframe_cm:pd.DataFrame):
+    """
+    Converts XTS-API(from XTS.Connect.get_master()-->cm_master_string_to_df/fo_master_string_to_df) DataFrame to a dictionary. So that user can search Instrument Id with ticker symbol.
+    Parameters: The return of cm_master_string_to_df/fo_master_string_to_df methods with the type pd.DataFrame.
+    Returns: A Dictionary conatining Ticker Symbol as keys & Exchange Instrument Id as values. 
+    """
+    df = dataframe_cm[['Name','ExchangeInstrumentID']]
+    ticker_exchangeInstId_dict = df.set_index('Name')['ExchangeInstrumentID'].to_dict()
+    return ticker_exchangeInstId_dict
