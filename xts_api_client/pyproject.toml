@@ -34,4 +34,5 @@ dev = [
     "mkdocstrings[python]>=0.27.0",
     "pytest>=8.3.3",
     "pypiserver>=2.3.2",
+    "aiohttp>=3.11.11",
 ]
