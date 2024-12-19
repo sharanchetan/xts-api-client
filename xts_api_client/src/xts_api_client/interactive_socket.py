@@ -14,7 +14,7 @@ class OrderSocket_io(socketio.AsyncClient):
                  reconnection_delay_max=50000,
                  randomization_factor=0.5,
                  logger=False,
-                 binary=False,
+                 binary=False, #TODO: Investigate investigate its importance.
                  json=None,
                  **kwargs):
         
@@ -25,7 +25,7 @@ class OrderSocket_io(socketio.AsyncClient):
             reconnection_delay_max = reconnection_delay_max,
             randomization_factor = randomization_factor,
             logger = logger,
-            binary = binary,
+            #binary = binary, removed because jatin Asked: TODO Investigate
             json = json,
             **kwargs)
         
