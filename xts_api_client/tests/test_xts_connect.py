@@ -16,8 +16,6 @@ xt = XTSConnect(
     root = API_root
 )
 
-
-
 @pytest.fixture(scope="session", autouse=True)
 def session():
     response = xt.marketdata_login()
