@@ -72,6 +72,14 @@ def test_ohlc_to_df():
     assert type(ohlc_df) == pd.core.frame.DataFrame
     assert len(ohlc_df) > 0
     
+def test_ticker_exchangeInstrumentId_dict():
+    market_data_get_master = xt.get_master(exchangeSegmentList = [xt.EXCHANGE_NSECM])
+    df = helper.cm_master_string_to_df(market_data_get_master['result'])
+    ticker_exchInstrumentID_dict = helper.ticker_exchangeInstrumentId_dict(df)
+    assert type(ticker_exchInstrumentID_dict) == dict
+    assert len(ticker_exchInstrumentID_dict)>0
+
+    
     
     
     
