@@ -598,10 +598,19 @@ root = API_root
 response_marketdata_login = xt_market_data.marketdata_login()
 
 market_data_get_master = xt_market_data.get_master(
-    exchangeSegmentList = [xt_market_data.EXCHANGE_NSEFO] # Works for BSECM as well
+    exchangeSegmentList = [xt_market_data.EXCHANGE_NSEFO] # Works for BSECM as well.
     )
 
-print(fo_master_string_to_df(market_data_get_master['result']))
+&quot;&quot;&quot;
+future_master_df = fo_master_string_to_df(market_data_get_master['result'])
+print(future_master_df[0]) # This will give DataFrame for Future.
+
+options_master_df = fo_master_string_to_df(market_data_get_master['result'])
+print(options_master_df[1]) # This will give DataFrame for Options.
+&quot;&quot;&quot;
+
+print(fo_master_string_to_df(market_data_get_master['result'])) 
+
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 </code></pre>
 <h3 id="cm_master_df_to_xts_cm_instrument_list"><strong>cm_master_df_to_xts_cm_instrument_list</strong>:</h3>
@@ -743,68 +752,68 @@ print(ohlc_df)
 <p>Parameters: The return of <strong>cm_master_string_to_df/fo_master_string_to_df</strong> methods with the pd.DataFrame type.
 Returns: A <strong>Dictionary</strong> conatining Ticker Symbol as keys &amp; Exchange Instrument Id as values. </p>
 <hr />
-<pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
-    |Instrument Id for Cash Market|
-&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+<pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+|Ticker:ExchangeInstrumentId Dict for Cash Market|
+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 from xts_api_client.xts_connect import XTSConnect
 from xts_api_client.helper.helper import cm_master_string_to_df
 from xts_api_client.helper.helper import ticker_exchangeInstrumentId_dict
 
 xt_market_data = XTSConnect(
-apiKey = &quot;apiKey&quot;,
-secretKey = &quot;secretKey&quot;,
-source = &quot;source&quot;,
-root = &quot;root&quot;
+apiKey = API_key,
+secretKey = API_secret,
+source = API_source,
+root = API_root
 )
 response_marketdata_login = xt_market_data.marketdata_login()
 market_data_get_master = xt_market_data.get_master(exchangeSegmentList = [xt_market_data.EXCHANGE_NSECM]) # Works for BSECM as well.
 
 cm_master_df = cm_master_string_to_df(market_data_get_master['result'])
 ticker_exchInstrumentID_dict = ticker_exchangeInstrumentId_dict(cm_master_df)
-print(ticker_exchInstrumentID_dict.get('RELIANCE'))
+print(ticker_exchInstrumentID_dict.get('RELIANCE')) # Reliance is kept here as an example. User can print &quot;ticker_exchInstrumentID_dict&quot; for full data.
 
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 </code></pre>
-<pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
-  |Instrument Id for Future Contracts|
-&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+<pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+ |Ticker:ExchangeInstrumentId Dict for Future Contracts|
+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 from xts_api_client.xts_connect import XTSConnect
 from xts_api_client.helper.helper import fo_master_string_to_df
 from xts_api_client.helper.helper import ticker_exchangeInstrumentId_dict
 
 xt_market_data = XTSConnect(
-apiKey = &quot;apiKey&quot;,
-secretKey = &quot;secretKey&quot;,
-source = &quot;source&quot;,
-root = &quot;root&quot;
+apiKey = API_key,
+secretKey = API_secret,
+source = API_source,
+root = API_root
 )
 response_marketdata_login = xt_market_data.marketdata_login()
 market_data_get_master = xt_market_data.get_master(exchangeSegmentList = [xt_market_data.EXCHANGE_NSEFO]) # In BSEFO very few items trade. Mostly Indexes.
 
-fo_master_df = fo_master_string_to_df(market_data_get_master['result'])
-ticker_exchInstrumentID_dict = ticker_exchangeInstrumentId_dict(fo_master_df[0])
-print(ticker_exchInstrumentID_dict.get('RELIANCE'))
+future_master_df = fo_master_string_to_df(market_data_get_master['result'])
+ticker_exchInstrumentID_dict = ticker_exchangeInstrumentId_dict(future_master_df[0])
+print(ticker_exchInstrumentID_dict.get('RELIANCE')) # Reliance is kept here as an example. User can print &quot;ticker_exchInstrumentID_dict&quot; for full data.
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 </code></pre>
-<pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
-  |Instrument Id for Options Contracts|
-&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+<pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+|Ticker:ExchangeInstrumentId Dict for Options Contracts|
+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 from xts_api_client.xts_connect import XTSConnect
 from xts_api_client.helper.helper import fo_master_string_to_df
 from xts_api_client.helper.helper import ticker_exchangeInstrumentId_dict
 
 xt_market_data = XTSConnect(
-apiKey = &quot;apiKey&quot;,
-secretKey = &quot;secretKey&quot;,
-source = &quot;source&quot;,
-root = &quot;root&quot;
+apiKey = API_key,
+secretKey = API_secret,
+source = API_source,
+root = API_root
 )
 response_marketdata_login = xt_market_data.marketdata_login()
 market_data_get_master = xt_market_data.get_master(exchangeSegmentList = [xt_market_data.EXCHANGE_NSEFO]) # In BSEFO very few items trade. Mostly Indexes.
 
-fo_master_df = fo_master_string_to_df(market_data_get_master['result'])
-ticker_exchInstrumentID_dict = ticker_exchangeInstrumentId_dict(fo_master_df[1])
-print(ticker_exchInstrumentID_dict.get('RELIANCE'))
+options_master_df = fo_master_string_to_df(market_data_get_master['result'])
+ticker_exchInstrumentID_dict = ticker_exchangeInstrumentId_dict(options_master_df[1])
+print(ticker_exchInstrumentID_dict.get('RELIANCE')) # Reliance is kept here as an example. User can print &quot;ticker_exchInstrumentID_dict&quot; for full data.
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 </code></pre>
 
