@@ -51,4 +51,10 @@ class xts_options_Instrument():
         self.DetailedDescription = DetailedDescription
     
     def __repr__(self):
-        return(f"xts_options_instrument_Name={self.Name}, InstrumentID={self.InstrumentID}, ExchangeSegment={self.ExchangeSegment}, LotSize={self.LotSize}")
+        return(f"xts_options_instrument_Name={self.Name},
+               ExchangeInstrumentID={self.ExchangeInstrumentID},
+               Series = {self.Series},
+               InstrumentID={self.InstrumentID},
+               ExchangeSegment={self.ExchangeSegment},
+               LotSize={self.LotSize}"
+               )

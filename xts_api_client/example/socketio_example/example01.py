@@ -9,15 +9,15 @@ from dotenv import load_dotenv
 class test_object(MarketDataSocketClient):
     async def test(self):
         load_dotenv()
-        API_KEY = os.getenv("API_KEY")
-        API_SECRET = os.getenv("API_SECRET")
-        source = os.getenv("SOURCE")
-        ROOT = os.getenv("ROOT")
-        xt = XTSConnect(API_KEY, API_SECRET, source, ROOT)
+        API_key = os.getenv("API_KEY")
+        API_secret = os.getenv("API_SECRET")
+        API_source = os.getenv("API_SOURCE")
+        API_root = os.getenv("API_URL")
+        xt = XTSConnect(API_key, API_secret, API_source, API_root)
         response = xt.marketdata_login()
         marketDataToken = response["result"]["token"]
         userID = response["result"]["userID"]
-        socket = MDSocket_io(marketDataToken, userID, ROOT, self)
+        socket = MDSocket_io(marketDataToken, userID, API_root, self)
         await socket.connect()
         time.sleep(10)
         await socket.disconnect()
