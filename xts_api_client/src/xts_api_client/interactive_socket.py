@@ -53,7 +53,7 @@ class OrderSocket_io(socketio.AsyncClient):
     async def connect(self, headers={}, transports='websocket', namespaces=None, socketio_path='/interactive/socket.io',
                 verify=False):
         """Connected to the socket."""
-        self.connect(self.connection_url, headers, transports, namespaces, socketio_path)
+        await self.connect(self.connection_url, headers, transports, namespaces, socketio_path)
         
 
     async def get_emitter(self):
