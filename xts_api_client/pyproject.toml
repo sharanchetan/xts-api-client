@@ -1,0 +1,38 @@
+[project]
+name = "xts-api-client"
+version = "1.0.2"
+description = "A Package designed for connecting to a Stock Broker that uses Symphony Fintech Solutions Pvt. Ltd for there API."
+readme = "README.md"
+authors = [
+    { name = "Chetan Sharan", email = "chetan.sharan@rmoneyindia.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "bidict>=0.23.1",
+    "certifi>=2024.8.30",
+    "chardet>=5.2.0",
+    "charset-normalizer>=3.4.0",
+    "idna>=3.10",
+    "python-dotenv>=1.0.1",
+    "python-engineio>=4.10.1",
+    "pandas>=2.2.3",
+    "python-socketio>=5.11.4",
+    "requests>=2.32.3",
+    "six>=1.16.0",
+    "urllib3>=2.2.3",
+    "websocket-client>=1.8.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "mkdocs-material>=9.5.47",
+    "mkdocs>=1.6.1",
+    "mkdocstrings[python]>=0.27.0",
+    "pytest>=8.3.3",
+    "pypiserver>=2.3.2",
+    "aiohttp>=3.11.11",
+]
