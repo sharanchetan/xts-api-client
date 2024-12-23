@@ -236,7 +236,9 @@ class XTSConnect(XTSCommon):
             }
 
             if not self.isInvestorClient:
-                params['clientID'] = clientID
+                params['clientID'] = '*****' # Jatin
+            else:
+                params['clientID'] = self.userID
 
             response = self._post('order.place', json.dumps(params))
             return response
