@@ -1,0 +1,19 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# environment variable files
+.env
+
+Ignore all files in the logs folder
+example/socketio_example/logs*
+
+# # But keep the folder structure
+# !example/socketio_example/.gitkeep

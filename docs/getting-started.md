@@ -1,47 +1,6 @@
-# Introduction
-
-* This package is written to be used as a XTS API Client in Python.
-* With the correct API credentials, User can access XTS interactive & market data.
-
-# Reference
-*  This is a python client package for XTS API. XTS is product from [Symphony Fintech Solutions Pvt. Ltd.](https://symphonyfintech.com/).The original documentation for XTS Clinet is [___linked here___](https://symphonyfintech.com/xts-market-data-front-end-api-v2/).
-
-*  This package is a __derivative work__ of the original package written by [Symphony Fintech Solutions Pvt. Ltd.](https://symphonyfintech.com/).
-*  [Link for original GitHub Repository](https://github.com/symphonyfintech/xts-pythonclient-api-sdk). It takes inspirations from the original, however it differs in the implimentation.
-
-* Link to [___pypiserver___](https://pypi.org/project/pypiserver/) for hosting the package locally.
-
-## Local Server Installation (_recommended_)
-
-* Use __uv packages manager__ to install the package. Example of the command is shown below. (_recommended_)
-
-Step 1. 
-```
-uv add --frozen http://pypi.rmoneyindia.in:8080/xts_api_client-1.0.2-py3-none-any.whl
-```
-Step 2.
-```
-uv sync
-```
-* Use _PIP_ to install the package. 
-```
-pip install http://pypi.rmoneyindia.in:8080/xts_api_client-1.0.1-py3-none-any.whl
-```
-
-## Local Installation
-
-* To install the package locally, download the complete zip of the package.
-* As per user discretion, use [virtual envirnment](https://docs.python.org/3/library/venv.html) or [uv package manager](https://docs.astral.sh/uv/). Activate the envirnment. ___This is an optional step___ .
-* Navigate the __PowerShell/Command prompt__ to the directory (xts_api_client\dist) where __xts_api_client-0.1.0-py3-none-any.whl__ file exists.
-* Use "pip install xts_api_client-0.1.0-py3-none-any.whl"
-* Use "pip list" or "uv pip list" to verify the installation.
-
-## Pip install/uv add
-Currently, the package is not been hosted on the [Python Package Index](https://pypi.org/). So other workarounds are mentioned here to make use of the package.
-
-# Explanation
+# Getting Started
 * The user should have ___API Key___, ___API Secret Key___ & the ___URL___ with ___Port___ details for using this package.
-* XTS API is a REST based Trading API with ___Socket IO___ streaming component. This client makes it easier to consume the data from API into Python.
+* XTS API is a [REST](https://en.wikipedia.org/wiki/REST) based Trading API with [___Socket IO___](https://en.wikipedia.org/wiki/Socket.IO) streaming component. This client makes it easier to consume the data from API into Python.
 * In XTS, there are two types of API, one for __trading (interactive sessions)__ & one for __market data__.
 
 ## [Trading API](https://symphonyfintech.com/xts-trading-front-end-api-v2/)
@@ -116,18 +75,40 @@ A snippet of print of market_data_get_master.
 ```
 ...nNSECM|11369|8|TTKHLTCARE|TTKHLTCARE-EQ|EQ|TTKHLTCARE-EQ|1100100011369|1798.7|1199.2|66709|0.05|1|1|TTKHLTCARE|INE910C01018|1|1|TTK HEALTHCARE LIMITED-EQ|0|-1|-1\nNSECM|20364|8|771KL43|771KL43-SG|SG|771KL43-SG|1100100020364|102.37|92.62|1025599|0.01|100|1|771KL43|IN2020230172|1|1|SDL KL 7.71% 2043-SG|0|-1|-1\nNSECM|21711|8|68PN26|68PN26-SG|SG|68PN26-SG|1100100021711|108.7|98.35|965899|0.01|100|1|68PN26|IN2820200052|1|1|SDL PN 6.8% 2026-SG|0|-1|-1'}
 ```
-* __We can make a DataFrame of master data, using the following code snippet.__
+* __We can make a DataFrame of NSE cash market master data, using the following code snippet.__
 
 ```
 import pandas as pd
 from io import StringIO 
 
-market_data_get_master = xt_market_data.get_master(exchangeSegmentList=['NSECM'])
-col_header = "ExchangeSegment|ExchangeInstrumentID|InstrumentType|Name|Description|Series| NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low| FreezeQty|TickSize|LotSize|Multiplier|displayName|ISIN|PriceNumerator|PriceDenominator".split("|")
-cm_master_df = pd.read_csv(StringIO(market_data_get_master['result']), sep = "|", usecols=range(18), low_memory =False,header=None)
-cm_master_df.columns = col_header
-print(cm_master_df)
+master_data_nsecm = xt_market_data.get_master(exchangeSegmentList=['NSECM'])
+col_header = "ExchangeSegment|ExchangelnstrumentlD|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentlD|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplier|DisplayName|ISIN|PriceNumerator|PriceDenominator|DetailedDescription|ExtendedSurvlndicator|Cautionlndicator|GSMIndicator".split("|")
+nsecm_master_df = pd.read_csv(StringIO(master_data_nsecm['result']), sep = "|", usecols=range(22), low_memory =False,header=None)
+nsecm_master_df.columns = col_header
 ```
+
+* __We can make a DataFrame of NSE and BSE; future & options master data, using the following code snippet.__
+
+```
+import pandas as pd
+from io import StringIO 
+
+master_data_nsefo = xt_market_data.get_master(exchangeSegmentList=['NSEFO'])
+col_header = "ExchangeSegment|ExchangeInstrumentlD|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplierl|Underlyinglnstrumentld|UnderlyinglndexName|ContractExpiration|StrikePrice|OptionType|DisplayNamel|PriceNumerator|PriceDenominator|DetailedDescription".split("|")
+nsefo_master_df = pd.read_csv(StringIO(master_data_nsefo['result']), sep = "|", usecols=range(23), low_memory =False,header=None)
+nsefo_master_df.columns = col_header
+```
+
+```
+import pandas as pd
+from io import StringIO 
+
+master_data_bsefo = xt_market_data.get_master(exchangeSegmentList=['BSEFO'])
+col_header = "ExchangeSegment|ExchangeInstrumentlD|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplierl|Underlyinglnstrumentld|UnderlyinglndexName|ContractExpiration|StrikePrice|OptionType|DisplayNamel|PriceNumerator|PriceDenominator|DetailedDescription".split("|")
+bsefo_master_df = pd.read_csv(StringIO(market_data_BSEFO['result']), sep = "|", usecols=range(23), low_memory =False,header=None)
+bsefo_master_df.columns = col_header
+```
+
 
 ## ___Step 5. Getting the OHLC Data.___
 
@@ -148,7 +129,7 @@ marget_data_get_ohlc = xt_market_data.get_ohlc(
 Printing market_data_get_ohlc will give a dictionary, as shown below.
 
 ```
-{'type': 'success', 'code': 's-instrument-0002', 'description': 'Data found', 'result': {'exchangeSegment': 'NSECM', 'exchangeInstrumentID': '22', 'dataReponse': 'data removed'}}
+{'type': 'success', 'code': 's-instrument-0002', 'description': 'Data found', 'result': {'exchangeSegment': 'NSECM', 'exchangeInstrumentID': '22', 'dataReponse': DELETED FOR DATA PRIVACY}}
 ```
 
 * From the DataFrame made above (in master data section), user can select different instruments & can gain further insight.
