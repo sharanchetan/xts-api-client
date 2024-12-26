@@ -12,8 +12,8 @@ wheels/
 # environment variable files
 .env
 
-Ignore all files in the logs folder
+#Ignore all files in the logs folder
 example/socketio_example/logs*
 
-# # But keep the folder structure
-# !example/socketio_example/.gitkeep
+#But keep the folder structure
+!example/socketio_example/.gitkeep
