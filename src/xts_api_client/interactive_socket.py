@@ -52,8 +52,10 @@ class OrderSocket_io(socketio.AsyncClient):
 
     async def connect(self, headers={}, transports='websocket', namespaces=None, socketio_path='/interactive/socket.io',
                 verify=False):
+        url = self.connection_url
         """Connected to the socket."""
-        await self.connect(self.connection_url, headers, transports, namespaces, socketio_path)
+        await super().connect(url, headers=headers, transports=transports, namespaces=namespaces, socketio_path=socketio_path)
+        """Disconnected from the socket."""
         
 
     async def get_emitter(self):
