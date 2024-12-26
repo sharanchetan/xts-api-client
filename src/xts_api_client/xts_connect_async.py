@@ -118,7 +118,7 @@ class XTSConnect(XTSCommon):
                  debug=False,
                  timeout=7,
                  pool=None,
-                 disable_ssl=False):
+                 disable_ssl=True):
         """
         Initialise a new XTS Connect client instance.
 
@@ -154,7 +154,7 @@ class XTSConnect(XTSCommon):
             self.reqsession = requests
 
         # disable requests SSL warning
-        # requests.packages.urllib3.disable_warnings()
+        #requests.packages.urllib3.disable_warnings()
 
     def _set_common_variables(self, access_token,userID, isInvestorClient):
         """Set the `access_token` received after a successful authentication."""
