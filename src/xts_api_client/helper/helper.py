@@ -5,49 +5,214 @@ from xts_api_client.helper.xts_future_instrument import xts_future_Instrument
 from xts_api_client.helper.xts_options_instrument import xts_options_Instrument
 from typing import List
 from io import StringIO
+from decimal import Decimal
 
-def cm_master_string_to_df(cm_master_result :str)->pd.DataFrame:
+
+def cm_master_string_to_df(cm_master_result: str) -> pd.DataFrame:
     """
-    Converts the response of cm_master API to a pandas DataFrame. This function takes a string response from the cm_master API, which contains data separated by the '|' character, and converts it into a pandas DataFrame. The DataFrame will have predefined column headers.
-    Parameters: __cm_master_result__ of string type : The string response from the cm_master API.
-    Returns: __pd.DataFrame__: A pandas DataFrame containing the parsed data from the cm_master_result string.`
+    Converts the response of cm_master API to a pandas DataFrame.
+    
+    This function takes a string response from the cm_master API, which contains data separated by the '|' character,
+    and converts it into a pandas DataFrame. The DataFrame will have predefined column headers.
+    
+    Parameters:
+        cm_master_result (str): The string response from the cm_master API.
+    
+    Returns:
+        pd.DataFrame: A pandas DataFrame containing the parsed data from the cm_master_result string.
     """
-    col_header = "ExchangeSegment|ExchangeInstrumentID|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand_High|PriceBand_Low|FreezeQty|TickSize|LotSize|Multiplier|DisplayName|ISIN|PriceNumerator|PriceDenominator|DetailedDescription|ExtendedSurvlndicator|Cautionlndicator|GSMIndicator".split("|")   
-    cm_master_df = pd.read_csv(StringIO(cm_master_result), sep = "|", usecols=range(22), low_memory =False)
-    cm_master_df.columns = col_header
+    col_header = [
+        "ExchangeSegment", "ExchangeInstrumentID", "InstrumentType", "Name", "Description", "Series",
+        "NameWithSeries", "InstrumentID", "PriceBand_High", "PriceBand_Low", "FreezeQty", "TickSize", "LotSize",
+        "Multiplier", "DisplayName", "ISIN", "PriceNumerator", "PriceDenominator", "DetailedDescription",
+        "ExtendedSurvlndicator", "Cautionlndicator", "GSMIndicator"
+    ]
+    _dtype = {
+        "ExchangeSegment": str,
+        "ExchangeInstrumentID": int,
+        "InstrumentType": int,
+        "Name": str,
+        "Description": str,
+        "Series": str,
+        "NameWithSeries": str,
+        "InstrumentID": int,
+        "FreezeQty": int,
+        "LotSize": int,
+        "Multiplier": int,
+        "DisplayName": str,
+        "ISIN": str,
+        "PriceNumerator": int,
+        "PriceDenominator": int,
+        "DetailedDescription": str,
+        "ExtendedSurvlndicator": int,
+        "Cautionlndicator": int,
+        "GSMIndicator": int
+    }
+
+    # Read the string into a DataFrame
+    try:
+        cm_master_df = pd.read_csv(
+            StringIO(cm_master_result),
+            sep="|",
+            usecols=range(22),
+            low_memory=False,
+            header=None,
+            names=col_header,
+            dtype={**_dtype, "PriceBand_High": str, "PriceBand_Low": str, "TickSize": str}  # Read Decimal columns as str
+        )
+    except Exception as e:
+        raise ValueError(f"Failed to parse the input string: {e}")
+
+    # Convert decimal-related fields post-read
+    for col in ["PriceBand_High", "PriceBand_Low", "TickSize"]:
+        cm_master_df[col] = cm_master_df[col].apply(lambda x: Decimal(x) if x else None)
+
     return cm_master_df
 
-def fo_master_string_to_df(fo_master_result :str)->pd.DataFrame:
+# def cm_master_string_to_df(cm_master_result :str)->pd.DataFrame:
+#     """
+#     Converts the response of cm_master API to a pandas DataFrame. This function takes a string response from the cm_master API, which contains data separated by the '|' character, and converts it into a pandas DataFrame. The DataFrame will have predefined column headers.
+#     Parameters: __cm_master_result__ of string type : The string response from the cm_master API.
+#     Returns: __pd.DataFrame__: A pandas DataFrame containing the parsed data from the cm_master_result string.`
+#     """
+#     col_header = "ExchangeSegment|ExchangeInstrumentID|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand_High|PriceBand_Low|FreezeQty|TickSize|LotSize|Multiplier|DisplayName|ISIN|PriceNumerator|PriceDenominator|DetailedDescription|ExtendedSurvlndicator|Cautionlndicator|GSMIndicator".split("|")   
+#     _dtype ={
+#                 "ExchangeSegment": str,
+#                 "ExchangeInstrumentID": int,
+#                 "InstrumentType": int,
+#                 "Name": str,
+#                 "Description": str,
+#                 "Series": str,
+#                 "NameWithSeries": str,
+#                 "InstrumentID": int,
+#                 "PriceBand_High": Decimal,
+#                 "PriceBand_Low": Decimal,
+#                 "FreezeQty": int,
+#                 "TickSize": Decimal,
+#                 "LotSize": int,
+#                 "Multiplier": int,
+#                 "DisplayName": str,
+#                 "ISIN": str,
+#                 "PriceNumerator": int,
+#                 "PriceDenominator": int,
+#                 "DetailedDescription": str,
+#                 "ExtendedSurvlndicator": int,
+#                 "Cautionlndicator": int,
+#                 "GSMIndicator": int
+#                 }
+#     cm_master_df = pd.read_csv(StringIO(cm_master_result), sep = "|",usecols=range(22),low_memory =False,header=None,names=col_header,
+#                             dtype=_dtype)
+#     cm_master_df.columns = col_header
+#     return cm_master_df
+
+from decimal import Decimal
+from io import StringIO
+import pandas as pd
+
+def fo_master_string_to_df(fo_master_result: str) -> tuple:
     """
-    Converts the response of master API to pandas DataFrame for fo segment. This function takes a string response from the fo_master API, splits it into lines, and then categorizes each line into futures or options based on the number of columns. It then converts these categorized lines into pandas DataFrames with appropriate column headers.
-    Parameters: fo_master_result of string type : The string response from the fo_master API.
-    Returns: tuple: A tuple containing two pandas DataFrames:
-    fut_master_df: DataFrame containing futures data.
-    opt_master_df: DataFrame containing options data.
+    Converts the response of master API to pandas DataFrame for FO segment.
+    
+    This function takes a string response from the FO master API, splits it into lines, 
+    and categorizes each line into futures or options based on the number of columns.
+    It then converts these categorized lines into pandas DataFrames with appropriate column headers.
+    
+    Parameters:
+        fo_master_result (str): The string response from the FO master API.
+    
+    Returns:
+        tuple: A tuple containing two pandas DataFrames:
+            fut_master_df: DataFrame containing futures data.
+            opt_master_df: DataFrame containing options data.
     """
-    opt_col_header = "ExchangeSegment|ExchangeInstrumentID|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand_High|PriceBand_Low|FreezeQty|TickSize|LotSize|Multiplier|UnderlyingInstrumentId|UnderlyingIndexName|ContractExpiration|StrikePrice|OptionType|DisplayName|PriceNumerator|PriceDenominator|DetailedDescription".split("|")
-    fut_col_header = "ExchangeSegment|ExchangeInstrumentID|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand_High|PriceBand_Low|FreezeQty|TickSize|LotSize|Multiplier|UnderlyingInstrumentId|UnderlyingIndexName|ContractExpiration|DisplayName|PriceNumerator|PriceDenominator|DetailedDescription".split("|")
+    opt_col_header = [
+        "ExchangeSegment", "ExchangeInstrumentID", "InstrumentType", "Name", "Description", "Series", 
+        "NameWithSeries", "InstrumentID", "PriceBand_High", "PriceBand_Low", "FreezeQty", "TickSize", 
+        "LotSize", "Multiplier", "UnderlyingInstrumentId", "UnderlyingIndexName", "ContractExpiration", 
+        "StrikePrice", "OptionType", "DisplayName", "PriceNumerator", "PriceDenominator", 
+        "DetailedDescription"
+    ]
+    fut_col_header = [
+        "ExchangeSegment", "ExchangeInstrumentID", "InstrumentType", "Name", "Description", "Series", 
+        "NameWithSeries", "InstrumentID", "PriceBand_High", "PriceBand_Low", "FreezeQty", "TickSize", 
+        "LotSize", "Multiplier", "UnderlyingInstrumentId", "UnderlyingIndexName", "ContractExpiration", 
+        "DisplayName", "PriceNumerator", "PriceDenominator", "DetailedDescription"
+    ]
+    
     fut_lines = []
     opt_lines = []
     lines = fo_master_result.split("\n")
-    for a in lines:
-        b= a.split("|")
-        if len(b) == 23:
-            pass
-            opt_lines.append(a)            
-        else:
-            pass
-            fut_lines.append(a)
-     
+    
+    # Categorize lines into futures and options based on column count
+    for line in lines:
+        columns = line.split("|")
+        if len(columns) == 23:
+            opt_lines.append(line)
+        elif len(columns) == 21:
+            fut_lines.append(line)
+    
+    # Join lines back into strings for each category
     fut_string = "\n".join(fut_lines)
     opt_string = "\n".join(opt_lines)
-
-    fut_master_df = pd.read_csv(StringIO(fut_string), sep = "|", low_memory =False)
-    fut_master_df.columns = fut_col_header
-
-    opt_master_df = pd.read_csv(StringIO(opt_string), sep = "|", low_memory =False)
-    opt_master_df.columns = opt_col_header
+    
+    # Read Futures DataFrame
+    fut_master_df = pd.read_csv(
+        StringIO(fut_string), 
+        sep="|", 
+        low_memory=False, 
+        names=fut_col_header, 
+        dtype={col: str for col in ["PriceBand_High", "PriceBand_Low", "TickSize"]}
+    )
+    # Convert decimal-related fields
+    for col in ["PriceBand_High", "PriceBand_Low", "TickSize"]:
+        fut_master_df[col] = fut_master_df[col].apply(lambda x: Decimal(x) if x else None)
+    
+    # Read Options DataFrame
+    opt_master_df = pd.read_csv(
+        StringIO(opt_string), 
+        sep="|", 
+        low_memory=False, 
+        names=opt_col_header, 
+        dtype={col: str for col in ["PriceBand_High", "PriceBand_Low", "TickSize", "StrikePrice"]}
+    )
+    # Convert decimal-related fields
+    for col in ["PriceBand_High", "PriceBand_Low", "TickSize", "StrikePrice"]:
+        opt_master_df[col] = opt_master_df[col].apply(lambda x: Decimal(x) if x else None)
+    
     return fut_master_df, opt_master_df
+
+
+# def fo_master_string_to_df(fo_master_result :str)->pd.DataFrame:
+#     """
+#     Converts the response of master API to pandas DataFrame for fo segment. This function takes a string response from the fo_master API, splits it into lines, and then categorizes each line into futures or options based on the number of columns. It then converts these categorized lines into pandas DataFrames with appropriate column headers.
+#     Parameters: fo_master_result of string type : The string response from the fo_master API.
+#     Returns: tuple: A tuple containing two pandas DataFrames:
+#     fut_master_df: DataFrame containing futures data.
+#     opt_master_df: DataFrame containing options data.
+#     """
+#     opt_col_header = "ExchangeSegment|ExchangeInstrumentID|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand_High|PriceBand_Low|FreezeQty|TickSize|LotSize|Multiplier|UnderlyingInstrumentId|UnderlyingIndexName|ContractExpiration|StrikePrice|OptionType|DisplayName|PriceNumerator|PriceDenominator|DetailedDescription".split("|")
+#     fut_col_header = "ExchangeSegment|ExchangeInstrumentID|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand_High|PriceBand_Low|FreezeQty|TickSize|LotSize|Multiplier|UnderlyingInstrumentId|UnderlyingIndexName|ContractExpiration|DisplayName|PriceNumerator|PriceDenominator|DetailedDescription".split("|")
+#     fut_lines = []
+#     opt_lines = []
+#     lines = fo_master_result.split("\n")
+#     for a in lines:
+#         b= a.split("|")
+#         if len(b) == 23:
+#             pass
+#             opt_lines.append(a)            
+#         else:
+#             pass
+#             fut_lines.append(a)
+     
+#     fut_string = "\n".join(fut_lines)
+#     opt_string = "\n".join(opt_lines)
+
+#     fut_master_df = pd.read_csv(StringIO(fut_string), sep = "|", low_memory =False)
+#     fut_master_df.columns = fut_col_header
+
+#     opt_master_df = pd.read_csv(StringIO(opt_string), sep = "|", low_memory =False)
+#     opt_master_df.columns = opt_col_header
+#     return fut_master_df, opt_master_df
 
 def cm_master_df_to_xts_cm_instrument_list(cm_master_df : pd.DataFrame, series_list_to_include: List[str]= ["EQ","BE","BZ","SM","A","B"])->List[xts_cm_Instrument]:
     """
