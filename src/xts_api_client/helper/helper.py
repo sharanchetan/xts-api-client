@@ -53,7 +53,7 @@ def cm_master_string_to_df(cm_master_result: str) -> pd.DataFrame:
             "PriceBand_Low": Decimal,
             "TickSize": Decimal
         }
-    cm_master_df = pd.read_csv(StringIO(cm_master_result['result']), sep = "|",  low_memory =False,header=None,names=col_header,
+    cm_master_df = pd.read_csv(StringIO(cm_master_result), sep = "|",  low_memory =False,header=None,names=col_header,
                             dtype=_dtype,converters=_converters)
     cm_master_df.columns = col_header
     return cm_master_df
