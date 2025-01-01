@@ -21,8 +21,8 @@ root = API_root
 response_marketdata_login = xt_market_data.marketdata_login()
 
 market_data_get_master = xt_market_data.get_master(
-exchangeSegmentList = [xt_market_data.EXCHANGE_NSECM] # Works for BSECM as well.
+exchangeSegmentList = [xt_market_data.EXCHANGE_BSECM] # Works for BSECM as well.
 )
 
-print(cm_master_string_to_df(market_data_get_master['result']))
+(cm_master_string_to_df(market_data_get_master['result'])).to_csv("bse_cm_master.csv")
 """"""""""""""""""""""""""""""""""""""""""
