@@ -77,6 +77,7 @@ def fo_master_string_to_df(fo_master_result: str) -> tuple:
         tuple: A tuple containing two pandas DataFrames:
             fut_master_df: DataFrame containing futures data.
             opt_master_df: DataFrame containing options data.
+            fur_spread_df: DataFrame containing future spread data.
     """
     opt_col_header = [
         "ExchangeSegment", "ExchangeInstrumentID", "InstrumentType", "Name", "Description", "Series", 
@@ -147,22 +148,59 @@ def fo_master_string_to_df(fo_master_result: str) -> tuple:
         "PriceBand_Low": Decimal,
         "TickSize": Decimal
     }
+
+    fut_spread_col_header = [
+        "ExchangeSegment", "ExchangeInstrumentID", "InstrumentType", "Name", "Description", "Series", 
+        "NameWithSeries", "InstrumentID", "PriceBand_High", "PriceBand_Low", "FreezeQty", "TickSize", 
+        "LotSize", "Multiplier", "UnderlyingInstrumentId", "UnderlyingIndexName", "ContractExpiration", 
+        "DisplayName", "PriceNumerator", "PriceDenominator", "DetailedDescription"
+    ]
+    
+    _dtype_fut_spread = {
+        "ExchangeSegment": str,
+        "ExchangeInstrumentID": int,
+        "InstrumentType": int,
+        "Name": str,
+        "Description": str,
+        "Series": str,
+        "NameWithSeries": str,
+        "InstrumentID": int,
+        "FreezeQty": int,
+        "LotSize": int,
+        "Multiplier": int,
+        "UnderlyingInstrumentId": int,
+        "UnderlyingIndexName": str,
+        "ContractExpiration": str,
+        "DisplayName": str,
+        "PriceNumerator": int,
+        "PriceDenominator": int,
+        "DetailedDescription": str
+    }
+    
+    _converters_fut_spread = {
+        "PriceBand_High": Decimal,
+        "PriceBand_Low": Decimal,
+        "TickSize": Decimal
+    }
     
     fut_lines = []
     opt_lines = []
-    lines = fo_master_result.split("\n")
-    
-    # Categorize lines into futures and options based on column count
-    for line in lines:
-        columns = line.split("|")
-        if len(columns) == 23:
-            opt_lines.append(line)
-        elif len(columns) == 21:
-            fut_lines.append(line)
+    future_spread_df = []
+    rows= fo_master_result.split("\n")
+    for row in rows:
+        if row.count("|") == 22:
+            opt_lines.append(row)
+        elif row.count("|") == 20:
+            instrumenType = row.split("|")[2]
+            if instrumenType=='4':
+                future_spread_df.append(row)
+            else:
+                fut_lines.append(row)
     
     # Join lines back into strings for each category
     fut_string = "\n".join(fut_lines)
     opt_string = "\n".join(opt_lines)
+    fut_spread_string = "\n".join(future_spread_df)
     
     # Read Futures DataFrame
     fut_master_df = pd.read_csv(
@@ -172,7 +210,6 @@ def fo_master_string_to_df(fo_master_result: str) -> tuple:
         names=fut_col_header,
         dtype=_dtype_fut,
         converters=_converters_fut
-
     )
     
     # Read Options DataFrame
@@ -184,7 +221,18 @@ def fo_master_string_to_df(fo_master_result: str) -> tuple:
         dtype=_dtype_opt,
         converters=_converters_opt
     )
-    return fut_master_df, opt_master_df
+
+    # Read Future Spread DataFrame
+    fut_spread_df = pd.read_csv(
+        StringIO(fut_spread_string), 
+        sep="|", 
+        low_memory=False, 
+        names=fut_spread_col_header,
+        dtype=_dtype_fut_spread,
+        converters=_converters_fut_spread
+    )
+
+    return fut_master_df, opt_master_df, fut_spread_df
 
 
 def cm_master_df_to_xts_cm_instrument_list(cm_master_df : pd.DataFrame, series_list_to_include: List[str]= ["EQ","BE","BZ","SM","A","B"])->List[xts_cm_Instrument]:
