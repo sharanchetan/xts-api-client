@@ -6,8 +6,8 @@ from xts_api_client.helper.xts_options_instrument import xts_options_Instrument
 from typing import List
 from io import StringIO
 from decimal import Decimal
-
-
+from datetime import datetime, timezone, timedelta
+import pytz
 
 def cm_master_string_to_df(cm_master_result: str) -> pd.DataFrame:
     """
@@ -361,3 +361,23 @@ def ticker_exchangeInstrumentId_dict(dataframe_cm:pd.DataFrame):
     df = dataframe_cm[['Name','ExchangeInstrumentID']]
     ticker_exchangeInstId_dict = df.set_index('Name')['ExchangeInstrumentID'].to_dict()
     return ticker_exchangeInstId_dict
+
+
+def dostime_secomds_to_unixtime(_msdostime_inseconds, _timezone = "Asia/Kolkata"):
+    """
+    This function is used to convert the MS DOS time that is used by NSE & BSE to Unix epoch time.
+    * The MS-DOS time/date format uses midnight on January 1, 1980 as a sentinel value, or epoch.
+    * Unix epoch starts from  midnight on January 1, 1970.
+
+    The function also allowes to add timezone info to the converted time. by default it will add the timezone info of Asia/Kolkata.
+    IMPORTANT: Adding timezone info makes the time aware about time zone. but the value of Uniux will remain UNCHNAGED! 
+    """
+
+    _ts_event_dostime_naive = datetime(1980, 1, 1) + timedelta(seconds=int(_msdostime_inseconds)) # naive means this object is unaware about timezone info.
+    _timezone = pytz.timezone("Asia/Kolkata")
+    _ts_event_dostime_aware = _timezone.localize(_ts_event_dostime_naive) # aware means this object is aware about timezone info.
+    #_ts_event_dostime_aware = _ts_event_dostime_naive.replace(tzinfo=timezone(timedelta(hours=_hours, minutes=_minutes))) # aware means this object is aware about timezone info.
+    _ts_event_seconds = _ts_event_dostime_aware.astimezone(timezone.utc).timestamp() # in seconds
+    _ts_event = _ts_event_seconds  * 1_000_000_000
+    return _ts_event
+
