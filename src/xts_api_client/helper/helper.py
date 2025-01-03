@@ -8,6 +8,7 @@ from io import StringIO
 from decimal import Decimal
 
 
+
 def cm_master_string_to_df(cm_master_result: str) -> pd.DataFrame:
     """
     Converts the response of cm_master API to a pandas DataFrame.
