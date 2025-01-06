@@ -8,6 +8,7 @@ from io import StringIO
 from decimal import Decimal
 from datetime import datetime, timezone, timedelta
 import pytz
+from xts_api_client.xts_connect_async import XTSConnect
 
 def cm_master_string_to_df(cm_master_result: str) -> pd.DataFrame:
     """
@@ -354,6 +355,7 @@ def ohlc_to_df(market_data_get_ohlc_dict: dict):
 
 def ticker_exchangeInstrumentId_dict(dataframe_cm:pd.DataFrame):
     """
+    IT WORKS ONLY FOR CASH MARKET.
     Converts XTS-API(from XTS.Connect.get_master()-->cm_master_string_to_df/fo_master_string_to_df) DataFrame to a dictionary. So that user can search Instrument Id with ticker symbol.
     Parameters: The return of cm_master_string_to_df/fo_master_string_to_df methods with the type pd.DataFrame.
     Returns: A Dictionary conatining Ticker Symbol as keys & Exchange Instrument Id as values. 
@@ -381,3 +383,36 @@ def dostime_secomds_to_unixtime(_msdostime_inseconds, _timezone = "Asia/Kolkata"
     _ts_event = _ts_event_seconds  * 1_000_000_000
     return _ts_event
 
+async def async_squareoff_all_positions_(self, exchangeSegment,xt: XTSConnect):
+    '''
+    It'll squareoff all open positions in the account
+
+    Returns => order_ids : list[]  = contains all squared off orders
+    '''
+
+    response_cancelall = await XTSConnect.cancelall_order(self, exchangeSegment=exchangeSegment, exchangeInstrumentID = 0)
+
+    # Retrieve day-wise positions
+    response = await XTSConnect.get_position_daywise("*****")
+
+    # Square off any open positions by placing market orders in the opposite direction
+    sqrf_order_ids = []
+    try:
+        for i in response["result"]["positionList"]:
+            if int(i["Quantity"]) != 0:
+                orde_side = "BUY" if i["Quantity"] < 0 else "SELL"
+                sqrf_response = self.xt.place_order(exchangeSegment=i["ExchangeSegment"], exchangeInstrumentID=int(i["ExchangeInstrumentId"]),productType=i["ProductType"],orderType='MARKET',orderSide= orde_side ,timeInForce="DAY",disclosedQuantity= i["Quantity"], orderQuantity= int(i["Quantity"]), limitPrice=0,stopPrice=0,orderUniqueIdentifier='exit_all',clientID="*****")
+
+                sqrf_response
+                if sqrf_response.get("result") and sqrf_response["result"].get("AppOrderID"):
+                            order_id = response["result"]["AppOrderID"]
+                            print(f"Order id : {order_id}")
+                            sqrf_order_ids.append(order_id)
+                else:
+                    print("Failed to place squareoff order:", sqrf_response.get("result", {}).get("AppOrderID"))
+        print(f'ssquared off all positions with IDs {sqrf_order_ids}')
+        return sqrf_order_ids
+    
+    except Exception as e:
+        print(f"Error exiting order: {e}")
+        raise
