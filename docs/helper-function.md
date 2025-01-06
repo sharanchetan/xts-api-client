@@ -73,6 +73,9 @@ print(future_master_df[0]) # This will give DataFrame for Future.
 
 options_master_df = fo_master_string_to_df(market_data_get_master['result'])
 print(options_master_df[1]) # This will give DataFrame for Options.
+
+fut_spread_df = fo_master_string_to_df(market_data_get_master['result'])
+print(fut_spread_df[2]) # This will give DataFrame for Options.
 """
 
 print(fo_master_string_to_df(market_data_get_master['result'])) 
