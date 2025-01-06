@@ -6,8 +6,8 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-API_key = os.getenv("API_KEY")
-API_secret = os.getenv("API_SECRET")
+API_key = os.getenv("INTERACTIVE_API_KEY")
+API_secret = os.getenv("INTERACTIVE_API_SECRET")
 API_source = os.getenv("API_SOURCE")
 API_root = os.getenv("API_URL")
 
