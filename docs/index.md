@@ -1,4 +1,4 @@
-# Introduction
+# Installation
 
 * This package is written to be used as a XTS API Client in Python.
 * With the correct API credentials, User can access XTS interactive & market data.
@@ -9,7 +9,7 @@
 
 _Step 1._ 
 ```
-uv add --frozen http://pypi.rmoneyindia.in:8080/xts_api_client-1.0.2-py3-none-any.whl
+uv add --frozen http://pypi.rmoneyindia.in:8080/xts_api_client-1.0.7-py3-none-any.whl
 ```
 _Step 2._
 ```
@@ -17,7 +17,7 @@ uv sync
 ```
 ### Use _PIP_ to install the package. (_not recommended_)
 ```
-pip install http://pypi.rmoneyindia.in:8080/xts_api_client-1.0.2-py3-none-any.whl
+pip install http://pypi.rmoneyindia.in:8080/xts_api_client-1.0.7-py3-none-any.whl
 ```
 
 ## Local Installation
