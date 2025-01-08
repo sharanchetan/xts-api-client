@@ -24,6 +24,7 @@ class XTSConnect(XTSCommon):
     # Products
     PRODUCT_MIS = "MIS"
     PRODUCT_NRML = "NRML"
+    PRODUCT_CNC = "CNC" # Added as per request from Jatin.
 
     # Order types
     ORDER_TYPE_MARKET = "MARKET"
