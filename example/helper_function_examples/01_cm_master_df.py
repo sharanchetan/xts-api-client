@@ -1,3 +1,4 @@
+
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -12,6 +13,7 @@ API_root = os.getenv("API_URL")
 from xts_api_client.xts_connect import XTSConnect
 from xts_api_client.helper.helper import cm_master_string_to_df
 
+
 xt_market_data = XTSConnect(
 apiKey = API_key,
 secretKey = API_secret,
@@ -24,5 +26,6 @@ market_data_get_master = xt_market_data.get_master(
 exchangeSegmentList = [xt_market_data.EXCHANGE_NSECM] # Works for BSECM as well.
 )
 
-(cm_master_string_to_df(market_data_get_master['result'])).to_csv("bse_cm_master.csv")
+print((cm_master_string_to_df(market_data_get_master['result'])))
 """"""""""""""""""""""""""""""""""""""""""
+

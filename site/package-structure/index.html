@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>How To Guide for Package - XTS Client API Documentation</title>
+        <title>Package Structure - XTS Client API Documentation</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -41,13 +41,13 @@
                                 <a href="../getting-started/" class="nav-link">Getting Started</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../package-structure/" class="nav-link">Package Structure</a>
+                                <a href="./" class="nav-link active" aria-current="page">Package Structure</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../helper-function/" class="nav-link">Helper Functions</a>
                             </li>
                             <li class="nav-item">
-                                <a href="./" class="nav-link active" aria-current="page">How To Guide for Package</a>
+                                <a href="../how-to-guides/" class="nav-link">How To Guide for Package</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../class-reference/" class="nav-link">Class Reference</a>
@@ -64,12 +64,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../helper-function/" class="nav-link">
+                                <a rel="prev" href="../getting-started/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../class-reference/" class="nav-link">
+                                <a rel="next" href="../helper-function/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -91,9 +91,13 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#how-to-guide-for-package" class="nav-link">How To Guide for Package</a>
+            <li class="nav-item" data-bs-level="1"><a href="#package-structure" class="nav-link">Package Structure</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#native-functionsmethods-available-in-package" class="nav-link">Native Functions/Methods available in package.</a>
+            <li class="nav-item" data-bs-level="2"><a href="#xts_connectpy" class="nav-link">xts_connect.py</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#xts_connect_asyncpy" class="nav-link">xts_connect_async.py</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -104,61 +108,35 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="how-to-guide-for-package">How To Guide for Package</h1>
-<h2 id="native-functionsmethods-available-in-package">Native Functions/Methods available in package.</h2>
+<h1 id="package-structure">Package Structure</h1>
 <ul>
-<li>Most of these functions are self explanatory in nature. However, a simple explanations is mentioned for them.</li>
-<li>
-<p>The <strong>Trading API</strong> gives the user access to </p>
-<ul>
-<li><strong>interactive_login</strong>: Send the login url to which a user should receive the token.</li>
-<li><strong>get_order_book</strong>: Request order book gives states of all the orders placed by an user.</li>
-<li><strong>get_dealer_orderbook</strong>: No idea, figure it out yourself!</li>
-<li><strong>place_order</strong>: To place an order.</li>
-<li><strong>place_bracketorder</strong>: To place a bracketorder.</li>
-<li><strong>get_profile</strong>: Using session token user can access his profile stored with the broker.</li>
-<li><strong>get_balance</strong>: Get balance API call grouped under this category information related to limits on equities, derivative, upfront margin, available exposure and other RMS related balances available to the user.</li>
-<li><strong>modify_order</strong>: The facility to modify your open orders by allowing you to change limit order to market or vice versa, change price or quantity of the limit open order, change disclosed quantity or stop-loss of any open stop loss order.</li>
-<li><strong>get_trade</strong>: Trade book returns a list of all trades executed on a particular day, that were placed by the user. The trade book will display all filled and partially filled orders.</li>
-<li><strong>get_dealer_tradebook</strong>: Trade book returns a list of all trades executed on a particular day, that were placed by the user. The trade book will display all filled and partially filled orders.</li>
-<li><strong>get_holding</strong>: Holdings API call enable users to check their long term holdings with the broker.</li>
-<li><strong>bracketorder_cancel</strong>: This API can be called to cancel any open order of the user by providing correct appOrderID matching with the chosen open order to cancel.</li>
-<li><strong>get_dealerposition_netwise</strong>: The positions API positions by net. Net is the actual, current net position portfolio.</li>
-<li><strong>get_dealerposition_daywise</strong>: The positions API returns positions by day, which is a snapshot of the buying and selling activity for that particular day.</li>
-<li><strong>get_position_daywise</strong>: The positions API returns positions by day, which is a snapshot of the buying and selling activity for that particular day.</li>
-<li><strong>get_position_netwise</strong>: The positions API positions by net. Net is the actual, current net position portfolio.</li>
-<li><strong>convert_position</strong>: Convert position API, enable users to convert their open positions from NRML intra-day to Short term MIS or vice versa, provided that there is sufficient margin or funds in the account to effect such conversion.</li>
-<li><strong>cancel_order</strong>: This API can be called to cancel any open order of the user by providing correct appOrderID matching with the chosen open order to cancel.</li>
-<li><strong>cancelall_order</strong>: This API can be called to cancel all open order of the user by providing exchange segment and exchange instrument ID.</li>
-<li><strong>place_cover_order</strong>: A Cover Order is an advance intraday order that is accompanied by a compulsory Stop Loss Order. This helps users to minimize their losses by safeguarding themselves from unexpected market movements. A Cover Order offers high leverage and is available in Equity Cash, Equity F&amp;O, Commodity F&amp;O and Currency F&amp;O segments. It has 2 orders embedded in itself, they are Limit/Market Order Stop Loss Order.</li>
-<li><strong>exit_cover_order</strong>: Exit Cover API is a functionality to enable user to easily exit an open stoploss order by converting it into Exit order.</li>
-<li><strong>squareoff_position</strong>: User can request square off to close all his positions in Equities, Futures and Option. Users are advised to use this request with caution if one has short term holdings.</li>
-<li><strong>get_order_history</strong>: Order history will provide particular order trail chain. This indicate the particular order &amp; its state changes. i.e.Pending New to New, New to PartiallyFilled, PartiallyFilled, PartiallyFilled &amp; PartiallyFilled to Filled etc.</li>
-<li><strong>interactive_logout</strong>: This call invalidates the session token and destroys the API session. After this, the user should go through login flow again and extract session token from login response before further activities.</li>
+<li>To better consume the package, the user should have a clear understanding of the architecture of the package.</li>
 </ul>
-</li>
-<li>
-<p>The <strong>Market Data API</strong> gives the user access to </p>
+<p>Here is the folder structure of the project:</p>
+<pre><code>└───xts_api_client
+    │   interactive_socket.py
+    │   interactive_socket_client.py
+    │   market_data_socket.py
+    │   market_data_socket_client.py
+    │   py.typed
+    │   xts_connect.py
+    │   xts_connect_async.py
+    │   xts_exception.py
+    │   __init__.py
+    │   
+    ├───helper
+        helper.py
+        helper_classes.py
+        __init__.py
+</code></pre>
+<p>There are two version of xts_connect. A synchronous version &amp; an Asynchronous version.</p>
+<h2 id="xts_connectpy">xts_connect.py</h2>
 <ul>
-<li><strong>marketdata_login</strong>: Send the login url to which a user should receive the token.</li>
-<li><strong>get_config</strong>: Get the configuration of the client.</li>
-<li><strong>get_quote</strong>: Get the quote of the instrument.</li>
-<li><strong>send_subscription</strong>: Send subscription for the instrument.</li>
-<li><strong>send_unsubscription</strong>: Send unsubscription for the instrument.</li>
-<li><strong>get_master</strong>: Get the master string.</li>
-<li><strong>get_ohlc</strong>: Get the OHLC of the instrument.</li>
-<li><strong>get_series</strong>: Get the series of the exchange segment.</li>
-<li><strong>get_equity_symbol</strong>: Get the equity symbol of the exchange segment.</li>
-<li><strong>get_expiry_date</strong>: Get the expiry date of the exchange segment.</li>
-<li><strong>get_future_symbol</strong>: Get the future symbol of the exchange segment.</li>
-<li><strong>get_option_symbol</strong>: Get the option symbol of the exchange segment.</li>
-<li><strong>get_option_type</strong>: Get the option type of the exchange segment.</li>
-<li><strong>get_index_list</strong>: Get the index list of the exchange segment.</li>
-<li><strong>search_by_instrumentid</strong>: Search by instrument id.</li>
-<li><strong>search_by_scriptname</strong>: Search by script name.</li>
-<li><strong>marketdata_logout</strong>: This call invalidates the session token and destroys the API session.</li>
+<li>This module is written for simple test cases &amp; basic understanding of the API, however in practical cases, user will have to use Asynchronous methods.</li>
 </ul>
-</li>
+<h2 id="xts_connect_asyncpy">xts_connect_async.py</h2>
+<ul>
+<li>For all intensive purposes, this module will be used only because of the nature of application.</li>
 </ul></div>
             </div>
         </div>
