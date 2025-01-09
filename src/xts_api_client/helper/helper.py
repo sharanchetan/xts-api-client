@@ -296,6 +296,8 @@ def fo_master_df_to_xts_future_instrument_list(fo_master_df : pd.DataFrame, seri
             TickSize = row['TickSize'],
             LotSize = row['LotSize'],
             Multiplier = row['Multiplier'],
+            UnderlyingInstrumentId = row['UnderlyingInstrumentId'],
+            UnderlyingIndexName = row['UnderlyingIndexName'],
             ContractExpiration = row['ContractExpiration'],
             DisplayName = row['DisplayName'],
             PriceNumerator = row['PriceNumerator'],
