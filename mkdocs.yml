@@ -6,12 +6,13 @@ theme:
     - content.code.copy
 
 plugins:
-  # - mkdocstrings
+# - mkdocstrings
   - search
 
 nav:
   - index.md
   - Getting Started: getting-started.md
+  - Package Structure: package-structure.md
   - Helper Functions: helper-function.md
   - how-to-guides.md
   - class-reference.md
