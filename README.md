@@ -8,6 +8,10 @@
 
 *  This package is a __derivative work__ of the original package written by [Symphony Fintech Solutions Pvt. Ltd.](https://symphonyfintech.com/).
 *  [Link for original GitHub Repository](https://github.com/symphonyfintech/xts-pythonclient-api-sdk). It takes inspirations from the original, however it differs in the implimentation.
+*  GitHub [Link](https://github.com/sharanchetan/xts-api-client) for this repository.
+
+# Documentataion.
+* Detailed documentation is provided [here](https://xts-api-client.readthedocs.io/en/latest/).
 
 # Package Structure
 * To better consume the package, the user should have a clear understanding of the architecture of the package.
