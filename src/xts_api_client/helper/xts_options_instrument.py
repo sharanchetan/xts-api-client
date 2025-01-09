@@ -1,4 +1,4 @@
-from  decimal import Decimal
+from decimal import Decimal
 
 class xts_options_Instrument():
     def __init__ (self,

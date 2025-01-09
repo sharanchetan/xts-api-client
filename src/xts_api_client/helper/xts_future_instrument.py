@@ -1,4 +1,4 @@
-from  decimal import Decimal
+from decimal import Decimal
 
 class xts_future_Instrument():
     def __init__(self,
@@ -16,6 +16,8 @@ class xts_future_Instrument():
                 TickSize: Decimal,
                 LotSize: int,
                 Multiplier: Decimal,
+                UnderlyingInstrumentId: int,
+                UnderlyingIndexName: str,
                 ContractExpiration: str,
                 DisplayName: str,
                 PriceNumerator: int,
@@ -36,11 +38,14 @@ class xts_future_Instrument():
         self.TickSize = TickSize
         self.LotSize = LotSize
         self.Multiplier = Multiplier
+        self.UnderlyingInstrumentId = UnderlyingInstrumentId
+        self.UnderlyingIndexName = UnderlyingIndexName
         self.ContractExpiration = ContractExpiration
         self.DisplayName = DisplayName
         self.PriceNumerator = PriceNumerator
         self.PriceDenominator = PriceDenominator
         self.DetailedDescription = DetailedDescription
+
     
     def __repr__(self):
         return (f"xts_future_instrument_Name={self.Name},ExchangeInstrumentID={self.ExchangeInstrumentID},Series= {self.Series},InstrumentID={self.InstrumentID},ExchangeSegment={self.ExchangeSegment},LotSize={self.LotSize}")

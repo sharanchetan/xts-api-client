@@ -1,4 +1,4 @@
-from  decimal import Decimal
+from decimal import Decimal
 
 class xts_cm_Instrument():
     def __init__(self,
@@ -28,7 +28,7 @@ class xts_cm_Instrument():
         self.ExchangeSegment = ExchangeSegment
         self.ExchangeInstrumentID = ExchangeInstrumentID
         self.InstrumentType = InstrumentType
-        self.Name = Name   
+        self.Name = Name
         self.Description = Description
         self.Series = Series
         self.NameWithSeries = NameWithSeries
@@ -50,3 +50,6 @@ class xts_cm_Instrument():
         
     def __repr__(self):
         return (f"xts_cm_Instrument_Name={self.Name}, Series={self.Series}, ExchangeSegment={self.ExchangeSegment}, InstrumentID={self.InstrumentID}")
+    
+
+    
