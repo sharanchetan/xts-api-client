@@ -117,7 +117,7 @@ class XTSConnect(XTSCommon):
                  source,
                  root,
                  debug=False,
-                 timeout=7,
+                 timeout=1200, # chnaged from 7 to 1200, around 20 minutes.
                  pool=None,
                  disable_ssl=True):
         """
