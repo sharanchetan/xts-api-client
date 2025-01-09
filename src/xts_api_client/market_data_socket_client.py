@@ -34,7 +34,8 @@ class MarketDataSocketClient(Protocol):
         ...
 
     async def on_event_instrument_change_full(self, data):
-        self.engine_logger.info(f'I received a 1105:Instrument Change Level1, Touchline message: {data}')
+        """On receiving message code 1105:Touchline full"""
+        ...
 
     async def on_event_market_data_partial(self, data):
         """On receiving message code 1502:Market Data partial"""
