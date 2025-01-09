@@ -352,7 +352,7 @@ def ohlc_to_df(market_data_get_ohlc_dict: dict):
     ohlc_df["TimeStamp"] = pd.to_datetime(ohlc_df.TimeStamp, unit="s")
     return ohlc_df
 
-def ticker_exchangeInstrumentId_dict(dataframe_cm:pd.DataFrame):
+def equityticker_exchangeInstrumentId_dict(dataframe_cm:pd.DataFrame):
     """
     IT WORKS ONLY FOR CASH MARKET.
     Converts XTS-API(from XTS.Connect.get_master()-->cm_master_string_to_df/fo_master_string_to_df) DataFrame to a dictionary. So that user can search Instrument Id with ticker symbol.
