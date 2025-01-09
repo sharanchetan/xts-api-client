@@ -104,6 +104,7 @@
 <h1 id="helper-functionsmethods-available-in-package">Helper Functions/Methods available in package.</h1>
 <ul>
 <li>Helper function are written inside the package to serve as an example to end user on how to use the package.</li>
+<li>Examples for both synchronous &amp; asynchronous versions are shown.</li>
 </ul>
 <h2 id="xts_helper"><strong>XTS_Helper</strong></h2>
 <h3 id="cm_master_string_to_df"><strong>cm_master_string_to_df</strong>:</h3>
@@ -112,6 +113,31 @@
 <p>Parameters: <strong>cm_master_result</strong> of string type : The string response from the cm_master API.</p>
 <p>Returns: <strong>pd.DataFrame</strong>: A pandas DataFrame containing the parsed data from the cm_master_result string.</p>
 <hr />
+<pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+      |DataDrame for Cash Market|
+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+from xts_api_client.xts_connect_async import XTSConnect
+from xts_api_client.helper.helper import cm_master_string_to_df
+import asyncio
+
+async def main():
+      xt_market_data = XTSConnect(
+      apiKey = API_key,
+      secretKey = API_secret,
+      source = API_source,
+      root = API_root
+      )
+      response_marketdata_login = await xt_market_data.marketdata_login()
+
+      market_data_get_master = await xt_market_data.get_master(
+      exchangeSegmentList = [xt_market_data.EXCHANGE_NSECM] # Works for BSECM as well.
+      )
+
+      print((cm_master_string_to_df(market_data_get_master['result'])))
+if __name__ == &quot;__main__&quot;:
+    asyncio.run(main())
+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+</code></pre>
 <pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
       |DataDrame for Cash Market|
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
@@ -142,6 +168,40 @@ print(cm_master_string_to_df(market_data_get_master['result']))
 <p><strong>opt_master_df</strong>: DataFrame containing options data.</p>
 <p><strong>fut_spread_df</strong>: DataFrame Containing future spread data.</p>
 <hr />
+<pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+   |Tuple of DataDrame for FO Market|
+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+from xts_api_client.xts_connect_async import XTSConnect
+from xts_api_client.helper.helper import fo_master_string_to_df
+import asyncio
+async def main():
+    xt_market_data = XTSConnect(
+    apiKey = API_key,
+    secretKey = API_secret,
+    source = API_source,
+    root = API_root
+    )
+    response_marketdata_login = await xt_market_data.marketdata_login()
+
+    market_data_get_master = await xt_market_data.get_master(
+        exchangeSegmentList = [xt_market_data.EXCHANGE_BSEFO] # Works for BSECM as well.
+        )
+
+    &quot;&quot;&quot;
+    future_master_df = fo_master_string_to_df(market_data_get_master['result'])
+    print(future_master_df[0]) # This will give DataFrame for Future.
+
+    options_master_df = fo_master_string_to_df(market_data_get_master['result'])
+    print(options_master_df[1]) # This will give DataFrame for Options.
+
+    future_master_df = fo_master_string_to_df(market_data_get_master['result'])
+    print(future_master_df[2]) # This will give DataFrame for Spread.
+    &quot;&quot;&quot;
+    print((fo_master_string_to_df(market_data_get_master['result'])))
+if __name__ == &quot;__main__&quot;:
+    asyncio.run(main())
+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+</code></pre>
 <pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
    |Tuple of DataDrame for FO Market|
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
@@ -184,6 +244,37 @@ print(fo_master_string_to_df(market_data_get_master['result']))
 <pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 |List of InstrumentID for Cash Market|
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+from xts_api_client.xts_connect_async import XTSConnect
+from xts_api_client.helper.helper import cm_master_string_to_df, cm_master_df_to_xts_cm_instrument_list
+import asyncio
+
+async def main():
+    xt_market_data = XTSConnect(
+    apiKey = API_key,
+    secretKey = API_secret,
+    source = API_source,
+    root = API_root
+    )
+    response_marketdata_login = await xt_market_data.marketdata_login()
+
+    market_data_get_master = await xt_market_data.get_master(
+    exchangeSegmentList = [xt_market_data.EXCHANGE_NSECM] # Works for BSE as well.
+    )
+    #User can swap NSEFO with BSEFO if needed.
+    cm_master_df  = cm_master_string_to_df(market_data_get_master['result'])
+
+    cm_instrument_list=cm_master_df_to_xts_cm_instrument_list(
+        cm_master_df = cm_master_df,
+        series_list_to_include = [&quot;EQ&quot;,&quot;BE&quot;,&quot;BZ&quot;,&quot;SM&quot;,&quot;A&quot;,&quot;B&quot;] # &quot;EQ&quot;,&quot;BE&quot;,&quot;BZ&quot; Are for NSE &amp; &quot;SM&quot;,&quot;A&quot;,&quot;B&quot; are for BSE.
+    )
+    print(cm_instrument_list)
+if __name__ == &quot;__main__&quot;:
+    asyncio.run(main())
+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+</code></pre>
+<pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+|List of InstrumentID for Cash Market|
+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 from xts_api_client.xts_connect import XTSConnect
 from xts_api_client.helper.helper import cm_master_string_to_df, cm_master_df_to_xts_cm_instrument_list
 
@@ -217,6 +308,37 @@ print(cm_instrument_list)
 <pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 |List of Instrument Id for Future Contracts|
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+from xts_api_client.xts_connect_async import XTSConnect
+from xts_api_client.helper.helper import fo_master_string_to_df, fo_master_df_to_xts_future_instrument_list
+import asyncio
+
+async def main():
+    xt_market_data = XTSConnect(
+    apiKey = API_key,
+    secretKey = API_secret,
+    source = API_source,
+    root = API_root
+    )
+    response_marketdata_login = await xt_market_data.marketdata_login()
+
+    market_data_get_master = await xt_market_data.get_master(
+        exchangeSegmentList = [xt_market_data.EXCHANGE_NSEFO] # Works for BSE as well.
+        )
+
+    fo_master_df = fo_master_string_to_df(market_data_get_master['result'])
+
+    future_instrument_list = fo_master_df_to_xts_future_instrument_list(fo_master_df[0],
+        series_list_to_include = [&quot;FUTIDX&quot;,&quot;FUTSTK&quot;,&quot;IF&quot;] # &quot;FUTIDX&quot;,&quot;FUTSTK&quot; are for NSE &amp; &quot;IF&quot; is for BSE.
+        )
+
+    print(future_instrument_list)
+if __name__ == &quot;__main__&quot;:
+    asyncio.run(main())
+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+</code></pre>
+<pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+|List of Instrument Id for Future Contracts|
+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 from xts_api_client.xts_connect import XTSConnect
 from xts_api_client.helper.helper import fo_master_string_to_df, fo_master_df_to_xts_future_instrument_list
 
@@ -247,6 +369,38 @@ print(future_instrument_list)
 <p>Parameters: <strong>fo_master_df</strong> with pd.DataFrame type &amp; <strong>series_list_to_include</strong> with list type. Example of List : ["OPTIDX","OPTSTK","IO"].</p>
 <p>Returns: <strong>list</strong> of XTS Options Instruments.</p>
 <hr />
+<pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+|List of Instrument Id for Options Contracts|
+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+from xts_api_client.xts_connect_async import XTSConnect
+from xts_api_client.helper.helper import fo_master_string_to_df, fo_master_df_to_xts_options_instrument_list
+import asyncio
+
+async def main():
+    xt_market_data = XTSConnect(
+    apiKey = API_key,
+    secretKey = API_secret,
+    source = API_source,
+    root = API_root
+    )
+    response_marketdata_login = await xt_market_data.marketdata_login()
+
+    market_data_get_master = await xt_market_data.get_master(
+        exchangeSegmentList = [xt_market_data.EXCHANGE_NSEFO] # Works for BSE as well.
+        )
+    #User can swap NSEFO with BSEFO if needed.
+
+    fo_master_df = fo_master_string_to_df(market_data_get_master['result'])
+
+    options_instrument_list = fo_master_df_to_xts_options_instrument_list(fo_master_df[1],
+        series_list_to_include = [&quot;OPTIDX&quot;,&quot;OPTSTK&quot;,&quot;IO&quot;] # &quot;OPTIDX&quot;,&quot;OPTSTK&quot; are for NSE &amp; &quot;IO&quot; is for BSE.
+        )
+
+    print(options_instrument_list)
+if __name__ == &quot;__main__&quot;:
+    asyncio.run(main())
+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+</code></pre>
 <pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 |List of Instrument Id for Options Contracts|
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
@@ -284,6 +438,37 @@ Returns: A <strong>pd.DataFrame</strong> from the OHLC values.</p>
 <pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
         |OHLC for Cash Market|
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+from xts_api_client.xts_connect_async import XTSConnect
+from xts_api_client.helper.helper import ohlc_to_df
+import asyncio
+
+async def main():
+    xt_market_data = XTSConnect(
+    apiKey = API_key,
+    secretKey = API_secret,
+    source = API_source,
+    root = API_root
+    )
+    response_marketdata_login = await xt_market_data.marketdata_login()
+
+    marget_data_get_ohlc = await xt_market_data.get_ohlc(
+        exchangeSegment = xt_market_data.EXCHANGE_NSECM, # Also Works for BSECM
+        exchangeInstrumentID = 22, # When using BSECM, Use BSE instrument Id like &quot;526530&quot;
+        startTime = &quot;Dec 02 2024 091500&quot;, #Time in IST
+        endTime = &quot;Dec 02 2024 133000&quot;, #Time in IST, 24 hour clock.
+        compressionValue = 60) # 60 represents 1 minute. Check Documentation for different values.
+
+    # Change the values oh OHLC parameters as required.
+
+    ohlc_df = ohlc_to_df(marget_data_get_ohlc)
+    print(ohlc_df)
+if __name__ == &quot;__main__&quot;:
+    asyncio.run(main())
+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+</code></pre>
+<pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+        |OHLC for Cash Market|
+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 from xts_api_client.xts_connect import XTSConnect
 from xts_api_client.helper.helper import ohlc_to_df
 
@@ -308,11 +493,11 @@ ohlc_df = ohlc_to_df(marget_data_get_ohlc)
 print(ohlc_df)
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 </code></pre>
-<h3 id="ticker_exchangeinstrumentid_dict"><strong>ticker_exchangeInstrumentId_dict</strong>:</h3>
+<h3 id="equityticker_exchangeinstrumentid_dict"><strong>equityticker_exchangeInstrumentId_dict</strong>:</h3>
 <p>Converts XTS-API DataFrame (generated from XTS.Connect.get_master() with helper functoin <strong>cm_master_string_to_df/fo_master_string_to_df</strong>) to a dictionary. So that user can search Instrument Id with ticker symbol. IT ONLY WORKS FOR CASH MARKET.</p>
 <hr />
 <p>Parameters: The return of <strong>cm_master_string_to_df/fo_master_string_to_df</strong> methods with the pd.DataFrame type.
-Returns: A <strong>Dictionary</strong> conatining Ticker Symbol as keys &amp; Exchange Instrument Id as values. </p>
+Returns: A <strong>Dictionary</strong> containing Ticker Symbol as keys &amp; Exchange Instrument Id as values. </p>
 <hr />
 <pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 |Ticker:ExchangeInstrumentId Dict for Cash Market|
@@ -335,6 +520,20 @@ ticker_exchInstrumentID_dict = ticker_exchangeInstrumentId_dict(cm_master_df)
 print(ticker_exchInstrumentID_dict.get('RELIANCE')) # Reliance is kept here as an example. User can print &quot;ticker_exchInstrumentID_dict&quot; for full data.
 
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+</code></pre>
+<h3 id="dostime_secomds_to_unixtime"><strong>dostime_secomds_to_unixtime</strong>:</h3>
+<p>Converts the MS DOS time that is used by NSE &amp; BSE to Unix epoch time.
+    * The MS-DOS time/date format uses midnight on January 1, 1980 as a sentinel value, or epoch.
+    * Unix epoch starts from  midnight on January 1, 1970.
+The function also allowes to add timezone info to the converted time. by default it will add the timezone info of Asia/Kolkata.
+<em>IMPORTANT: Adding timezone info makes the time aware about time zone. but the value of Uniux will remain UNCHNAGED!</em></p>
+<hr />
+<p>Parameters: ms dos time in seconds.
+Returns: Time in unix epoch. </p>
+<hr />
+<pre><code>from xts_api_client.helper.helper import dostime_secomds_to_unixtime
+
+print(dostime_secomds_to_unixtime(1420378549, &quot;UTC&quot;))
 </code></pre></div>
             </div>
         </div>
