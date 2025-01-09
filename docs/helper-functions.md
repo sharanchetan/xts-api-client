@@ -230,7 +230,7 @@ print(ohlc_df)
 Converts XTS-API DataFrame (generated from XTS.Connect.get_master() with helper functoin __cm_master_string_to_df/fo_master_string_to_df__) to a dictionary. So that user can search Instrument Id with ticker symbol. IT ONLY WORKS FOR CASH MARKET.
 ___
 Parameters: The return of __cm_master_string_to_df/fo_master_string_to_df__ methods with the pd.DataFrame type.
-Returns: A __Dictionary__ conatining Ticker Symbol as keys & Exchange Instrument Id as values. 
+Returns: A __Dictionary__ containing Ticker Symbol as keys & Exchange Instrument Id as values. 
 ___
 
 ```

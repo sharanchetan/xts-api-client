@@ -12,8 +12,7 @@ plugins:
 nav:
   - index.md
   - Getting Started: getting-started.md
-  - Package Structure: package-structure.md
-  - Helper Functions: helper-function.md
-  - how-to-guides.md
-  - class-reference.md
-  - reference.md
+  - Helper Function: helper-functions.md
+  - How To Guide: how-to-guides.md
+  - Class-Reference: class-reference.md
+  - Reference: reference.md

@@ -1,12 +1,12 @@
 [project]
 name = "xts-api-client"
-version = "0.1.0"
+version = "0.1.2"
 description = "A Package designed for connecting to a Stock Broker that uses Symphony Fintech Solutions Pvt. Ltd for there API."
 readme = "README.md"
 authors = [
     { name = "Chetan Sharan", email = "chetan.sharan@rmoneyindia.com" }
 ]
-requires-python = "~=3.12"
+requires-python = ">=3.12"
 dependencies = [
     "aiohttp==3.11.11",
     "pandas>=2.2.3",

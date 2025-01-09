@@ -35,22 +35,19 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="nav-item">
-                                <a href="." class="nav-link active" aria-current="page">Installation</a>
+                                <a href="." class="nav-link active" aria-current="page">Package Structure</a>
                             </li>
                             <li class="nav-item">
                                 <a href="getting-started/" class="nav-link">Getting Started</a>
                             </li>
                             <li class="nav-item">
-                                <a href="package-structure/" class="nav-link">Package Structure</a>
+                                <a href="helper-functions/" class="nav-link">Helper Function</a>
                             </li>
                             <li class="nav-item">
-                                <a href="helper-function/" class="nav-link">Helper Functions</a>
+                                <a href="how-to-guides/" class="nav-link">How To Guide</a>
                             </li>
                             <li class="nav-item">
-                                <a href="how-to-guides/" class="nav-link">How To Guide for Package</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="class-reference/" class="nav-link">Class Reference</a>
+                                <a href="class-reference/" class="nav-link">Class-Reference</a>
                             </li>
                             <li class="nav-item">
                                 <a href="reference/" class="nav-link">Reference</a>
@@ -91,17 +88,13 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#installation" class="nav-link">Installation</a>
+            <li class="nav-item" data-bs-level="1"><a href="#package-structure" class="nav-link">Package Structure</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#local-server-installation-recommended" class="nav-link">Local Server Installation (recommended)</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#local-installation" class="nav-link">Local Installation</a>
+            <li class="nav-item" data-bs-level="2"><a href="#xts_connectpy" class="nav-link">xts_connect.py</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#pip-installuv-add" class="nav-link">Pip install/uv add</a>
+            <li class="nav-item" data-bs-level="2"><a href="#xts_connect_asyncpy" class="nav-link">xts_connect_async.py</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -112,34 +105,36 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="installation">Installation</h1>
+<h1 id="package-structure">Package Structure</h1>
 <ul>
-<li>This package is written to be used as a XTS API Client in Python.</li>
-<li>With the correct API credentials, User can access XTS interactive &amp; market data.</li>
+<li>To better consume the package, the user should have a clear understanding of the architecture of the package.</li>
 </ul>
-<h2 id="local-server-installation-recommended">Local Server Installation (<em>recommended</em>)</h2>
+<p>Here is the folder structure of the project:</p>
+<pre><code>└───xts_api_client
+    │   interactive_socket.py
+    │   interactive_socket_client.py
+    │   market_data_socket.py
+    │   market_data_socket_client.py
+    │   py.typed
+    │   xts_connect.py
+    │   xts_connect_async.py
+    │   xts_exception.py
+    │   __init__.py
+    │   
+    ├───helper
+        helper.py
+        helper_classes.py
+        __init__.py
+</code></pre>
+<p>There are two version of xts_connect. A synchronous version &amp; an Asynchronous version.</p>
+<h2 id="xts_connectpy">xts_connect.py</h2>
 <ul>
-<li>Use <strong>uv packages manager</strong> to install the package. Example of the command is shown below. (<em>recommended</em>)</li>
+<li>This module is written for simple test cases &amp; basic understanding of the API, however in practical cases, user will have to use Asynchronous methods.</li>
 </ul>
-<p><em>Step 1.</em> </p>
-<pre><code>uv add --frozen http://pypi.rmoneyindia.in:8080/xts_api_client-1.0.7-py3-none-any.whl
-</code></pre>
-<p><em>Step 2.</em></p>
-<pre><code>uv sync
-</code></pre>
-<h3 id="use-pip-to-install-the-package-not-recommended">Use <em>PIP</em> to install the package. (<em>not recommended</em>)</h3>
-<pre><code>pip install http://pypi.rmoneyindia.in:8080/xts_api_client-1.0.7-py3-none-any.whl
-</code></pre>
-<h2 id="local-installation">Local Installation</h2>
+<h2 id="xts_connect_asyncpy">xts_connect_async.py</h2>
 <ul>
-<li>To install the package locally, download the complete zip of the package.</li>
-<li>As per user discretion, use <a href="https://docs.python.org/3/library/venv.html">virtual envirnment</a> or <a href="https://docs.astral.sh/uv/">uv package manager</a>. Activate the envirnment. <strong><em>This is an optional step</em></strong> .</li>
-<li>Navigate the <strong>PowerShell/Command prompt</strong> to the directory (xts_api_client\dist) where <strong>xts_api_client-0.1.0-py3-none-any.whl</strong> file exists.</li>
-<li>Use "pip install xts_api_client-0.1.0-py3-none-any.whl"</li>
-<li>Use "pip list" or "uv pip list" to verify the installation.</li>
-</ul>
-<h2 id="pip-installuv-add">Pip install/uv add</h2>
-<p>Currently, the package is not been hosted on the <a href="https://pypi.org/">Python Package Index</a>. So other workarounds are mentioned here to make use of the package.</p></div>
+<li>For all intensive purposes, this module will be used only because of the nature of application.</li>
+</ul></div>
             </div>
         </div>
 
@@ -221,5 +216,5 @@
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-01-09 06:11:44.746393+00:00
+Build Date UTC : 2025-01-09 09:30:04.439474+00:00
 -->

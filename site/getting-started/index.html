@@ -35,22 +35,19 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="nav-item">
-                                <a href=".." class="nav-link">Installation</a>
+                                <a href=".." class="nav-link">Package Structure</a>
                             </li>
                             <li class="nav-item">
                                 <a href="./" class="nav-link active" aria-current="page">Getting Started</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../package-structure/" class="nav-link">Package Structure</a>
+                                <a href="../helper-functions/" class="nav-link">Helper Function</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../helper-function/" class="nav-link">Helper Functions</a>
+                                <a href="../how-to-guides/" class="nav-link">How To Guide</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../how-to-guides/" class="nav-link">How To Guide for Package</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../class-reference/" class="nav-link">Class Reference</a>
+                                <a href="../class-reference/" class="nav-link">Class-Reference</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../reference/" class="nav-link">Reference</a>
@@ -69,7 +66,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../package-structure/" class="nav-link">
+                                <a rel="next" href="../helper-functions/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -147,26 +144,65 @@
 <li>Market Data API is a mixed HTTP REST and HTTP streaming API. It provides access to live quotes data on a wide range of symbols.</li>
 </ul>
 <h2 id="steps-to-use-the-package"><strong>Steps to use the Package</strong></h2>
+<ul>
+<li>Here's an example code block that loads API credentials from environment variables and uses them to log in to a MarketData API. It has been explained in subsequest steps.</li>
+</ul>
+<pre><code>import os
+from dotenv import load_dotenv
+load_dotenv()
+
+API_key = os.getenv(&quot;API_KEY&quot;)
+API_secret = os.getenv(&quot;API_SECRET&quot;)
+API_source = os.getenv(&quot;API_SOURCE&quot;)
+API_root = os.getenv(&quot;API_URL&quot;)
+
+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+      |DataDrame for Cash Market|
+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+from xts_api_client.xts_connect_async import XTSConnect
+from xts_api_client.helper.helper import cm_master_string_to_df
+import asyncio
+
+async def main():
+      xt_market_data = XTSConnect(
+      apiKey = API_key,
+      secretKey = API_secret,
+      source = API_source,
+      root = API_root
+      )
+      response_marketdata_login = await xt_market_data.marketdata_login()
+
+      market_data_get_master = await xt_market_data.get_master(
+      exchangeSegmentList = [xt_market_data.EXCHANGE_NSECM] # Works for BSECM as well.
+      )
+
+      print((cm_master_string_to_df(market_data_get_master['result'])))
+if __name__ == &quot;__main__&quot;:
+    asyncio.run(main())
+&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
+</code></pre>
 <h2 id="step-1-instantiate-xts-class-into-object-before-login"><strong><em>Step 1. Instantiate XTS class into object before login.</em></strong></h2>
 <ul>
 <li>Import <em>class</em> 'XTSConnect' &amp; then instantiate it as shown.</li>
 <li>Write your apikey, secretkey, source &amp; root. Root is the URL with port included.</li>
 </ul>
-<pre><code>from xts_api_client.xts_connect import XTSConnect
+<pre><code>
+from xts_api_client.xts_connect_async import XTSConnect
 
 xt_market_data = XTSConnect(
-    apiKey = market_data_API_key,
-    secretKey = market_data_API_secret,
-    source = API_source,
-    root = API_root
-)
+      apiKey = API_key,
+      secretKey = API_secret,
+      source = API_source,
+      root = API_root
+      )
+
 </code></pre>
 <h2 id="step-2-logging-in"><strong><em>Step 2. Logging in.</em></strong></h2>
 <ul>
 <li>As mentioned earlier, there are two types of API in XTS. The below example is for market data API.</li>
 <li>After instantiating XTSConnect. Use the method marketdata login to log in &amp; access data.</li>
 </ul>
-<pre><code>response_marketdata_login = xt_market_data.marketdata_login()
+<pre><code>response_marketdata_login = await xt_market_data.marketdata_login()
 </code></pre>
 <p>If the credentials are correct, printing 'response_marketdata_login' will five a JSON like following.</p>
 <pre><code>{'type': 'success', 'code': 'e-response-0010', 'description': 'Provided Valid Credentials', 'result': {'token': data removed, 'userID': data removed, 'appVersion': data removed, 'application_expiry_date': data removed}}
@@ -175,7 +211,7 @@ xt_market_data = XTSConnect(
 <ul>
 <li>Once you have logged in through market_data_API, you can get the configuration for the market data.</li>
 </ul>
-<pre><code>market_data_get_config = xt_market_data.get_config()
+<pre><code>market_data_get_config = await xt_market_data.get_config()
 </code></pre>
 <p>Printing the 'market_data_get_config' will give JSON like following.</p>
 <pre><code>{'type': 'success', 'code': 's-response-0001', 'description': 'Fetched configurations successfully', 'result': __{'exchangeSegments': {'NSECM': 1, 'NSEFO': 2, 'NSECD': 3, 'NSECO': 4, 'SLBM': 5, 'NIFSC': 7, 'BSECM': 11, 'BSEFO': 12, 'BSECD': 13, 'BSECO': 14, 'NCDEX': 21, 'MSECM': 41, 'MSEFO': 42, 'MSECD': 43, 'MCXFO': 51}__, 'xtsMessageCode': {'touchlineEvent': 1501, 'marketDepthEvent': 1502, 'indexDataEvent': 1504, 'candleDataEvent': 1505, 'openInterestEvent': 1510, 'instrumentPropertyChangeEvent': 1105, 'ltpEvent': 1512}, 'publishFormat': ['Binary', 'JSON'], 'broadCastMode': ['Full', 'Partial'], 'instrumentType': {'1': 'Futures', '2': 'Options', '4': 'Spread', '8': 'Equity', '16': 'Spot', '32': 'PreferenceShares', '64': 'Debentures', '128': 'Warrants', 
@@ -188,58 +224,28 @@ xt_market_data = XTSConnect(
 <li>The type of <em>master</em> is a dictionary, that contains all the data sepearted by "|".</li>
 <li>The parameter 'exchangeSegmentList' takes a list of exchange segments. In XTS, NSE has few segments as shown in the cofig output above.</li>
 </ul>
-<pre><code>market_data_get_master = xt_market_data.get_master(
-    exchangeSegmentList = [xt_market_data.EXCHANGE_NSECM]
-    )
+<pre><code>market_data_get_master = await xt_market_data.get_master(
+      exchangeSegmentList = [xt_market_data.EXCHANGE_NSECM] # Works for BSECM as well.
+      )
 </code></pre>
 <ul>
 <li>Both above &amp; below code will give same result. </li>
 </ul>
-<pre><code>market_data_get_master = xt_market_data.get_master(
+<pre><code>market_data_get_master = await xt_market_data.get_master(
       exchangeSegmentList = ['NSECM']
       )
 </code></pre>
 <p>A snippet of print of market_data_get_master.</p>
 <pre><code>...nNSECM|11369|8|TTKHLTCARE|TTKHLTCARE-EQ|EQ|TTKHLTCARE-EQ|1100100011369|1798.7|1199.2|66709|0.05|1|1|TTKHLTCARE|INE910C01018|1|1|TTK HEALTHCARE LIMITED-EQ|0|-1|-1\nNSECM|20364|8|771KL43|771KL43-SG|SG|771KL43-SG|1100100020364|102.37|92.62|1025599|0.01|100|1|771KL43|IN2020230172|1|1|SDL KL 7.71% 2043-SG|0|-1|-1\nNSECM|21711|8|68PN26|68PN26-SG|SG|68PN26-SG|1100100021711|108.7|98.35|965899|0.01|100|1|68PN26|IN2820200052|1|1|SDL PN 6.8% 2026-SG|0|-1|-1'}
 </code></pre>
-<ul>
-<li><strong>We can make a DataFrame of NSE cash market master data, using the following code snippet.</strong></li>
-</ul>
-<pre><code>import pandas as pd
-from io import StringIO 
-
-master_data_nsecm = xt_market_data.get_master(exchangeSegmentList=['NSECM'])
-col_header = &quot;ExchangeSegment|ExchangelnstrumentlD|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentlD|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplier|DisplayName|ISIN|PriceNumerator|PriceDenominator|DetailedDescription|ExtendedSurvlndicator|Cautionlndicator|GSMIndicator&quot;.split(&quot;|&quot;)
-nsecm_master_df = pd.read_csv(StringIO(master_data_nsecm['result']), sep = &quot;|&quot;, usecols=range(22), low_memory =False,header=None)
-nsecm_master_df.columns = col_header
-</code></pre>
-<ul>
-<li><strong>We can make a DataFrame of NSE and BSE; future &amp; options master data, using the following code snippet.</strong></li>
-</ul>
-<pre><code>import pandas as pd
-from io import StringIO 
-
-master_data_nsefo = xt_market_data.get_master(exchangeSegmentList=['NSEFO'])
-col_header = &quot;ExchangeSegment|ExchangeInstrumentlD|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplierl|Underlyinglnstrumentld|UnderlyinglndexName|ContractExpiration|StrikePrice|OptionType|DisplayNamel|PriceNumerator|PriceDenominator|DetailedDescription&quot;.split(&quot;|&quot;)
-nsefo_master_df = pd.read_csv(StringIO(master_data_nsefo['result']), sep = &quot;|&quot;, usecols=range(23), low_memory =False,header=None)
-nsefo_master_df.columns = col_header
-</code></pre>
-<pre><code>import pandas as pd
-from io import StringIO 
-
-master_data_bsefo = xt_market_data.get_master(exchangeSegmentList=['BSEFO'])
-col_header = &quot;ExchangeSegment|ExchangeInstrumentlD|InstrumentType|Name|Description|Series|NameWithSeries|InstrumentID|PriceBand.High|PriceBand.Low|FreezeQty|TickSize|LotSize|Multiplierl|Underlyinglnstrumentld|UnderlyinglndexName|ContractExpiration|StrikePrice|OptionType|DisplayNamel|PriceNumerator|PriceDenominator|DetailedDescription&quot;.split(&quot;|&quot;)
-bsefo_master_df = pd.read_csv(StringIO(market_data_BSEFO['result']), sep = &quot;|&quot;, usecols=range(23), low_memory =False,header=None)
-bsefo_master_df.columns = col_header
-</code></pre>
 <h2 id="step-5-getting-the-ohlc-data"><strong><em>Step 5. Getting the OHLC Data.</em></strong></h2>
 <ul>
 <li>The data is available in the form of a candle timestamp with epoch from 1970, Open, High, Low, Close, Volume, OI.</li>
 <li>The least compression available is 60(1 minute) for both event stream and long polling (GET at 1 Request Per Second).</li>
 <li>Other supported intervals for GET (long polling ) Request are 2 minute, 3 minutes, 5 minutes, 15 minutes, 30 minutes , hourly and daily.</li>
-<li>Format of startTime &amp; endTime is "MMM DD YYYY HHMMSS". In the example given below 091500 means morning nine fifteen in IST. Market open  time :-) .</li>
+<li>Format of startTime &amp; endTime is "MMM DD YYYY HHMMSS". In the example given below 091500 means morning nine fifteen in IST. Market open time :-) .</li>
 </ul>
-<pre><code>marget_data_get_ohlc = xt_market_data.get_ohlc(
+<pre><code>marget_data_get_ohlc = await xt_market_data.get_ohlc(
     exchangeSegment = xt_market_data.EXCHANGE_NSECM,
     exchangeInstrumentID = 22,
     startTime = &quot;Dec 02 2024 091500&quot;,
@@ -248,10 +254,7 @@ bsefo_master_df.columns = col_header
 </code></pre>
 <p>Printing market_data_get_ohlc will give a dictionary, as shown below.</p>
 <pre><code>{'type': 'success', 'code': 's-instrument-0002', 'description': 'Data found', 'result': {'exchangeSegment': 'NSECM', 'exchangeInstrumentID': '22', 'dataReponse': DELETED FOR DATA PRIVACY}}
-</code></pre>
-<ul>
-<li>From the DataFrame made above (in master data section), user can select different instruments &amp; can gain further insight.</li>
-</ul></div>
+</code></pre></div>
             </div>
         </div>
 
