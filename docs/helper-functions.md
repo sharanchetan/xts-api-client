@@ -13,7 +13,7 @@ Returns: __pd.DataFrame__: A pandas DataFrame containing the parsed data from th
 ___
 ```
 """""""""""""""""""""""""""""""""""""""
-      |DataDrame for Cash Market|
+      |DataFrame for Cash Market|
 """""""""""""""""""""""""""""""""""""""
 from xts_api_client.xts_connect_async import XTSConnect
 from xts_api_client.helper.helper import cm_master_string_to_df
@@ -39,7 +39,7 @@ if __name__ == "__main__":
 ```
 ```
 """""""""""""""""""""""""""""""""""""""
-      |DataDrame for Cash Market|
+      |DataFrame for Cash Market|
 """""""""""""""""""""""""""""""""""""""
 from xts_api_client.xts_connect import XTSConnect
 from xts_api_client.helper.helper import cm_master_string_to_df
@@ -112,7 +112,7 @@ if __name__ == "__main__":
 ```
 ```
 """""""""""""""""""""""""""""""""""""""
-   |Tuple of DataDrame for FO Market|
+   |Tuple of DataFrame for FO Market|
 """""""""""""""""""""""""""""""""""""""
 from xts_api_client.xts_connect import XTSConnect
 from xts_api_client.helper.helper import fo_master_string_to_df
@@ -402,7 +402,7 @@ root = API_root
 )
 response_marketdata_login = xt_market_data.marketdata_login()
 
-marget_data_get_ohlc = xt_market_data.get_ohlc(
+market_data_get_ohlc = xt_market_data.get_ohlc(
     exchangeSegment = xt_market_data.EXCHANGE_NSECM, # Also Works for BSECM
     exchangeInstrumentID = 22, # When using BSECM, Use BSE instrument Id like "526530"
     startTime = "Dec 02 2024 091500", #Time in IST
@@ -411,7 +411,7 @@ marget_data_get_ohlc = xt_market_data.get_ohlc(
 
 # Change the values oh OHLC parameters as required.
 
-ohlc_df = ohlc_to_df(marget_data_get_ohlc)
+ohlc_df = ohlc_to_df(market_data_get_ohlc)
 print(ohlc_df)
 """"""""""""""""""""""""""""""""""""""""""
 ```

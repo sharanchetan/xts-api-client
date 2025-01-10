@@ -1,12 +1,12 @@
 site_name: XTS Client API Documentation
 
 theme:
-  name: mkdocs
+  name: material
   features:
     - content.code.copy
 
 plugins:
-# - mkdocstrings
+  - mkdocstrings
   - search
 
 nav:
