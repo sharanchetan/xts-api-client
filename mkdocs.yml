@@ -13,5 +13,5 @@ nav:
   - Getting Started: getting-started.md
   - Helper Function: helper-functions.md
   - How To Guide: how-to-guides.md
-  - Class-Reference: class-reference.md
+  #- Class-Reference: class-reference.md
   - Reference: reference.md
