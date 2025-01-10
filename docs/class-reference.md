@@ -1,7 +1,7 @@
 # Class Reference
 This page contains the syntax & parameter requirements for each function/method of the package.
 ## __XTS_Connect__
-::: xts_api_client.xts_connect
+::: xts_api_client.xts_connect_async
 ## __interactive_socket_client__
 ::: xts_api_client.interactive_socket_client
 ## __interactive_socket__
