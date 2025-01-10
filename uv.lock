@@ -959,6 +959,8 @@ version = "0.1.4"
 source = { editable = "." }
 dependencies = [
     { name = "aiohttp" },
+    { name = "mkdocs-material" },
+    { name = "mkdocstrings", extra = ["python"] },
     { name = "pandas" },
     { name = "python-dotenv" },
     { name = "python-socketio" },
@@ -981,6 +983,8 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "aiohttp", specifier = "==3.11.11" },
+    { name = "mkdocs-material", specifier = ">=9.5.49" },
+    { name = "mkdocstrings", extras = ["python"], specifier = ">=0.27.0" },
     { name = "pandas", specifier = ">=2.2.3" },
     { name = "python-dotenv", specifier = ">=1.0.1" },
     { name = "python-socketio", specifier = "==4.6.1" },

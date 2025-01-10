@@ -1,16 +1,15 @@
 site_name: XTS Client API Documentation
 
-theme:
-  name: material
-  features:
-    - content.code.copy
+# theme:
+#   features:
+#     - content.code.copy
 
 plugins:
-  - mkdocstrings
+# - mkdocstrings
   - search
 
 nav:
-  - index.md
+  #- index.md
   - Getting Started: getting-started.md
   - Helper Function: helper-functions.md
   - How To Guide: how-to-guides.md

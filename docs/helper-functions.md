@@ -77,7 +77,7 @@ __fut_spread_df__: DataFrame Containing future spread data.
 ___
 ```
 """""""""""""""""""""""""""""""""""""""
-   |Tuple of DataDrame for FO Market|
+   |Tuple of DataFrame for FO Market|
 """""""""""""""""""""""""""""""""""""""
 from xts_api_client.xts_connect_async import XTSConnect
 from xts_api_client.helper.helper import fo_master_string_to_df
