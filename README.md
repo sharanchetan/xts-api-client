@@ -4,13 +4,13 @@
 * With the correct API credentials, User can access XTS interactive & market data.
 
 # Reference
-*  This is a python client package for XTS API. XTS is product from [Symphony Fintech Solutions Pvt. Ltd.](https://symphonyfintech.com/). The original documentation for XTS Clinet is [___linked here___](https://symphonyfintech.com/xts-market-data-front-end-api-v2/).
+*  This is a python client package for XTS API. XTS is product from [Symphony Fintech Solutions Pvt. Ltd.](https://symphonyfintech.com/). The original documentation for XTS Client is [___linked here___](https://symphonyfintech.com/xts-market-data-front-end-api-v2/).
 
 *  This package is a __derivative work__ of the original package written by [Symphony Fintech Solutions Pvt. Ltd.](https://symphonyfintech.com/).
-*  [Link for original GitHub Repository](https://github.com/symphonyfintech/xts-pythonclient-api-sdk). It takes inspirations from the original, however it differs in the implimentation.
+*  [Link for original GitHub Repository](https://github.com/symphonyfintech/xts-pythonclient-api-sdk). It takes inspirations from the original, however it differs in the implementation.
 *  GitHub [Link](https://github.com/sharanchetan/xts-api-client) for this repository.
 
-# Documentataion.
+# Documentation.
 * Detailed documentation is provided [here](https://xts-api-client.readthedocs.io/en/latest/).
 
 # Package Structure
@@ -135,7 +135,7 @@ Printing the 'market_data_get_config' will give JSON like following.
 ## ___Step 4. Getting the Master Data.___
 * XTS provides API Call to fetch all tradable as well as some additional Instrument/contract masters in a single structure. 
 * This call can be made once in a day and the response can be persisted in local storage or file as per you application design and you can fetch instrumented or Symbols from this dataset throughout the day.
-* The type of _master_ is a dictionary, that contains all the data sepearted by "|".
+* The type of _master_ is a dictionary, that contains all the data separated by "|".
 * The parameter 'exchangeSegmentList' takes a list of exchange segments. In XTS, NSE has few segments as shown in the cofig output above.
 
 ```
@@ -215,7 +215,7 @@ if __name__ == "__main__":
 ```
 ```
 """""""""""""""""""""""""""""""""""""""
-      |DataDrame for Cash Market|
+      |DataFrame for Cash Market|
 """""""""""""""""""""""""""""""""""""""
 from xts_api_client.xts_connect import XTSConnect
 from xts_api_client.helper.helper import cm_master_string_to_df
@@ -253,7 +253,7 @@ __fut_spread_df__: DataFrame Containing future spread data.
 ___
 ```
 """""""""""""""""""""""""""""""""""""""
-   |Tuple of DataDrame for FO Market|
+   |Tuple of DataFrame for FO Market|
 """""""""""""""""""""""""""""""""""""""
 from xts_api_client.xts_connect_async import XTSConnect
 from xts_api_client.helper.helper import fo_master_string_to_df
@@ -288,7 +288,7 @@ if __name__ == "__main__":
 ```
 ```
 """""""""""""""""""""""""""""""""""""""
-   |Tuple of DataDrame for FO Market|
+   |Tuple of DataFrame for FO Market|
 """""""""""""""""""""""""""""""""""""""
 from xts_api_client.xts_connect import XTSConnect
 from xts_api_client.helper.helper import fo_master_string_to_df

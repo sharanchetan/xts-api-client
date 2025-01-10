@@ -1,5 +1,5 @@
 # Class Reference
-This page contains the syntex & patameter requirements for each function/method of the package.
+This page contains the syntax & parameter requirements for each function/method of the package.
 ## __XTS_Connect__
 ::: xts_api_client.xts_connect
 ## __interactive_socket_client__

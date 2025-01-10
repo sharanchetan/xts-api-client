@@ -33,7 +33,7 @@
       *  __get_config__: Get the configuration of the client.
       *  __get_quote__: Get the quote of the instrument.
       *  __send_subscription__: Send subscription for the instrument.
-      *  __send_unsubscription__: Send unsubscription for the instrument.
+      *  __send_unsubscription__: Send un subscription for the instrument.
       *  __get_master__: Get the master string.
       *  __get_ohlc__: Get the OHLC of the instrument.
       *  __get_series__: Get the series of the exchange segment.

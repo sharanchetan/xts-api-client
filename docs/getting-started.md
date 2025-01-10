@@ -10,7 +10,7 @@
 
 ## __Steps to use the Package__
 
-* Here's an example code block that loads API credentials from environment variables and uses them to log in to a MarketData API. It has been explained in subsequest steps.
+* Here's an example code block that loads API credentials from environment variables and uses them to log in to a MarketData API. It has been explained in subsequent steps.
 
 ```
 import os
@@ -90,7 +90,7 @@ Printing the 'market_data_get_config' will give JSON like following.
 ## ___Step 4. Getting the Master Data.___
 * XTS provides API Call to fetch all tradable as well as some additional Instrument/contract masters in a single structure. 
 * This call can be made once in a day and the response can be persisted in local storage or file as per you application design and you can fetch instrumented or Symbols from this dataset throughout the day.
-* The type of _master_ is a dictionary, that contains all the data sepearted by "|".
+* The type of _master_ is a dictionary, that contains all the data separated by "|".
 * The parameter 'exchangeSegmentList' takes a list of exchange segments. In XTS, NSE has few segments as shown in the cofig output above.
 
 ```
