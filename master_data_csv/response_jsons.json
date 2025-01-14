@@ -239,3 +239,8 @@
     "PercentChange": -2.1749598715890883,
     "Close": 623
 }'
+
+1507: Full
+`
+{'MessageCode': 1507, 'MessageVersion': 4, 'ApplicationType': 0, 'TokenID': 0, 'ExchangeSegment': 2, 'ExchangeInstrumentID': 0, 'ExchangeTimeStamp': 1415460600, 'exchangeSegment': 2, 'tradingSession': 4, 'maketType': 1, 'message': 'THE REGULAR SEGMENT HAS CLOSED FOR 07 NOV 2024', 'SequenceNumber': 1531302407952658}
+`
