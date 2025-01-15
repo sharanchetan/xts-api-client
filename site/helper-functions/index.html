@@ -35,9 +35,6 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="nav-item">
-                                <a href=".." class="nav-link">Package Structure</a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="../getting-started/" class="nav-link">Getting Started</a>
                             </li>
                             <li class="nav-item">
@@ -45,9 +42,6 @@
                             </li>
                             <li class="nav-item">
                                 <a href="../how-to-guides/" class="nav-link">How To Guide</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../class-reference/" class="nav-link">Class-Reference</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../reference/" class="nav-link">Reference</a>
@@ -114,7 +108,7 @@
 <p>Returns: <strong>pd.DataFrame</strong>: A pandas DataFrame containing the parsed data from the cm_master_result string.</p>
 <hr />
 <pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
-      |DataDrame for Cash Market|
+      |DataFrame for Cash Market|
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 from xts_api_client.xts_connect_async import XTSConnect
 from xts_api_client.helper.helper import cm_master_string_to_df
@@ -139,7 +133,7 @@ if __name__ == &quot;__main__&quot;:
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 </code></pre>
 <pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
-      |DataDrame for Cash Market|
+      |DataFrame for Cash Market|
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 from xts_api_client.xts_connect import XTSConnect
 from xts_api_client.helper.helper import cm_master_string_to_df
@@ -169,7 +163,7 @@ print(cm_master_string_to_df(market_data_get_master['result']))
 <p><strong>fut_spread_df</strong>: DataFrame Containing future spread data.</p>
 <hr />
 <pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
-   |Tuple of DataDrame for FO Market|
+   |Tuple of DataFrame for FO Market|
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 from xts_api_client.xts_connect_async import XTSConnect
 from xts_api_client.helper.helper import fo_master_string_to_df
@@ -203,7 +197,7 @@ if __name__ == &quot;__main__&quot;:
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 </code></pre>
 <pre><code>&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
-   |Tuple of DataDrame for FO Market|
+   |Tuple of DataFrame for FO Market|
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 from xts_api_client.xts_connect import XTSConnect
 from xts_api_client.helper.helper import fo_master_string_to_df
@@ -480,7 +474,7 @@ root = API_root
 )
 response_marketdata_login = xt_market_data.marketdata_login()
 
-marget_data_get_ohlc = xt_market_data.get_ohlc(
+market_data_get_ohlc = xt_market_data.get_ohlc(
     exchangeSegment = xt_market_data.EXCHANGE_NSECM, # Also Works for BSECM
     exchangeInstrumentID = 22, # When using BSECM, Use BSE instrument Id like &quot;526530&quot;
     startTime = &quot;Dec 02 2024 091500&quot;, #Time in IST
@@ -489,12 +483,12 @@ marget_data_get_ohlc = xt_market_data.get_ohlc(
 
 # Change the values oh OHLC parameters as required.
 
-ohlc_df = ohlc_to_df(marget_data_get_ohlc)
+ohlc_df = ohlc_to_df(market_data_get_ohlc)
 print(ohlc_df)
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 </code></pre>
 <h3 id="equityticker_exchangeinstrumentid_dict"><strong>equityticker_exchangeInstrumentId_dict</strong>:</h3>
-<p>Converts XTS-API DataFrame (generated from XTS.Connect.get_master() with helper functoin <strong>cm_master_string_to_df/fo_master_string_to_df</strong>) to a dictionary. So that user can search Instrument Id with ticker symbol. IT ONLY WORKS FOR CASH MARKET.</p>
+<p>Converts XTS-API DataFrame (generated from XTS.Connect.get_master() with helper functoin <strong>cm_master_string_to_df/fo_master_string_to_df</strong>) to a dictionary. So that user can search Instrument Id with ticker symbol. IT ONLY WORKS FOR EQUITY SERIES IN CASH MARKET.</p>
 <hr />
 <p>Parameters: The return of <strong>cm_master_string_to_df/fo_master_string_to_df</strong> methods with the pd.DataFrame type.
 Returns: A <strong>Dictionary</strong> containing Ticker Symbol as keys &amp; Exchange Instrument Id as values. </p>
@@ -504,7 +498,7 @@ Returns: A <strong>Dictionary</strong> containing Ticker Symbol as keys &amp; Ex
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;
 from xts_api_client.xts_connect import XTSConnect
 from xts_api_client.helper.helper import cm_master_string_to_df
-from xts_api_client.helper.helper import ticker_exchangeInstrumentId_dict
+from xts_api_client.helper.helper import equityticker_exchangeInstrumentId_dict
 
 xt_market_data = XTSConnect(
 apiKey = API_key,
@@ -516,7 +510,7 @@ response_marketdata_login = xt_market_data.marketdata_login()
 market_data_get_master = xt_market_data.get_master(exchangeSegmentList = [xt_market_data.EXCHANGE_NSECM]) # Works for BSECM as well.
 
 cm_master_df = cm_master_string_to_df(market_data_get_master['result'])
-ticker_exchInstrumentID_dict = ticker_exchangeInstrumentId_dict(cm_master_df)
+ticker_exchInstrumentID_dict = equityticker_exchangeInstrumentId_dict(cm_master_df)
 print(ticker_exchInstrumentID_dict.get('RELIANCE')) # Reliance is kept here as an example. User can print &quot;ticker_exchInstrumentID_dict&quot; for full data.
 
 &quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;

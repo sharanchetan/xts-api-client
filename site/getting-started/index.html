@@ -35,9 +35,6 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="nav-item">
-                                <a href=".." class="nav-link">Package Structure</a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="./" class="nav-link active" aria-current="page">Getting Started</a>
                             </li>
                             <li class="nav-item">
@@ -45,9 +42,6 @@
                             </li>
                             <li class="nav-item">
                                 <a href="../how-to-guides/" class="nav-link">How To Guide</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../class-reference/" class="nav-link">Class-Reference</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../reference/" class="nav-link">Reference</a>
@@ -61,7 +55,7 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href=".." class="nav-link">
+                                <a rel="prev" class="nav-link disabled">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -145,7 +139,7 @@
 </ul>
 <h2 id="steps-to-use-the-package"><strong>Steps to use the Package</strong></h2>
 <ul>
-<li>Here's an example code block that loads API credentials from environment variables and uses them to log in to a MarketData API. It has been explained in subsequest steps.</li>
+<li>Here's an example code block that loads API credentials from environment variables and uses them to log in to a MarketData API. It has been explained in subsequent steps.</li>
 </ul>
 <pre><code>import os
 from dotenv import load_dotenv
@@ -221,7 +215,7 @@ xt_market_data = XTSConnect(
 <ul>
 <li>XTS provides API Call to fetch all tradable as well as some additional Instrument/contract masters in a single structure. </li>
 <li>This call can be made once in a day and the response can be persisted in local storage or file as per you application design and you can fetch instrumented or Symbols from this dataset throughout the day.</li>
-<li>The type of <em>master</em> is a dictionary, that contains all the data sepearted by "|".</li>
+<li>The type of <em>master</em> is a dictionary, that contains all the data separated by "|".</li>
 <li>The parameter 'exchangeSegmentList' takes a list of exchange segments. In XTS, NSE has few segments as shown in the cofig output above.</li>
 </ul>
 <pre><code>market_data_get_master = await xt_market_data.get_master(
