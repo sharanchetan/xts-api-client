@@ -239,5 +239,19 @@
         "maketType": 1,
         "message": "THE REGULAR SEGMENT HAS CLOSED FOR 07 NOV 2024",
         "SequenceNumber": 1531302407952658
+    },
+    "1507_Full": {
+        "MessageCode": 1507,
+        "MessageVersion": 4,
+        "ApplicationType": 132,
+        "TokenID": 0,
+        "ExchangeSegment": 1,
+        "ExchangeInstrumentID": 0,
+        "ExchangeTimeStamp": 1421415000,
+        "exchangeSegment": 1,
+        "tradingSession": 0,
+        "maketType": 6,
+        "message": "THE CALL AUCTION 2 MARKET HAS OPENED FOR SESSION: 5 DATED 15 JAN 2025",
+        "SequenceNumber": 1590880114816851
     }
 }
