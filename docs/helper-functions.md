@@ -417,7 +417,7 @@ print(ohlc_df)
 ```
 
 ### __equityticker_exchangeInstrumentId_dict__:
-Converts XTS-API DataFrame (generated from XTS.Connect.get_master() with helper functoin __cm_master_string_to_df/fo_master_string_to_df__) to a dictionary. So that user can search Instrument Id with ticker symbol. IT ONLY WORKS FOR CASH MARKET.
+Converts XTS-API DataFrame (generated from XTS.Connect.get_master() with helper functoin __cm_master_string_to_df/fo_master_string_to_df__) to a dictionary. So that user can search Instrument Id with ticker symbol. IT ONLY WORKS FOR EQUITY SERIES IN CASH MARKET.
 ___
 Parameters: The return of __cm_master_string_to_df/fo_master_string_to_df__ methods with the pd.DataFrame type.
 Returns: A __Dictionary__ containing Ticker Symbol as keys & Exchange Instrument Id as values. 
@@ -429,7 +429,7 @@ ___
 """""""""""""""""""""""""""""""""""""""""""""""""""
 from xts_api_client.xts_connect import XTSConnect
 from xts_api_client.helper.helper import cm_master_string_to_df
-from xts_api_client.helper.helper import ticker_exchangeInstrumentId_dict
+from xts_api_client.helper.helper import equityticker_exchangeInstrumentId_dict
 
 xt_market_data = XTSConnect(
 apiKey = API_key,
@@ -441,7 +441,7 @@ response_marketdata_login = xt_market_data.marketdata_login()
 market_data_get_master = xt_market_data.get_master(exchangeSegmentList = [xt_market_data.EXCHANGE_NSECM]) # Works for BSECM as well.
 
 cm_master_df = cm_master_string_to_df(market_data_get_master['result'])
-ticker_exchInstrumentID_dict = ticker_exchangeInstrumentId_dict(cm_master_df)
+ticker_exchInstrumentID_dict = equityticker_exchangeInstrumentId_dict(cm_master_df)
 print(ticker_exchInstrumentID_dict.get('RELIANCE')) # Reliance is kept here as an example. User can print "ticker_exchInstrumentID_dict" for full data.
 
 """"""""""""""""""""""""""""""""""""""""""
