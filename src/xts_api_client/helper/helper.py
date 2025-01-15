@@ -354,12 +354,13 @@ def ohlc_to_df(market_data_get_ohlc_dict: dict):
 
 def equityticker_exchangeInstrumentId_dict(dataframe_cm:pd.DataFrame):
     """
-    IT WORKS ONLY FOR CASH MARKET.
+    IT WORKS ONLY FOR EQ series in CASH MARKET.
     Converts XTS-API(from XTS.Connect.get_master()-->cm_master_string_to_df/fo_master_string_to_df) DataFrame to a dictionary. So that user can search Instrument Id with ticker symbol.
     Parameters: The return of cm_master_string_to_df/fo_master_string_to_df methods with the type pd.DataFrame.
     Returns: A Dictionary conatining Ticker Symbol as keys & Exchange Instrument Id as values. 
     """
-    df = dataframe_cm[['Name','ExchangeInstrumentID']]
+    filtered_df = dataframe_cm[dataframe_cm['Series'] == 'EQ']
+    df = filtered_df[['Name','ExchangeInstrumentID']]
     ticker_exchangeInstId_dict = df.set_index('Name')['ExchangeInstrumentID'].to_dict()
     return ticker_exchangeInstId_dict
 
