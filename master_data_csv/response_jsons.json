@@ -1,246 +1,243 @@
-"1105-json-partial"{
-    "t:2_128677,8:1419724800,10:1425133800,14:1419724800,15:0,17:0,18:01-01-1980 00:00:00,21:1404691200,22:1406851200,24:\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000,28:175,109:275000"
-}
-
-1501 : Full
-'{
-    "MessageCode": 1501,
-    "ExchangeSegment": 1,
-    "ExchangeInstrumentID": 467,
-    "LastTradedPrice": 610.3,
-    "LastTradedQunatity": 1,
-    "TotalBuyQuantity": 363004,
-    "TotalSellQuantity": 327007,
-    "TotalTradedQuantity": 1983015,
-    "AverageTradedPrice": 612.81,
-    "LastTradedTime": 1420632949,
-    "LastUpdateTime": 1420632949,
-    "PercentChange": -2.038523274478332,
-    "Open": 627,
-    "High": 627,
-    "Low": 605.15,
-    "Close": 623,
-    "TotalValueTraded": null,
-    "AskInfo": {
-        "Size": 15,
-        "Price": 610.3,
-        "TotalOrders": 1,
-        "BuyBackMarketMaker": 0
+{
+    "1105_partial": {
+        "t:2_128677,8:1419724800,10:1425133800,14:1419724800,15:0,17:0,18:01-01-1980 00:00:00,21:1404691200,22:1406851200,24:\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000,28:175,109:275000"
     },
-    "BidInfo": {
-        "Size": 119,
-        "Price": 610.15,
-        "TotalOrders": 3,
-        "BuyBackMarketMaker": 0
-    },
-    "XMarketType": 1,
-    "BookType": 1
-}'
-
-1501 : Full
-'{
-    "MessageCode": 1501,
-    "MessageVersion": 4,
-    "ApplicationType": 0,
-    "TokenID": 0,
-    "ExchangeSegment": 1,
-    "ExchangeInstrumentID": 467,
-    "ExchangeTimeStamp": 1420632951,
-    "Touchline": {
-        "BidInfo": {
-            "Size": 90,
-            "Price": 610.15,
-            "TotalOrders": 2,
-            "BuyBackMarketMaker": 0
-        },
-        "AskInfo": {
-            "Size": 28,
-            "Price": 610.25,
-            "TotalOrders": 1,
-            "BuyBackMarketMaker": 0
-        },
-        "LastTradedPrice": 610.25,
+    "1501_Full": {
+        "MessageCode": 1501,
+        "ExchangeSegment": 1,
+        "ExchangeInstrumentID": 467,
+        "LastTradedPrice": 610.3,
         "LastTradedQunatity": 1,
-        "TotalBuyQuantity": 362961,
-        "TotalSellQuantity": 327122,
-        "TotalTradedQuantity": 1983017,
+        "TotalBuyQuantity": 363004,
+        "TotalSellQuantity": 327007,
+        "TotalTradedQuantity": 1983015,
         "AverageTradedPrice": 612.81,
-        "LastTradedTime": 1420632950,
-        "LastUpdateTime": 1420632951,
-        "PercentChange": -2.0465489566613204,
+        "LastTradedTime": 1420632949,
+        "LastUpdateTime": 1420632949,
+        "PercentChange": -2.038523274478332,
         "Open": 627,
         "High": 627,
         "Low": 605.15,
         "Close": 623,
         "TotalValueTraded": null,
-        "BuyBackTotalBuy": 0,
-        "BuyBackTotalSell": 0
-    },
-    "BookType": 1,
-    "XMarketType": 1,
-    "SequenceNumber": 1583105129732134
-}'
-
-1502 : Full
-'{
-    "MessageCode": 1502,
-    "MessageVersion": 4,
-    "ApplicationType": 0,
-    "TokenID": 0,
-    "ExchangeSegment": 2,
-    "ExchangeInstrumentID": 42489,
-    "ExchangeTimeStamp": 1420633290,
-    "Bids": [
-        {
-            "Size": 407,
-            "Price": 1269.35,
-            "TotalOrders": 1,
-            "BuyBackMarketMaker": 0
-        },
-        {
-            "Size": 814,
-            "Price": 1269.3,
-            "TotalOrders": 1,
-            "BuyBackMarketMaker": 0
-        },
-        {
-            "Size": 407,
-            "Price": 1269.05,
-            "TotalOrders": 1,
-            "BuyBackMarketMaker": 0
-        },
-        {
-            "Size": 407,
-            "Price": 1268.85,
-            "TotalOrders": 1,
-            "BuyBackMarketMaker": 0
-        },
-        {
-            "Size": 407,
-            "Price": 1268.7,
-            "TotalOrders": 1,
-            "BuyBackMarketMaker": 0
-        }
-    ],
-    "Asks": [
-        {
-            "Size": 407,
-            "Price": 1270.8,
-            "TotalOrders": 1,
-            "BuyBackMarketMaker": 0
-        },
-        {
-            "Size": 407,
-            "Price": 1271.15,
-            "TotalOrders": 1,
-            "BuyBackMarketMaker": 0
-        },
-        {
-            "Size": 407,
-            "Price": 1271.2,
-            "TotalOrders": 1,
-            "BuyBackMarketMaker": 0
-        },
-        {
-            "Size": 407,
-            "Price": 1271.3,
-            "TotalOrders": 1,
-            "BuyBackMarketMaker": 0
-        },
-        {
-            "Size": 407,
-            "Price": 1271.35,
-            "TotalOrders": 1,
-            "BuyBackMarketMaker": 0
-        }
-    ],
-    "Touchline": {
-        "BidInfo": {
-            "Size": 407,
-            "Price": 1269.35,
-            "TotalOrders": 1,
-            "BuyBackMarketMaker": 0
-        },
         "AskInfo": {
-            "Size": 407,
-            "Price": 1270.8,
+            "Size": 15,
+            "Price": 610.3,
             "TotalOrders": 1,
             "BuyBackMarketMaker": 0
         },
-        "LastTradedPrice": 1270.2,
-        "LastTradedQunatity": 407,
-        "TotalBuyQuantity": 83842,
-        "TotalSellQuantity": 149369,
-        "TotalTradedQuantity": 1102970,
-        "AverageTradedPrice": 1276.29,
-        "LastTradedTime": 1420633280,
-        "LastUpdateTime": 1420633290,
-        "PercentChange": -2.7635305825614354,
-        "Open": 1309.95,
-        "High": 1315.75,
-        "Low": 1256,
-        "Close": 1306.3,
-        "TotalValueTraded": null,
-        "BuyBackTotalBuy": 0,
-        "BuyBackTotalSell": 0
+        "BidInfo": {
+            "Size": 119,
+            "Price": 610.15,
+            "TotalOrders": 3,
+            "BuyBackMarketMaker": 0
+        },
+        "XMarketType": 1,
+        "BookType": 1
     },
-    "BookType": 1,
-    "XMarketType": 1,
-    "SequenceNumber": 1583106257997885
-}'
-
-
-1505 : Full
-'{
-    "MessageCode": 1505,
-    "MessageVersion": 1,
-    "ApplicationType": 0,
-    "TokenID": 0,
-    "ExchangeSegment": 1,
-    "ExchangeInstrumentID": 467,
-    "BarTime": 1736164979,
-    "BarVolume": 1760422,
-    "High": 607.65,
-    "Low": 606.5,
-    "Open": 606.55,
-    "Close": 607.45,
-    "OpenInterest": 0,
-    "SumOfQtyInToPrice": 0
-}'
-
-1512 : Full
-
-'{
-    "MessageCode": 1512,
-    "ExchangeSegment": 1,
-    "ExchangeInstrumentID": 467,
-    "LastTradedPrice": 609.45,
-    "LastTradedQunatity": 8,
-    "LastUpdateTime": 1420633477,
-    "PercentChange": -2.1749598715890883,
-    "Close": 623,
-    "XMarketType": 1,
-    "BookType": 1
-}'
-
-1512 : Full
-'{
-    "MessageCode": 1512,
-    "MessageVersion": 4,
-    "ApplicationType": 0,
-    "TokenID": 0,
-    "ExchangeSegment": 1,
-    "ExchangeInstrumentID": 467,
-    "BookType": 1,
-    "XMarketType": 1,
-    "LastTradedPrice": 609.45,
-    "LastTradedQunatity": 8,
-    "LastUpdateTime": 1420633479,
-    "PercentChange": -2.1749598715890883,
-    "Close": 623
-}'
-
-1507: Full
-`
-{'MessageCode': 1507, 'MessageVersion': 4, 'ApplicationType': 0, 'TokenID': 0, 'ExchangeSegment': 2, 'ExchangeInstrumentID': 0, 'ExchangeTimeStamp': 1415460600, 'exchangeSegment': 2, 'tradingSession': 4, 'maketType': 1, 'message': 'THE REGULAR SEGMENT HAS CLOSED FOR 07 NOV 2024', 'SequenceNumber': 1531302407952658}
-`
+    "1501_Full": {
+        "MessageCode": 1501,
+        "MessageVersion": 4,
+        "ApplicationType": 0,
+        "TokenID": 0,
+        "ExchangeSegment": 1,
+        "ExchangeInstrumentID": 467,
+        "ExchangeTimeStamp": 1420632951,
+        "Touchline": {
+            "BidInfo": {
+                "Size": 90,
+                "Price": 610.15,
+                "TotalOrders": 2,
+                "BuyBackMarketMaker": 0
+            },
+            "AskInfo": {
+                "Size": 28,
+                "Price": 610.25,
+                "TotalOrders": 1,
+                "BuyBackMarketMaker": 0
+            },
+            "LastTradedPrice": 610.25,
+            "LastTradedQunatity": 1,
+            "TotalBuyQuantity": 362961,
+            "TotalSellQuantity": 327122,
+            "TotalTradedQuantity": 1983017,
+            "AverageTradedPrice": 612.81,
+            "LastTradedTime": 1420632950,
+            "LastUpdateTime": 1420632951,
+            "PercentChange": -2.0465489566613204,
+            "Open": 627,
+            "High": 627,
+            "Low": 605.15,
+            "Close": 623,
+            "TotalValueTraded": null,
+            "BuyBackTotalBuy": 0,
+            "BuyBackTotalSell": 0
+        },
+        "BookType": 1,
+        "XMarketType": 1,
+        "SequenceNumber": 1583105129732134
+    },
+    "1502_Full": {
+        "MessageCode": 1502,
+        "MessageVersion": 4,
+        "ApplicationType": 0,
+        "TokenID": 0,
+        "ExchangeSegment": 2,
+        "ExchangeInstrumentID": 42489,
+        "ExchangeTimeStamp": 1420633290,
+        "Bids": [
+            {
+                "Size": 407,
+                "Price": 1269.35,
+                "TotalOrders": 1,
+                "BuyBackMarketMaker": 0
+            },
+            {
+                "Size": 814,
+                "Price": 1269.3,
+                "TotalOrders": 1,
+                "BuyBackMarketMaker": 0
+            },
+            {
+                "Size": 407,
+                "Price": 1269.05,
+                "TotalOrders": 1,
+                "BuyBackMarketMaker": 0
+            },
+            {
+                "Size": 407,
+                "Price": 1268.85,
+                "TotalOrders": 1,
+                "BuyBackMarketMaker": 0
+            },
+            {
+                "Size": 407,
+                "Price": 1268.7,
+                "TotalOrders": 1,
+                "BuyBackMarketMaker": 0
+            }
+        ],
+        "Asks": [
+            {
+                "Size": 407,
+                "Price": 1270.8,
+                "TotalOrders": 1,
+                "BuyBackMarketMaker": 0
+            },
+            {
+                "Size": 407,
+                "Price": 1271.15,
+                "TotalOrders": 1,
+                "BuyBackMarketMaker": 0
+            },
+            {
+                "Size": 407,
+                "Price": 1271.2,
+                "TotalOrders": 1,
+                "BuyBackMarketMaker": 0
+            },
+            {
+                "Size": 407,
+                "Price": 1271.3,
+                "TotalOrders": 1,
+                "BuyBackMarketMaker": 0
+            },
+            {
+                "Size": 407,
+                "Price": 1271.35,
+                "TotalOrders": 1,
+                "BuyBackMarketMaker": 0
+            }
+        ],
+        "Touchline": {
+            "BidInfo": {
+                "Size": 407,
+                "Price": 1269.35,
+                "TotalOrders": 1,
+                "BuyBackMarketMaker": 0
+            },
+            "AskInfo": {
+                "Size": 407,
+                "Price": 1270.8,
+                "TotalOrders": 1,
+                "BuyBackMarketMaker": 0
+            },
+            "LastTradedPrice": 1270.2,
+            "LastTradedQunatity": 407,
+            "TotalBuyQuantity": 83842,
+            "TotalSellQuantity": 149369,
+            "TotalTradedQuantity": 1102970,
+            "AverageTradedPrice": 1276.29,
+            "LastTradedTime": 1420633280,
+            "LastUpdateTime": 1420633290,
+            "PercentChange": -2.7635305825614354,
+            "Open": 1309.95,
+            "High": 1315.75,
+            "Low": 1256,
+            "Close": 1306.3,
+            "TotalValueTraded": null,
+            "BuyBackTotalBuy": 0,
+            "BuyBackTotalSell": 0
+        },
+        "BookType": 1,
+        "XMarketType": 1,
+        "SequenceNumber": 1583106257997885
+    },
+    "1505_Full": {
+        "MessageCode": 1505,
+        "MessageVersion": 1,
+        "ApplicationType": 0,
+        "TokenID": 0,
+        "ExchangeSegment": 1,
+        "ExchangeInstrumentID": 467,
+        "BarTime": 1736164979,
+        "BarVolume": 1760422,
+        "High": 607.65,
+        "Low": 606.5,
+        "Open": 606.55,
+        "Close": 607.45,
+        "OpenInterest": 0,
+        "SumOfQtyInToPrice": 0
+    },
+    "1512_Full": {
+        "MessageCode": 1512,
+        "ExchangeSegment": 1,
+        "ExchangeInstrumentID": 467,
+        "LastTradedPrice": 609.45,
+        "LastTradedQunatity": 8,
+        "LastUpdateTime": 1420633477,
+        "PercentChange": -2.1749598715890883,
+        "Close": 623,
+        "XMarketType": 1,
+        "BookType": 1
+    },
+    "1512_Full": {
+        "MessageCode": 1512,
+        "MessageVersion": 4,
+        "ApplicationType": 0,
+        "TokenID": 0,
+        "ExchangeSegment": 1,
+        "ExchangeInstrumentID": 467,
+        "BookType": 1,
+        "XMarketType": 1,
+        "LastTradedPrice": 609.45,
+        "LastTradedQunatity": 8,
+        "LastUpdateTime": 1420633479,
+        "PercentChange": -2.1749598715890883,
+        "Close": 623
+    },
+    "1507_Full": {
+        "MessageCode": 1507,
+        "MessageVersion": 4,
+        "ApplicationType": 0,
+        "TokenID": 0,
+        "ExchangeSegment": 2,
+        "ExchangeInstrumentID": 0,
+        "ExchangeTimeStamp": 1415460600,
+        "exchangeSegment": 2,
+        "tradingSession": 4,
+        "maketType": 1,
+        "message": "THE REGULAR SEGMENT HAS CLOSED FOR 07 NOV 2024",
+        "SequenceNumber": 1531302407952658
+    }
+}
