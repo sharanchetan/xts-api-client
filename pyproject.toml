@@ -9,10 +9,10 @@ authors = [
 requires-python = ">=3.12"
 dependencies = [
     "aiohttp==3.11.11",
+    "httpx>=0.28.1",
     "pandas>=2.2.3",
     "python-dotenv>=1.0.1",
     "python-socketio==4.6.1",
-    "requests-async>=0.6.2",
     "requests>=2.32.3",
     "urllib3>=2.2.3",
 ]
