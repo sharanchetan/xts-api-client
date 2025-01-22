@@ -1,7 +1,8 @@
 import json
 import logging
 
-import requests_async as requests
+#import httpx as requests
+from httpx import AsyncClient as requests
 from urllib.parse import urljoin
 
 from . import xts_exception as ex
@@ -152,7 +153,7 @@ class XTSConnect(XTSCommon):
             reqadapter = requests.adapters.HTTPAdapter(**pool)
             self.reqsession.mount("https://", reqadapter)
         else:
-            self.reqsession = requests
+            self.reqsession = requests()
 
         # disable requests SSL warning
         #requests.packages.urllib3.disable_warnings()
@@ -772,13 +773,17 @@ class XTSConnect(XTSCommon):
             headers.update({'Content-Type': 'application/json', 'Authorization': self.token})
 
         try:
-            r = await self.reqsession.request(method,
-                                        url,
+            # r = await self.reqsession.request(method,
+            #                             url,
+            #                             data=params if method in ["POST", "PUT"] else None,
+            #                             params=params if method in ["GET", "DELETE"] else None,
+            #                             headers=headers,
+            #                             verify=not self.disable_ssl)
+
+            r = await self.reqsession.request(method = method, url = url,
                                         data=params if method in ["POST", "PUT"] else None,
                                         params=params if method in ["GET", "DELETE"] else None,
-                                        headers=headers,
-                                        verify=not self.disable_ssl)
-
+                                        headers=headers)
         except Exception as e:
             raise e
 
