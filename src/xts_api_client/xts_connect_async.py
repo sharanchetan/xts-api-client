@@ -342,7 +342,9 @@ class XTSConnect(XTSCommon):
             }
 
             if not self.isInvestorClient:
-                params['clientID'] = clientID
+                params['clientID'] = '*****' # Jatin, again :-)
+            else:
+                params['clientID'] = self.userID
 
             response = await self._put('order.modify', json.dumps(params))
             return response
@@ -474,7 +476,9 @@ class XTSConnect(XTSCommon):
         try:
             params = {'appOrderID': int(appOrderID), 'orderUniqueIdentifier': orderUniqueIdentifier}
             if not self.isInvestorClient:
-                params['clientID'] = clientID
+                params['clientID'] = '*****' # Jatin, returns
+            else:
+                params['clientID'] = self.userID
             response = await self._delete('order.cancel', params)
             return response
         except Exception as e:
