@@ -46,7 +46,13 @@ class XTSConnect(XTSCommon):
     SQUAREOFFQUANTITY_PERCENTAGE = "Percentage"
 
     # Validity
-    VALIDITY_DAY = "DAY"
+    TimeinForce_GTC = "GTC"
+    TimeinForce_IOC = "IOC"
+    TimeinForce_FOK = "FOK"
+    TimeinForce_GTD = "GTD"
+    TimeinForce_DAY = "DAY"
+    TimeinForce_AT_THE_OPEN = "AT_THE_OPEN"
+    TimeinForce_AT_THE_CLOSE = "AT_THE_CLOSE"
 
     # Exchange Segments
     EXCHANGE_NSECM = "NSECM"
