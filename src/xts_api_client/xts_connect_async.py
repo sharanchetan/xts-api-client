@@ -194,6 +194,8 @@ class XTSConnect(XTSCommon):
         try:
             params = {}
             if not self.isInvestorClient:
+                params['clientID'] = "*****"
+            else:
                 params['clientID'] = clientID
             response = await self._get("order.status", params)
             return response
@@ -205,6 +207,8 @@ class XTSConnect(XTSCommon):
         try:
             params = {}
             if not self.isInvestorClient:
+                params['clientID'] = "*****"
+            else:
                 params['clientID'] = clientID
             response = await self._get("order.dealer.status", params)
             return response
@@ -295,6 +299,8 @@ class XTSConnect(XTSCommon):
         try:
             params = {}
             if not self.isInvestorClient:
+                params['clientID'] = "*****"
+            else:
                 params['clientID'] = clientID
 
             response = await self._get('user.profile', params)
@@ -309,6 +315,8 @@ class XTSConnect(XTSCommon):
             try:
                 params = {}
                 if not self.isInvestorClient:
+                    params['clientID'] = "*****"
+                else:
                     params['clientID'] = clientID
                 response = await self._get('user.balance', params)
                 return response
@@ -363,6 +371,8 @@ class XTSConnect(XTSCommon):
         try:
             params = {}
             if not self.isInvestorClient:
+                params['clientID'] = "*****"
+            else:
                 params['clientID'] = clientID
             response = await self._get('trades', params)
             return response
@@ -375,6 +385,8 @@ class XTSConnect(XTSCommon):
         try:
             params = {}
             if not self.isInvestorClient:
+                params['clientID'] = "*****"
+            else:
                 params['clientID'] = clientID
             response = await self._get('dealer.trades', params)
             return response
@@ -386,6 +398,8 @@ class XTSConnect(XTSCommon):
         try:
             params = {}
             if not self.isInvestorClient:
+                params['clientID'] = "*****"
+            else:
                 params['clientID'] = clientID
 
             response = await self._get('portfolio.holdings', params)
@@ -399,6 +413,8 @@ class XTSConnect(XTSCommon):
         try:
             params = {'boEntryOrderId': int(appOrderID)}
             if not self.isInvestorClient:
+                params['clientID'] = "*****"
+            else:
                 params['clientID'] = clientID
             response = await self._delete('bracketorder.cancel', params)
             return response
@@ -410,6 +426,8 @@ class XTSConnect(XTSCommon):
         try:
             params = {'dayOrNet': 'NetWise'}
             if not self.isInvestorClient:
+                params['clientID'] = "*****"
+            else:
                 params['clientID'] = clientID
             response = await self._get('portfolio.dealerpositions', params)
             return response
@@ -424,8 +442,9 @@ class XTSConnect(XTSCommon):
         try:
             params = {'dayOrNet': 'DayWise'}
             if not self.isInvestorClient:
+                params['clientID'] = "*****"
+            else:
                 params['clientID'] = clientID
-
             response = await self._get('portfolio.dealerpositions', params)
             return response
         except Exception as e:
@@ -438,8 +457,9 @@ class XTSConnect(XTSCommon):
         try:
             params = {'dayOrNet': 'DayWise'}
             if not self.isInvestorClient:
+                params['clientID'] = "*****"
+            else:
                 params['clientID'] = clientID
-
             response = await self._get('portfolio.positions', params)
             return response
         except Exception as e:
@@ -450,6 +470,8 @@ class XTSConnect(XTSCommon):
         try:
             params = {'dayOrNet': 'NetWise'}
             if not self.isInvestorClient:
+                params['clientID'] = "*****"
+            else:
                 params['clientID'] = clientID
             response = await self._get('portfolio.positions', params)
             return response
@@ -470,6 +492,8 @@ class XTSConnect(XTSCommon):
                 'newProductType': newProductType
             }
             if not self.isInvestorClient:
+                params['clientID'] = "*****"
+            else:
                 params['clientID'] = clientID
             response = await self._put('portfolio.positions.convert', json.dumps(params))
             return response
@@ -495,6 +519,8 @@ class XTSConnect(XTSCommon):
         try:
             params = {"exchangeSegment": exchangeSegment, "exchangeInstrumentID": exchangeInstrumentID}
             if not self.isInvestorClient:
+                params['clientID'] = '*****' # Jatin, returns
+            else:
                 params['clientID'] = self.userID
             response = await self._post('order.cancelall', json.dumps(params))
             return response
@@ -513,6 +539,8 @@ class XTSConnect(XTSCommon):
                       'orderSide': orderSide, "orderType": orderType,'orderQuantity': orderQuantity, 'disclosedQuantity': disclosedQuantity,
                       'limitPrice': limitPrice, 'stopPrice': stopPrice, 'orderUniqueIdentifier': orderUniqueIdentifier}
             if not self.isInvestorClient:
+                params['clientID'] = "*****"
+            else:
                 params['clientID'] = clientID
             response = await self._post('order.place.cover', json.dumps(params))
             return response
@@ -526,6 +554,8 @@ class XTSConnect(XTSCommon):
 
             params = {'appOrderID': appOrderID}
             if not self.isInvestorClient:
+                params['clientID'] = "*****"
+            else:
                 params['clientID'] = clientID
             response = await self._put('order.exit.cover', json.dumps(params))
             return response
@@ -546,6 +576,8 @@ class XTSConnect(XTSCommon):
                       'cancelOrders': cancelOrders
                       }
             if not self.isInvestorClient:
+                params['clientID'] = "*****"
+            else:
                 params['clientID'] = clientID
             response = await self._put('portfolio.squareoff', json.dumps(params))
             return response
@@ -559,6 +591,8 @@ class XTSConnect(XTSCommon):
         try:
             params = {'appOrderID': appOrderID}
             if not self.isInvestorClient:
+                params['clientID'] = "*****"
+            else:
                 params['clientID'] = clientID
             response = await self._get('order.history', params)
             return response
@@ -571,6 +605,8 @@ class XTSConnect(XTSCommon):
         try:
             params = {}
             if not self.isInvestorClient:
+                params['clientID'] = "*****"
+            else:
                 params['clientID'] = clientID
             response = await self._delete('user.logout', params)
             return response
