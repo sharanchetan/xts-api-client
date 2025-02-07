@@ -609,6 +609,7 @@ class XTSConnect(XTSCommon):
             else:
                 params['clientID'] = clientID
             response = await self._delete('user.logout', params)
+            self.token = None # Added this to reset token, so that we can login again.
             return response
         except Exception as e:
             return response['description']
