@@ -1,6 +1,6 @@
 [project]
 name = "xts-api-client"
-version = "0.1.10"
+version = "0.1.11"
 description = "A Package designed for connecting to a Stock Broker that uses Symphony Fintech Solutions Pvt. Ltd for there API."
 readme = "README.md"
 authors = [
