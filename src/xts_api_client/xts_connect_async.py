@@ -781,6 +781,7 @@ class XTSConnect(XTSCommon):
         try:
             params = {}
             response = await self._delete('market.logout', params)
+            self.token = None # Added this to reset token, so that we can login again.
             return response
         except Exception as e:
             return response['description']
