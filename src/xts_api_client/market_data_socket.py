@@ -7,15 +7,16 @@ class MDSocket_io(socketio.AsyncClient):
                  userID,
                  root_url,
                  marketdatasocketclient : MarketDataSocketClient,
-                 reconnection=True,
-                 reconnection_attempts=0,
-                 reconnection_delay=1,
-                 reconnection_delay_max=50000,
-                 randomization_factor=0.5,
-                 logger=False,
+                 reconnection = True,
+                 reconnection_attempts = 0,
+                 reconnection_delay = 1,
+                 reconnection_delay_max = 50000,
+                 randomization_factor = 0.5,
+                 logger = False,
                  engineio_logger = False, # added 
-                 binary=False, #TODO: Investigate investigate its importance.
-                 json=None,
+                 binary = False, #TODO: Investigate investigate its importance.
+                 json = None,
+                 ssl_verify = False,
                  **kwargs):
         
         super().__init__(
@@ -28,6 +29,7 @@ class MDSocket_io(socketio.AsyncClient):
             logger = logger,
             #binary = binary, removed because jatin Asked: TODO Investigate
             json = json,
+            ssl_verify = False,
             **kwargs)
     
 
