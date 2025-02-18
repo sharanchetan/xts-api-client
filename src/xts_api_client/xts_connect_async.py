@@ -4,6 +4,7 @@ import logging
 #import httpx as requests
 from httpx import AsyncClient as requests
 from urllib.parse import urljoin
+from datetime import datetime
 
 from . import xts_exception as ex
 
@@ -148,7 +149,8 @@ class XTSConnect(XTSCommon):
         self.source = source
         self.disable_ssl = disable_ssl
         self.root = root 
-        self.timeout = timeout 
+        self.timeout = timeout
+        self.last_login_time = None   
 
         super().__init__()
 
@@ -185,6 +187,7 @@ class XTSConnect(XTSCommon):
             if "token" in response['result']:
                 self._set_common_variables(response['result']['token'], response['result']['userID'],
                                            response['result']['isInvestorClient'])
+                self._last_login_time = datetime.now()
             return response
         except Exception as e:
             return response['description']
@@ -630,6 +633,7 @@ class XTSConnect(XTSCommon):
 
             if "token" in response['result']:
                 self._set_common_variables(response['result']['token'], response['result']['userID'],False)
+                self._last_login_time = datetime.now()
             return response
         except Exception as e:
             return response['description']
