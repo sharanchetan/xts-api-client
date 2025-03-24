@@ -6,6 +6,7 @@ from decimal import Decimal
 from datetime import datetime, timezone, timedelta
 import pytz
 from xts_api_client.xts_connect_async import XTSConnect
+import math
 
 def cm_master_string_to_df(cm_master_result: str) -> pd.DataFrame:
     """
@@ -35,7 +36,6 @@ def cm_master_string_to_df(cm_master_result: str) -> pd.DataFrame:
         "Series": str,
         "NameWithSeries": str,
         "InstrumentID": int,
-        "FreezeQty": int,
         "LotSize": int,
         "Multiplier": int,
         "DisplayName": str,
@@ -50,11 +50,15 @@ def cm_master_string_to_df(cm_master_result: str) -> pd.DataFrame:
     _converters = {
             "PriceBand_High": Decimal,
             "PriceBand_Low": Decimal,
-            "TickSize": Decimal
+            "TickSize": Decimal,
+            "FreezeQty": Decimal,
         }
     cm_master_df = pd.read_csv(StringIO(cm_master_result), sep = "|",  low_memory =False,header=None,names=col_header,
                             dtype=_dtype,converters=_converters)
     cm_master_df.columns = col_header
+    cm_master_df["FreezeQty"] = cm_master_df["FreezeQty"].apply(
+        lambda x: int(math.floor(x))
+    )  # Floor and convert to int
     return cm_master_df
 
 from decimal import Decimal
