@@ -10,7 +10,7 @@ API_root = os.getenv("API_URL")
 """""""""""""""""""""""""""""""""""""""
 from xts_api_client.xts_connect import XTSConnect
 from xts_api_client.helper.helper import cm_master_string_to_df
-
+      
 
 xt_market_data = XTSConnect(
 apiKey = API_key,
