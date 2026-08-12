@@ -4,7 +4,7 @@
 * With the correct API credentials, User can access XTS interactive & market data.
 
 # Reference
-*  Documentation Repository -- [Rmoney Documentation](https://github.com/sharanchetan/xts-api-documentation).
+*  Documentation Repository -- [XTS Documentation](https://github.com/sharanchetan/xts-api-documentation).
 *  This is a python client package for XTS API. XTS is product from [Symphony Fintech Solutions Pvt. Ltd.](https://symphonyfintech.com/) The original documentation for XTS Client is [___linked here___](https://symphonyfintech.com/xts-market-data-front-end-api-v2/).
 
 *  This package is a __derivative work__ of the original package written by [Symphony Fintech Solutions Pvt. Ltd.](https://symphonyfintech.com/)
